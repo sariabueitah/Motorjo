@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong> title:</strong>
+  <%= @car. title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @car.description %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong>Mileage:</strong>
+  <%= @car.mileage %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @car.price %>
+</p>
+
+<p>
+  <strong>Car location:</strong>
+  <%= @car.car_location %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @car.contact_number %>
+</p>
+<ul>
+  <% @car.designci_ids.each do |d| %>
+    <li>
+      <%= get_designci_title(d) %>
+    </li>
+  <% end %>
+</ul>
+<ul>
+  <% @car.safety_feature_ids.each do |d| %>
+    <li>
+      <%= get_safety_feature_title(d) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>

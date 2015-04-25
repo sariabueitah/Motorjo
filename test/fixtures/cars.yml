@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+   title: MyString
+  description: MyText
+  year: 2015-04-24
+  mileage: 1
+  price: 9.99
+  car_location: MyText
+  contact_number: MyString
+
+two:
+   title: MyString
+  description: MyText
+  year: 2015-04-24
+  mileage: 1
+  price: 9.99
+  car_location: MyText
+  contact_number: MyString

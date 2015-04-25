@@ -1,0 +1,21 @@
+<%= form_for(@safety_feature) do |f| %>
+  <% if @safety_feature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@safety_feature.errors.count, "error") %> prohibited this safety_feature from being saved:</h2>
+
+      <ul>
+      <% @safety_feature.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

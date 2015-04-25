@@ -1,0 +1,57 @@
+<%= form_for(@car) do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.date_select :year %>
+  </div>
+  <div class="field">
+    <%= f.label :mileage %><br>
+    <%= f.number_field :mileage %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :car_location %><br>
+    <%= f.text_area :car_location %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_number %><br>
+    <%= f.text_field :contact_number %>
+  </div>
+  <div>
+    <%= f.label "design" %>                                                                             
+    <%= f.collection_check_boxes :designci_ids, Designci.all, :id, :title, include_hidden: false do |cb| %>
+      <% cb.label(class: "checkbox inline") {cb.check_box(class:"checkbox") + cb.text} %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label "safety" %>                                                                             
+    <%= f.collection_check_boxes :safety_feature_ids, SafetyFeature.all, :id, :title, include_hidden: false do |cb2| %>
+      <% cb2.label(class: "checkbox inline") {cb2.check_box(class:"checkbox") + cb2.text} %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
