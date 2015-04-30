@@ -62,15 +62,14 @@ class CarsController < ApplicationController
     end
   end
 
-  def get_designci_title (id)
-    @designci = Designci.find(id).title
-  end
-  helper_method :get_designci_title
-
   def get_safety_feature_title (id)
-    @designci = SafetyFeature.find(id).title
+    @safety_feature = SafetyFeature.find(id).title
   end
   helper_method :get_safety_feature_title
+  def get_comfort_interior_title (id)
+    @comfort_interior = ComfortInterior.find(id).title
+  end
+  helper_method :get_comfort_interior_title
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -80,7 +79,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:title, :description, :year, :mileage, :price, :car_location, :contact_number, :designci_ids => [], :safety_feature_ids => [])
+      params.require(:car).permit(:title, :description, :year, :mileage, :price, :car_location, :contact_number, :safety_feature_ids => [], :comfort_interior_ids => [])
     end
 
     

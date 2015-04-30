@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425132515) do
+ActiveRecord::Schema.define(version: 20150430115518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "car_comfort_interiors", force: :cascade do |t|
+    t.integer  "car_id"
+    t.integer  "comfort_interior_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "car_safety_features", force: :cascade do |t|
     t.integer  "car_id"
     t.integer  "safety_feature_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-  end
-
-  create_table "cardesigncis", force: :cascade do |t|
-    t.integer  "car_id"
-    t.integer  "designci_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "cars", force: :cascade do |t|
@@ -38,11 +38,32 @@ ActiveRecord::Schema.define(version: 20150425132515) do
     t.decimal  "price"
     t.text     "car_location"
     t.string   "contact_number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "color_id"
+    t.integer  "interior_color_id"
+    t.integer  "interior_design_id"
   end
 
-  create_table "designcis", force: :cascade do |t|
+  create_table "colors", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comfort_interiors", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interior_colors", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interior_designs", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

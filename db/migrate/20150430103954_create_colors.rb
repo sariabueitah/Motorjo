@@ -1,6 +1,6 @@
-class CreateDesigncis < ActiveRecord::Migration
+class CreateColors < ActiveRecord::Migration
   def change
-    create_table :designcis do |t|
+    create_table :colors do |t|
       t.string :title
 
       t.timestamps null: false
