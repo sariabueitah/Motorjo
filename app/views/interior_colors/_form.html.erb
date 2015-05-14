@@ -1,0 +1,21 @@
+<%= form_for(@interior_color) do |f| %>
+  <% if @interior_color.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@interior_color.errors.count, "error") %> prohibited this interior_color from being saved:</h2>
+
+      <ul>
+      <% @interior_color.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

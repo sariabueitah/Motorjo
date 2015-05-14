@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Safety Features</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @safety_features.each do |safety_feature| %>
+      <tr>
+        <td><%= safety_feature.title %></td>
+        <td><%= link_to 'Show', safety_feature %></td>
+        <td><%= link_to 'Edit', edit_safety_feature_path(safety_feature) %></td>
+        <td><%= link_to 'Destroy', safety_feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Safety feature', new_safety_feature_path %>

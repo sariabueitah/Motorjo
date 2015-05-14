@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  resources :comfort_interiors
+
+  resources :interior_designs
+
+  resources :colors
+
+  resources :interior_colors
+
   resources :safety_features
 
   resources :cars
+
+  get 'admin', to: 'admin#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

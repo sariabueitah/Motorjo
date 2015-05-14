@@ -6,4 +6,7 @@ class Car < ActiveRecord::Base
   has_one :color
   has_one :interior_color
   has_one :interior_design
+
+  Gearbox = {"1" => "Manual", "2" => "Automatic", "3" => "Tiptronic"}
+
 end

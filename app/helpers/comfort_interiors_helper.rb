@@ -1,0 +1,2 @@
+module ComfortInteriorsHelper
+end

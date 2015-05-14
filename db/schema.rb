@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430115518) do
+ActiveRecord::Schema.define(version: 20150514170852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_testasds", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "car_comfort_interiors", force: :cascade do |t|
     t.integer  "car_id"
@@ -43,6 +49,8 @@ ActiveRecord::Schema.define(version: 20150430115518) do
     t.integer  "color_id"
     t.integer  "interior_color_id"
     t.integer  "interior_design_id"
+    t.integer  "gearbox_id"
+    t.text     "report"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -70,6 +78,12 @@ ActiveRecord::Schema.define(version: 20150430115518) do
   end
 
   create_table "safety_features", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "testasds", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
