@@ -8,5 +8,6 @@ class Car < ActiveRecord::Base
   has_one :interior_design
 
   Gearbox = {"1" => "Manual", "2" => "Automatic", "3" => "Tiptronic"}
+  REPORT = ["Accident Free", "Damaged", "Repaired", "Other"]
 
 end

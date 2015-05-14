@@ -39,11 +39,14 @@
     <%= f.label :contact_number %><br>
     <%= f.text_field :contact_number %>
   </div>
-  <div class="field">
-    <%= f.label :report %><br>
-    <%= f.text_area :report %>
+  <div>
+    <%= f.label "Car Report" %><br>
+    <%= f.select :report, Car::REPORT.map{ |s| [s] } %>
   </div>
-  <%= f.select :gearbox_id, Car::Gearbox.map{ |s| [s[1] , s[0]] } %>
+  <div>
+    <%= f.label "Gear Box Type" %><br>
+    <%= f.select :gearbox_id, Car::Gearbox.map{ |s| [s[1] , s[0]] } %>
+  </div>
   <div>
     <%= f.label "Comfort and Interior Design" %>                      
     <%= f.collection_check_boxes :comfort_interior_ids, ComfortInterior.all, :id, :title, include_hidden: false do |cb| %>
