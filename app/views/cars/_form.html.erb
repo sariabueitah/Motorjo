@@ -15,6 +15,14 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
+  <div>
+    <%= f.label :car_make %>
+    <%= collection_select(:car, :car_make, Make.all, :id, :title) %>
+  </div>
+  <div class="formCarModel">
+    <%= f.label :car_model %>
+    <%= f.select :car_model, options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }, selected_key = f.object.car_model) %>
+  </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
@@ -41,7 +49,11 @@
   </div>
   <div>
     <%= f.label "Car Report" %><br>
-    <%= f.select :report, Car::REPORT.map{ |s| [s] } %>
+    <%= f.select :report, Car::REPORT.map{ |s| [s[1] , s[0]] } %>
+  </div>
+  <div class="field">
+    <%= f.label :report_other %><br>
+    <%= f.text_area :report_other %>
   </div>
   <div>
     <%= f.label "Gear Box Type" %><br>
@@ -58,6 +70,18 @@
     <%= f.collection_check_boxes :safety_feature_ids, SafetyFeature.all, :id, :title, include_hidden: false do |cb2| %>
       <% cb2.label(class: "checkbox inline") {cb2.check_box(class:"checkbox") + cb2.text} %>
     <% end %>
+  </div>
+  <div>
+    <%= f.label :color_id %>
+    <%= collection_select(:car, :color_id, Color.all, :id, :title) %>
+  </div>
+  <div>
+    <%= f.label :interior_color_id %>
+    <%= collection_select(:car, :interior_color_id, InteriorColor.all, :id, :title) %>
+  </div>
+  <div>
+    <%= f.label :interior_design_id %>
+    <%= collection_select(:car, :interior_design_id, InteriorDesign.all, :id, :title) %>
   </div>
   <div class="actions">
     <%= f.submit %>

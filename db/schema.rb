@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514170852) do
+ActiveRecord::Schema.define(version: 20150515142642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20150514170852) do
     t.integer  "interior_color_id"
     t.integer  "interior_design_id"
     t.integer  "gearbox_id"
-    t.text     "report"
+    t.text     "report_other"
+    t.integer  "report"
+    t.integer  "car_make"
+    t.integer  "car_model"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -72,6 +75,19 @@ ActiveRecord::Schema.define(version: 20150514170852) do
   end
 
   create_table "interior_designs", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "makes", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.integer  "parent_id"
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

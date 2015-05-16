@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :makes
+
+  resources :models
+
   resources :comfort_interiors
 
   resources :interior_designs
