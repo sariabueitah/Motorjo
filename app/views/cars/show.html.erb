@@ -53,6 +53,12 @@
     </li>
   <% end %>
 </ul>
-
+<ul>
+  <% @car.car_images.each do |d| %>
+    <li>
+      <%= image_tag d.image.url(:thumb) %>
+    </li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>

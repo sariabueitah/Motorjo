@@ -83,6 +83,12 @@
     <%= f.label :interior_design_id %>
     <%= collection_select(:car, :interior_design_id, InteriorDesign.all, :id, :title) %>
   </div>
+  <div class="file_field">
+     <%= f.fields_for :car_images do |image| %>
+       <%= render partial: 'car_image_fields' , locals:{:f => image} %>
+     <% end %>
+     <%= link_to_add_association "Add", f , :car_images %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
