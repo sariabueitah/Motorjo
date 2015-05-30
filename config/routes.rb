@@ -1,22 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :makes
-
-  resources :models
-
-  resources :comfort_interiors
-
-  resources :interior_designs
-
-  resources :colors
-
-  resources :interior_colors
-
-  resources :safety_features
-
+  devise_for :users, :skip => [:registrations]
   resources :cars
-
+  resources :members
+  resources :dealers
+  resources :makes
+  resources :models
+  resources :comfort_interiors
+  resources :interior_designs
+  resources :colors
+  resources :interior_colors
+  resources :safety_features
   get 'admin', to: 'admin#index'
+  get 'dealer/edit/password/' => 'dealers#edit_password'
+  patch  'dealer/edit/password/' => 'dealers#update_password'
+  put  'dealer/edit/password/' => 'dealers#update_password'
+
+  get   'member/edit/password/' => 'members#edit_password'
+  patch  'member/edit/password/' => 'members#update_password'
+  put  'member/edit/password/' => 'members#update_password'
 
   root to: "cars#index"
   # The priority is based upon order of creation: first created -> highest priority.

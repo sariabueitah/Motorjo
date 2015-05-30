@@ -1,5 +1,6 @@
 class ColorsController < ApplicationController
   before_action :set_color, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /colors
   # GET /colors.json
@@ -70,5 +71,16 @@ class ColorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def color_params
       params.require(:color).permit(:title)
+    end
+    def authenticate_admin!
+      if user_signed_in?
+        if(current_user.meta_type === "admin")
+          true
+        else
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 end

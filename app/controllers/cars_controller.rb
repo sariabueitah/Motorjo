@@ -1,6 +1,8 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_access!, :only => [:edit, :update, :destroy]
+  
   # GET /cars
   # GET /cars.json
   def index
@@ -16,17 +18,18 @@ class CarsController < ApplicationController
   # GET /cars/new
   def new
     @car = Car.new
+    1.times { @car.car_images.build } 
   end
 
   # GET /cars/1/edit
-  # def edit
-  # end
+  def edit
+  end
 
   # POST /cars
   # POST /cars.json
   def create
     @car = Car.new(car_params)
-
+    @car.user_id = current_user.id
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
@@ -81,6 +84,16 @@ class CarsController < ApplicationController
     def car_params
       params.require(:car).permit(:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :interior_color_id, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id,:image, :_destroy])
     end
-
+    def authenticate_access!
+      if user_signed_in?
+        if(current_user.id == Car.find(params[:id]).user_id || current_user.meta_type === "admin")
+          true
+        else
+          redirect_to @car
+        end
+      else
+        redirect_to @car
+      end
+    end
     
 end

@@ -1,2 +1,0 @@
-class AdminPanelController < ApplicationController
-end

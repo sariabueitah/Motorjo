@@ -1,6 +1,6 @@
 class MakesController < ApplicationController
   before_action :set_make, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /makes
   # GET /makes.json
   def index
@@ -70,5 +70,16 @@ class MakesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def make_params
       params.require(:make).permit(:title)
+    end
+    def authenticate_admin!
+      if user_signed_in?
+        if(current_user.meta_type === "admin")
+          true
+        else
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 end

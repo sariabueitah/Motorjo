@@ -1,6 +1,6 @@
 class InteriorDesignsController < ApplicationController
   before_action :set_interior_design, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /interior_designs
   # GET /interior_designs.json
   def index
@@ -70,5 +70,16 @@ class InteriorDesignsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def interior_design_params
       params.require(:interior_design).permit(:title)
+    end
+    def authenticate_admin!
+      if user_signed_in?
+        if(current_user.meta_type === "admin")
+          true
+        else
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 end

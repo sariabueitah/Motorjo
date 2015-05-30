@@ -1,6 +1,6 @@
 class ModelsController < ApplicationController
   before_action :set_model, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /models
   # GET /models.json
   def index
@@ -70,5 +70,16 @@ class ModelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def model_params
       params.require(:model).permit(:parent_id, :title)
+    end
+    def authenticate_admin!
+      if user_signed_in?
+        if(current_user.meta_type === "admin")
+          true
+        else
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 end

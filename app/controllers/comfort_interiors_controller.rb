@@ -1,6 +1,6 @@
 class ComfortInteriorsController < ApplicationController
   before_action :set_comfort_interior, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /comfort_interiors
   # GET /comfort_interiors.json
   def index
@@ -70,5 +70,16 @@ class ComfortInteriorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comfort_interior_params
       params.require(:comfort_interior).permit(:title)
+    end
+    def authenticate_admin!
+      if user_signed_in?
+        if(current_user.meta_type === "admin")
+          true
+        else
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 end

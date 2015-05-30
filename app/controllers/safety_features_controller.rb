@@ -1,6 +1,6 @@
 class SafetyFeaturesController < ApplicationController
   before_action :set_safety_feature, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
   # GET /safety_features
   # GET /safety_features.json
   def index
@@ -70,5 +70,16 @@ class SafetyFeaturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def safety_feature_params
       params.require(:safety_feature).permit(:title)
+    end
+    def authenticate_admin!
+      if user_signed_in?
+        if(current_user.meta_type === "admin")
+          true
+        else
+          redirect_to root_path
+        end
+      else
+        redirect_to root_path
+      end
     end
 end
