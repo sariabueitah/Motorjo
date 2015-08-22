@@ -1,39 +1,118 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Cars</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th> title</th>
-      <th>Description</th>
-      <th>Year</th>
-      <th>Mileage</th>
-      <th>Price</th>
-      <th>Car location</th>
-      <th>Contact number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cars.each do |car| %>
-      <tr>
-        <td><%= car. title %></td>
-        <td><%= car.description %></td>
-        <td><%= car.year %></td>
-        <td><%= car.mileage %></td>
-        <td><%= car.price %></td>
-        <td><%= car.car_location %></td>
-        <td><%= car.contact_number %></td>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Car', new_car_path %>
+<section class="PageHead">
+  <div class="row">
+  </div>
+</section>
+<section>
+  <div class="row">
+    <div class="large-12 columns">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+</section>
+<section class="searcharea">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="carSearchSideBar">
+        <%= form_tag cars_path, :id => 'car_search_form', :method => :get do %>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag :car_make %>
+            <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: "All" %>
+          </div>
+          <div id="HomeSearchModel" class="formCarModel large-3 medium-3 columns">
+            <%= label_tag :car_model %>
+            <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag :cubic_capacity %>
+            <%= select_tag 'q[cubic_capacity_from]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag :cubic_capacity %>
+            <%= select_tag 'q[cubic_capacity_to]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag :year %>
+            <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag "Gear Box Type" %>
+            <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag :fuel_type %>
+            <%= select_tag 'q[fuel_type]' , options_for_select(Car::FUELTYPE.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag "color" %>
+            <%= select_tag 'q[color_id]', options_for_select(Color.all.map{ |c| [c.title, c.id]}), include_blank: "All" %>
+          </div>
+          <div class="large-3 medium-3 columns">
+            <%= label_tag "Car Report" %>
+            <%= select_tag 'q[report]', options_for_select(Car::REPORT.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
+          </div>
+          <div class="large-12 medium-12 columns">
+            <%= label_tag "Comfort and Interior Design" %>
+            <% ComfortInterior.all.each do |v| %>
+              <span class="search-checkbox">
+                <%= check_box_tag 'q[comfort_interior_ids][]', v.id, false  %>
+                <%= v.title %>
+              </span>
+            <% end %>
+          </div>
+          <div class="large-12 medium-12 columns">
+            <%= label_tag "Safety Features" %>
+            <% SafetyFeature.all.each do |v| %>
+              <span class="search-checkbox">
+                <%= check_box_tag 'q[safety_feature_ids][]', v.id, false  %>
+                <%= v.title %>
+              </span>
+            <% end %>
+          </div>
+          <div class="actions text-right large-12 medium-12 columns">
+              <%= submit_tag "Search", class: "button tiny radius" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="searchResults">
+  <div class="row">
+    <div class="large-9 columns car-search">
+      <ul class="ulStyle">
+      <% @cars.each do |s| %>
+        <li class="carsItem clearfix">
+          <%= link_to (image_tag s.car_images[0].image.url(:search)), s ,:class => "carimage" %>
+          <ul class="ulStyle infolist">
+            <li class="title"><span><%= get_make(s.car_make) %></span> <span class=""><%= get_model(s.car_model) %></span></li>
+            <li class="desc">
+            <%= truncate(s.description , :length => 200,  :separator => ' ') do
+              link_to "see more..." ,car_path(s,:anchor => "Description")
+            end %>
+            </li>
+            <li class="info">
+              <span class="mileage"><i class="fa fa-tachometer"></i><%= s.mileage %> KM</span>
+              <span class="year"><%= s.year %></span>
+              <span class="price"><%= s.price %> JD</span>
+            </li>
+            
+          </ul>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+    <div class="large-3 columns">
+      <div class="specialCarSideBar">
+        <ul class="ulStyle">
+        <% @special_cars.each do |s| %>
+          <li>
+            <%= link_to (image_tag s.car_images[0].image.url(:search_special)), s ,:class => "inlineBlockImage" %> 
+          </li>
+          <li><%= s.year %></li>
+          
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

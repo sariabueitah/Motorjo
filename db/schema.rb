@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530114926) do
+ActiveRecord::Schema.define(version: 20150614172828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150530114926) do
   create_table "cars", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.date     "year"
+    t.string   "year"
     t.integer  "mileage"
     t.decimal  "price"
     t.text     "car_location"
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(version: 20150530114926) do
     t.integer  "car_make"
     t.integer  "car_model"
     t.integer  "user_id"
+    t.integer  "fuel_type"
+    t.integer  "cubic_capacity"
+    t.boolean  "special_car"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -80,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150530114926) do
     t.string   "building_number"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "phone_number"
   end
 
   create_table "interior_colors", force: :cascade do |t|
@@ -140,6 +144,7 @@ ActiveRecord::Schema.define(version: 20150530114926) do
     t.datetime "confirmation_sent_at"
     t.integer  "meta_id"
     t.string   "meta_type"
+    t.boolean  "isadmin"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

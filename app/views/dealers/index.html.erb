@@ -5,10 +5,13 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Gallery name</th>
       <th>Gallery location</th>
       <th>Street name</th>
       <th>Building number</th>
+      <th>id</th>
+      <th>type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +19,13 @@
   <tbody>
     <% @dealers.each do |dealer| %>
       <tr>
+        <td><%= dealer.id %></td>
         <td><%= dealer.gallery_name %></td>
         <td><%= dealer.gallery_location %></td>
         <td><%= dealer.street_name %></td>
         <td><%= dealer.building_number %></td>
+        <td><%= dealer.user.meta_id %></td>
+        <td><%= dealer.user.meta_type %></td>
         <td><%= link_to 'Show', dealer %></td>
         <td><%= link_to 'Edit', edit_dealer_path(dealer) %></td>
         <td><%= link_to 'Destroy', dealer, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -11,6 +11,7 @@ class DealersController < ApplicationController
   # GET /dealers/1
   # GET /dealers/1.json
   def show
+    @dealer_cars = Car.where(user_id: @dealer.user.id)
   end
 
   def edit_password
@@ -80,7 +81,14 @@ class DealersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def get_model (id)
+    @model = Model.find(id).title
+  end
+  helper_method :get_model
+  def get_make (id)
+    @make = Make.find(id).title
+  end
+  helper_method :get_make
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dealer
@@ -93,12 +101,12 @@ class DealersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dealer_params
-      params.require(:dealer).permit(:gallery_name, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
+      params.require(:dealer).permit(:gallery_name, :phone_number, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
     
     def authenticate_access!
       if user_signed_in?
-        if(current_user.id == Dealer.find(params[:id]).id || current_user.meta_type === "admin")
+        if(current_user.meta_id == Dealer.find(params[:id]).id || current_user.isadmin)
           true
         else
           redirect_to @dealer

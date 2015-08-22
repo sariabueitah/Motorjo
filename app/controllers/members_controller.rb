@@ -12,6 +12,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    @member_cars = Car.where(user_id: @member.user.id)
   end
 
   # GET /members/new
@@ -78,7 +79,14 @@ class MembersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def get_model (id)
+    @model = Model.find(id).title
+  end
+  helper_method :get_model
+  def get_make (id)
+    @make = Make.find(id).title
+  end
+  helper_method :get_make
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
@@ -93,7 +101,7 @@ class MembersController < ApplicationController
     end
     def authenticate_access!
       if user_signed_in?
-        if(current_user.id == Member.find(params[:id]).id || current_user.meta_type === "admin")
+        if(current_user.meta_id == Member.find(params[:id]).id || current_user.isadmin)
           true
         else
           redirect_to @member

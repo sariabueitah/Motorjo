@@ -1,24 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Gallery name:</strong>
-  <%= @dealer.gallery_name %>
-</p>
-
-<p>
-  <strong>Gallery location:</strong>
-  <%= @dealer.gallery_location %>
-</p>
-
-<p>
-  <strong>Street name:</strong>
-  <%= @dealer.street_name %>
-</p>
-
-<p>
-  <strong>Building number:</strong>
-  <%= @dealer.building_number %>
-</p>
-
-<%= link_to 'Edit', edit_dealer_path(@dealer) %> |
-<%= link_to 'Back', dealers_path %>
+<section class="UserInfoSection">
+	<div class="row">
+		<div class="columns large-12 medium-12" >
+			<div class="columns large-6 medium-6 text-center">
+				<span>Gallery Name :</span>
+				<%= @dealer.gallery_name %>
+			</div>
+			<div class="columns large-6 medium-6 text-center">
+				<span>You can contact me at :</span>
+			  	<%= @dealer.phone_number %>
+			</div>
+			<div class="columns large-4 medium-4 text-center">
+				<span>Address : </span>
+			  	<%= @dealer.gallery_location %>
+			</div>
+			<div class="columns large-4 medium-4 text-center">
+				<span>Address : </span>
+			  	<%= @dealer.street_name %>
+			</div>
+			<div class="columns large-4 medium-4 text-center">
+				<span>Address : </span>
+			  	<%= @dealer.building_number %>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="row">
+		<div class="large-8 medium-8 columns horCarList medium-centered large-centered">
+	      <ul class="ulStyle">
+	      <% @dealer_cars.each do |s| %>
+	        <li class="carsItem">
+	          <%= link_to (image_tag s.car_images[0].image.url(:small)), s ,:class => "inlineBlockImage" %>
+	          <ul class="ulStyle inlineBlockUl">
+	            <li><%= s.title %></li>
+	            <li><span><%= get_make(s.car_make) %></span><span class="marginLeft5"><%= get_model(s.car_model) %></span></li>
+	            
+	            <li><%= s.year %></li>
+	            <li><span><%= link_to 'Edit', edit_car_path(s) %></span></li>
+	          </ul>
+	        </li>
+	      <% end %>
+	      </ul>
+    	</div>
+	</div>
+</section>

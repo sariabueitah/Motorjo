@@ -73,7 +73,7 @@ class MakesController < ApplicationController
     end
     def authenticate_admin!
       if user_signed_in?
-        if(current_user.meta_type === "admin")
+        if(current_user.isadmin)
           true
         else
           redirect_to root_path

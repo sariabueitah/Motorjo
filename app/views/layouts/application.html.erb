@@ -13,8 +13,79 @@
   </head>
 
   <body>
-
+    <div class="contain-to-grid MainNavBar">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/"><%= image_tag("Logo3.png", size: "250x52") %></a></h1>
+          </li>
+        </ul>
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <% if user_signed_in? %>
+              <li class="has-dropdown">
+                <% if current_user.meta_type == 'Dealer' %>
+                  <%= link_to raw("<i class='fa fa-user'></i>"), dealer_path(current_user.meta_id), :class => "UserIcon" %>
+                <% elsif current_user.meta_type == 'Member' %>
+                  <%= link_to raw("<i class='fa fa-user'></i>"), member_path(current_user.meta_id), :class => "UserIcon" %>
+                <% end %>
+                <ul class="dropdown">
+                  <li><%= link_to 'Create Car', new_car_path %></li>
+                  <% if current_user.meta_type == 'Dealer' %>
+                  <li><%= link_to 'Edit Profile', edit_dealer_path(current_user.meta_id) %></li>
+                  <% elsif current_user.meta_type == 'Member' %>
+                    <li><%= link_to 'Edit Profile', edit_member_path(current_user.meta_id) %></li>
+                  <% end %>
+                    
+                  <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete%></li>
+                </ul>
+              </li>
+              
+            <% else %>
+              <li><%= link_to 'Login', new_user_session_path %></li>
+              <li class="has-dropdown">
+                <a href="javascript:void(0);">Sign Up</a>
+                <ul class="dropdown">
+                  <li><%= link_to 'Sign Up as Seller', new_member_path %></li>
+                  <li><%= link_to 'Sign Up as Dealer', new_dealer_path %></li>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+          <!-- Left Nav Section -->
+        </section>
+      </nav>
+    </div>
+    
     <%= yield %>
-
+    <div class="footer">
+      <div class="row clearfix">
+            <div class="footer-link">
+                <ul class="ulStyle">
+                    <li><a href="/cars"><span>Buy a car</span></a></li> 
+                    <li><a href="/cars/new"><span>Sell your Car</span></a></li>
+                    <li><a href="#"><span>Terms & Conditions</span></a></li> 
+                </ul>
+            </div>       
+            <div class="footer_social">
+              <div class="social_inner"> 
+                <a href="#" class="social-fb"><i class="fa fa-facebook-official"></i></a>
+                <a href="#" class="social-twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="social-google"><i class="fa fa-google-plus"></i></a>
+                </div>
+        </div>
+            
+            <div class="footer_contacts">
+              <span class="phone"><i class="fa fa-phone"></i> 0788833382 - 0799833328</span>
+                <span class="email">hello@autotrader.com</span>
+            </div>
+            
+            <div class="copyright">
+            MotorsJo.com by <a href="javascript:void(0)">DotsWorld</a>
+            </div>
+                      
+        </div> 
+    </div>
   </body>
 </html>

@@ -1,64 +1,155 @@
-<p id="notice"><%= notice %></p>
+<section class="PageHead">
+  <span>
+    <%= get_make(@car.car_make) %>
+    <%= get_model(@car.car_model) %>
+  </span>
+</section>
+<section class="CarDetailMainArea">
+  <div class="row">
+    <div class="large-6 medium-6 columns ">
+      <div id="slider" class="flexslider">
+        <ul class="slides ulStyle">
+          <% @car.car_images.each do |d| %>
+            <li>
+              <%= image_tag d.image.url(:car_main) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="carousel" class="flexslider">
+        <ul class="slides ulStyle">
+          <% @car.car_images.each do |d| %>
+            <li>
+              <%= image_tag d.image.url(:thumb) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="large-6 medium-6 columns CarDetailArea">
+      <% unless @car.price.blank? %>
+        <span class="price"><strong><%= @car.price %> JD</strong></span>
+      <% end %>
+      <ul class="ulStyle CarInlineList">
+        <li>
+          <%= @car.year %>
+        </li>
+        <% unless @car.mileage.blank? %>
+        <li>
+          <%= @car.mileage %> KM
+        </li>
+        <% end %>
+        <li>
+          <%= Car::FUELTYPE[@car.fuel_type.to_s] %>
+        </li>
+        <li>
+          <%= Car::Gearbox[@car.gearbox_id.to_s] %>
+        </li>
+      </ul>
+      <p class="description">
+        <%= truncate(@car.description , :length => 200,  :separator => ' ') do
+          link_to "see more..." ,"#Description"
+        end %>
+      </p>
+      <ul class="ulStyle CarDetails ">
+        <% unless @car.cubic_capacity.blank? %>
+        <li>
+          <span class="lable">Cubic Capacity: </span>
+          <span class="value"><%= @car.cubic_capacity %></span>
+        </li>
+        <% end %>
+        <li class="even">
+          <span class="lable">Color: </span>
+          <span class="value"><%= get_color(@car.color_id) %></span>
+        </li>
+        <li>
+          <span class="lable">Interior Design : </span>
+          <span class="value"><%= get_interior_design(@car.interior_design_id) %></span>
+        </li>
+        <li class="even">
+          <span class="lable">Interior Color : </span>
+          <span class="value"><%= get_interior_color(@car.interior_color_id) %></span>
+        </li>
+        
+        <li> 
+          <span class="lable">Car Report : </span>
+          <span class="value"><%= Car::REPORT[@car.report.to_s] %></span>
+        </li>
+      </ul>
+      <% if @car.report == 4 %>
+        <div class="ReportOther">
+          <p>Car Report Details:</p>
+          <p><%= @car.report_other %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="large-12 medium-12 columns CarDetailTabs">
+      <ul data-options="deep_linking: true" class="tabs" data-tab>
+        <li class="tab-title active"><a href="#Overview">Overview</a></li>
+        <li class="tab-title"><a href="#Description">Description</a></li>
+        <li class="tab-title"><a href="#Contact">Contact Owner</a></li>
+        <li class="tab-title"><a href="#panel4">Share To a Friend</a></li>
+      </ul>
+      <div class="tabs-content">
+        <div class="content active clearfix" id="Overview">
+         <% unless @car.comfort_interior_ids.blank? %>
+            <div class="overview large-6 medium-6 columns">
+              <span><strong>Comfort Interior :</strong></span>
+              <ul>
+                <% @car.comfort_interior_ids.each do |d| %>
+                  <li>
+                    <%= get_comfort_interior_title(d) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <% unless @car.safety_feature_ids.blank? %>
+            <div class="overview large-6 medium-6 columns">
+              <span><strong>Safety Features :</strong></span>
+              <ul>
+                <% @car.safety_feature_ids.each do |d| %>
+                  <li>
+                    <%= get_safety_feature_title(d) %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+        <div class="content" id="Description">
+            <h3><%= @car.title %></h3>
+            <p><%= @car.description %></p> 
+        </div>
+        <div class="content clearfix" id="Contact">
+          <div class="contact large-6 medium-6 columns">
+            <p class="phone"><span>Phone  Number: </span><%= @car.contact_number %></p>
+            <span class="locationLable">Car location</span>
+            <p class="Location"><%= @car.car_location %></p>
+          </div>
+          <div class="contact large-6 medium-6 columns">
+            <form>
+              <label>Name
+                <input class="" required type="text" placeholder="Enter Name" />
+              </label>
+              <label>Email
+                <input class="" type="email" required placeholder="Enter Email" />
+              </label>
+              <label>Massage
+                <textarea required placeholder="Enter Massage"></textarea>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="content" id="panel4">
+          <div class="">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong> title:</strong>
-  <%= @car. title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @car.description %>
-</p>
 
-<p>
-  <strong>Year:</strong>
-  <%= @car.year %>
-</p>
-
-<p>
-  <strong>Mileage:</strong>
-  <%= @car.mileage %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @car.price %>
-</p>
-
-<p>
-  <strong>Car location:</strong>
-  <%= @car.car_location %>
-</p>
-
-<p>
-  <strong>Contact number:</strong>
-  <%= @car.contact_number %>
-</p>
-<p>
-  <strong>Car Report:</strong>
-  <%= @car.report_other%>
-</p>
-
-<ul>
-  <% @car.comfort_interior_ids.each do |d| %>
-    <li>
-      <%= get_comfort_interior_title(d) %>
-    </li>
-  <% end %>
-</ul>
-<ul>
-  <% @car.safety_feature_ids.each do |d| %>
-    <li>
-      <%= get_safety_feature_title(d) %>
-    </li>
-  <% end %>
-</ul>
-<ul>
-  <% @car.car_images.each do |d| %>
-    <li>
-      <%= image_tag d.image.url(:thumb) %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>

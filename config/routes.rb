@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'homepage/index'
+  root to: "homepage#index"
   devise_for :users, :skip => [:registrations]
-  resources :cars
+  resources :cars 
   resources :members
   resources :dealers
   resources :makes
@@ -18,8 +20,6 @@ Rails.application.routes.draw do
   get   'member/edit/password/' => 'members#edit_password'
   patch  'member/edit/password/' => 'members#update_password'
   put  'member/edit/password/' => 'members#update_password'
-
-  root to: "cars#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
