@@ -30,6 +30,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   # GET /cars/1.json
   def show
+    @user = User.find(@car.user_id)
   end
 
   # GET /cars/new

@@ -119,6 +119,11 @@
         </div>
         <div class="content clearfix" id="Contact">
           <div class="contact large-6 medium-6 columns">
+            <% if(@user.meta_type == "Dealer") %>
+              <%= link_to "Dealer Page" , dealer_path(@user.meta_id) %>
+            <% else %>
+              <%= link_to "Member Page" , member_path(@user.meta_id) %>
+            <% end %>
             <p class="phone"><span>Phone  Number: </span><%= @car.contact_number %></p>
             <span class="locationLable">Car location</span>
             <p class="Location"><%= @car.car_location %></p>
