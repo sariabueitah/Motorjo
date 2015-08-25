@@ -81,14 +81,6 @@ class DealersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def get_model (id)
-    @model = Model.find(id).title
-  end
-  helper_method :get_model
-  def get_make (id)
-    @make = Make.find(id).title
-  end
-  helper_method :get_make
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dealer
@@ -101,7 +93,7 @@ class DealersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dealer_params
-      params.require(:dealer).permit(:gallery_name, :phone_number, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
+      params.require(:dealer).permit(:name, :mobile_number, :city, :gallery_name, :phone_number, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
     
     def authenticate_access!

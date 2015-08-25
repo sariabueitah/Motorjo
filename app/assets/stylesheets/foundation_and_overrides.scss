@@ -472,7 +472,7 @@ $button-function-factor: 30%;
 // We use these to control button border styles.
 $button-border-width: 1px;
 // $button-border-style: solid;
-$button-bg-color: #f25720;
+$button-bg-color: $orange;
 $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 $button-border-color: #d16546 #ca4e2a #ca5d3d #ca4e2a;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);

@@ -443,7 +443,14 @@
 	}
 }
 /* Search End */
-/* Detailed Car Start */  
+/* Detailed Car Start */
+.detailedTitle {
+	text-align:center;
+	font-size:rem-calc(24);
+	span {
+		color:$orange;
+	}
+}
 .CarDetailMainArea {
 	padding: 65px 0 75px 0;
     background: $gray1;
@@ -594,7 +601,85 @@
     }
 }
 /* Detailed Car End */
-
+/* Dealer Start */
+.UserInfoSection {
+	padding: 65px 0 75px 0;
+    background: $gray1;
+    border-top: 3px solid $gray2;
+    .carsItem{
+		    border-bottom: 3px solid $gray4;
+		    background: $white;
+		    margin-bottom: 40px;
+		    border-radius: 0 0 3px 3px;
+		    -webkit-border-radius: 0 0 3px 3px;
+		    .carimage {
+		    	border-right: 3px solid $orange;
+		    	float:left;
+			}
+			.infolist {
+				width:57%;
+				float:left;
+				padding:10px 20px;
+				.title{
+					text-align: center;
+					color:$lightblue;
+				}
+				.desc{
+					border-top:1px solid $gray4;
+					border-bottom:1px solid $gray4;
+					padding:10px 0px;
+					margin:10px 0px;
+					min-height: 100px;
+					overflow: hidden;
+				    color: $gray6;
+				    font-size: rem-calc(13);
+				    line-height: 1.6em;
+				    max-height:100px;
+				}
+				.info{
+				    color: $gray7;
+					text-align: center;
+					.mileage {
+						float:left;
+					}
+					.year{
+					}
+					.price{
+						float:right;
+						color:$orange;
+					}
+				}
+			}
+		}
+    .UserInfo {
+    	padding-bottom:20px;
+	    background:$gray3;
+	    border: 1px solid $gray4;
+    	li {
+		    padding: 7px 4%;
+    		span {
+    			float:right;
+    			color:$lightblue;
+    		}
+    	}
+    	.Title {
+    		color:$orange;
+    	}
+    }
+    .locationlabel {
+    	color:$gray7;
+		font-size: rem-calc(15);
+		padding: 7px 4%;
+		margin:0;
+    }
+    .location {
+    	color:$gray7;
+		font-size: rem-calc(15);
+		padding: 7px 4%;
+		margin:0;
+    }
+}
+/* Dealer End */
 @media #{$small-up} { 
 	
 }

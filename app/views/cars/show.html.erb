@@ -1,8 +1,5 @@
 <section class="PageHead">
-  <span>
-    <%= get_make(@car.car_make) %>
-    <%= get_model(@car.car_model) %>
-  </span>
+  <h2 class="detailedTitle"><span><%= get_make(@car.car_make) %></span> <%= get_model(@car.car_model) %></h2>
 </section>
 <section class="CarDetailMainArea">
   <div class="row">
@@ -88,7 +85,6 @@
         <li class="tab-title active"><a href="#Overview">Overview</a></li>
         <li class="tab-title"><a href="#Description">Description</a></li>
         <li class="tab-title"><a href="#Contact">Contact Owner</a></li>
-        <li class="tab-title"><a href="#panel4">Share To a Friend</a></li>
       </ul>
       <div class="tabs-content">
         <div class="content active clearfix" id="Overview">
@@ -128,22 +124,26 @@
             <p class="Location"><%= @car.car_location %></p>
           </div>
           <div class="contact large-6 medium-6 columns">
-            <form>
-              <label>Name
-                <input class="" required type="text" placeholder="Enter Name" />
-              </label>
-              <label>Email
-                <input class="" type="email" required placeholder="Enter Email" />
-              </label>
-              <label>Massage
-                <textarea required placeholder="Enter Massage"></textarea>
-              </label>
-            </form>
-          </div>
-        </div>
-        <div class="content" id="panel4">
-          <div class="">
-            
+            <%= form_tag({:controller => "cars", :action => "contact_submit"}, method: :post,"data-abide" => true) do %>
+              <%= hidden_field_tag :carId, @car.id %>
+              <%= hidden_field_tag :ownerId, @car.user_id %>
+              <div class="input-wrapper">
+                <%= label_tag :senderName, 'Name' %>
+                <%= text_field_tag :senderName,nil, :required => true, :placeholder => "Enter Name" %>
+                <small class="error">A Name is required.</small>
+              </div>
+              <div class="input-wrapper">
+                <%= label_tag :senderEmail, 'Email' %>
+                <%= text_field_tag :senderEmail,nil, :required => true, :placeholder => "Enter Email", :type => "email" %>
+                <small class="error">A valid email address is required.</small>
+              </div>
+              <div class="input-wrapper">
+                <%= label_tag :senderMessage, 'Message' %>
+                <%= text_area_tag :senderMessage,nil, :required => true, :placeholder => "Enter Message", :rows => "5" %>
+                <small class="error">A Message is required.</small>
+              </div>
+              <%= submit_tag 'Send', :class => "button tiny buttoncustom" %>
+            <% end %>
           </div>
         </div>
       </div>

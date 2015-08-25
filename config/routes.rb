@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get   'member/edit/password/' => 'members#edit_password'
   patch  'member/edit/password/' => 'members#update_password'
   put  'member/edit/password/' => 'members#update_password'
+  
+  post "lolz" => "cars#contact_submit"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

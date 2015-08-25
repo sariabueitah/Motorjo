@@ -79,14 +79,6 @@ class MembersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def get_model (id)
-    @model = Model.find(id).title
-  end
-  helper_method :get_model
-  def get_make (id)
-    @make = Make.find(id).title
-  end
-  helper_method :get_make
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
