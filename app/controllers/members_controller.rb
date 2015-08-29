@@ -12,7 +12,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
-    @member_cars = Car.where(user_id: @member.user.id)
+    @member_cars = Car.where(user_id: @member.user.id).order('created_at DESC').page(params[:page]).per_page(10)
   end
 
   # GET /members/new
@@ -89,7 +89,7 @@ class MembersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:first_name, :last_name, :phone_number, :address, user_attributes: [ :id, :email, :password, :password_confirmation ])
+      params.require(:member).permit(:page ,:first_name, :last_name, :phone_number, :address, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
     def authenticate_access!
       if user_signed_in?

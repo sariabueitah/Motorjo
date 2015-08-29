@@ -18,6 +18,7 @@ gem 'foundation-rails'
 gem 'font-awesome-sass'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'will_paginate'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

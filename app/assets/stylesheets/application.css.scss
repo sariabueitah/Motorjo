@@ -396,11 +396,12 @@
 		    .carimage {
 		    	border-right: 3px solid $orange;
 		    	float:left;
+		    	width:27%;
 			}
 			.infolist {
-				width:57%;
+				width:73%;
 				float:left;
-				padding:10px 20px;
+				padding:5px 20px;
 				.title{
 					text-align: center;
 					color:$lightblue;
@@ -409,13 +410,13 @@
 					border-top:1px solid $gray4;
 					border-bottom:1px solid $gray4;
 					padding:10px 0px;
-					margin:10px 0px;
-					min-height: 100px;
+					margin:5px 0px;
+					min-height: 79px;
 					overflow: hidden;
 				    color: $gray6;
 				    font-size: rem-calc(13);
 				    line-height: 1.6em;
-				    max-height:100px;
+				    max-height:79px;
 				}
 				.info{
 				    color: $gray7;
@@ -430,6 +431,18 @@
 						color:$orange;
 					}
 				}
+			}
+		}
+		.carsItem:last-child{
+			margin-bottom:0;
+		}
+		.pagerArea {
+			padding:10px;
+			background:$gray3;
+			margin-top: 10px;
+			margin-bottom:10px;
+			.pagination {
+				margin:0;
 			}
 		}
 	}
@@ -609,17 +622,18 @@
     .carsItem{
 		    border-bottom: 3px solid $gray4;
 		    background: $white;
-		    margin-bottom: 40px;
+		    margin-bottom: 20px;
 		    border-radius: 0 0 3px 3px;
 		    -webkit-border-radius: 0 0 3px 3px;
 		    .carimage {
 		    	border-right: 3px solid $orange;
 		    	float:left;
+		    	width: 34%;
 			}
 			.infolist {
-				width:57%;
+				width:66%;
 				float:left;
-				padding:10px 20px;
+				padding:5px 20px;
 				.title{
 					text-align: center;
 					color:$lightblue;
@@ -628,13 +642,13 @@
 					border-top:1px solid $gray4;
 					border-bottom:1px solid $gray4;
 					padding:10px 0px;
-					margin:10px 0px;
-					min-height: 100px;
+					margin:5px 0px;
+					min-height: 79px;
 					overflow: hidden;
 				    color: $gray6;
 				    font-size: rem-calc(13);
 				    line-height: 1.6em;
-				    max-height:100px;
+				    max-height:79px;
 				}
 				.info{
 				    color: $gray7;

@@ -19,6 +19,9 @@ class CarsController < ApplicationController
         with(:report).equal_to(params[:q][:report]) if params[:q][:report].present?
         with(:comfort_interior_ids).all_of(params[:q][:comfort_interior_ids]) if params[:q][:comfort_interior_ids].present?
         with(:safety_feature_ids).all_of(params[:q][:safety_feature_ids]) if params[:q][:safety_feature_ids].present?
+        order_by :created_at, :desc
+        paginate :page => params[:page] || 1, :per_page => 5
+
       end
       @cars = @search.results
     else 
@@ -98,7 +101,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:ownerId ,:carId ,:senderEmail,:senderName,:senderMessage,:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :fuel_type, :cubic_capacity, :special_car, :interior_color_id, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id, :image, :_destroy])
+      params.require(:car).permit(:page ,:ownerId ,:carId ,:senderEmail,:senderName,:senderMessage,:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :fuel_type, :cubic_capacity, :special_car, :interior_color_id, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id, :image, :_destroy])
     end
     def authenticate_access!
       if user_signed_in?

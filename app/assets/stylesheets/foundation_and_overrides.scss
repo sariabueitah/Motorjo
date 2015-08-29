@@ -124,7 +124,7 @@ $gray5		 : #9da3a6;
 $gray6		 : #80868c;
 $gray7		 : #2c2d2e;
 // We use these as default colors throughout
-$primary-color: $lightblue;
+$primary-color: $orange;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
@@ -962,7 +962,7 @@ $select-bg-color: $gray3;
 
 // We use these to control the pagination container
 // $pagination-height: rem-calc(24);
-// $pagination-margin: rem-calc(-5);
+$pagination-margin: rem-calc(0);
 
 // We use these to set the list-item properties
 // $pagination-li-float: $default-float;

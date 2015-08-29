@@ -78,7 +78,7 @@
 </section>
 <section class="searchResults">
   <div class="row">
-    <div class="large-9 columns car-search">
+    <div class="large-10 columns car-search">
       <ul class="ulStyle">
       <% @cars.each do |s| %>
         <li class="carsItem clearfix">
@@ -100,8 +100,12 @@
         </li>
       <% end %>
       </ul>
+      <div class="pagerArea pagination-centered">
+        <%= will_paginate @cars %>  
+      </div>
+      
     </div>
-    <div class="large-3 columns">
+    <div class="large-2 columns">
       <div class="specialCarSideBar">
         <ul class="ulStyle">
         <% @special_cars.each do |s| %>

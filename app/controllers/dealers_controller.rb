@@ -11,7 +11,7 @@ class DealersController < ApplicationController
   # GET /dealers/1
   # GET /dealers/1.json
   def show
-    @dealer_cars = Car.where(user_id: @dealer.user.id)
+    @dealer_cars = Car.where(user_id: @dealer.user.id).order('created_at DESC').page(params[:page]).per_page(10)
   end
 
   def edit_password
@@ -93,7 +93,7 @@ class DealersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dealer_params
-      params.require(:dealer).permit(:name, :mobile_number, :city, :gallery_name, :phone_number, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
+      params.require(:dealer).permit(:page, :name, :mobile_number, :city, :gallery_name, :phone_number, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
     
     def authenticate_access!

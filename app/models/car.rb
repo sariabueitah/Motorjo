@@ -29,6 +29,7 @@ class Car < ActiveRecord::Base
     integer :fuel_type
     integer :color_id
     integer :report
+    date :created_at
     integer :comfort_interior_ids, multiple: true do
       comfort_interiors.map(&:id)
     end
