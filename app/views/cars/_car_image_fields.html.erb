@@ -1,8 +1,11 @@
 <div class="nested-fields">
-	<% if f.object.image? %>
-		<%= image_tag f.object.image.url(:thumb) if f.object.image?  %>
-	<% else %>
-		<%= f.file_field :image , animated: false %>
-	<% end %>
-	<%= link_to_remove_association "Remove", f  %>
+	<div class="inputimagecontainer th">
+		<%= f.file_field :image , animated: false, class: "myfile" %>
+		<% if(f.object.image_url.blank?) %>
+			<%= image_tag("CarIcon#{f.index}.png", size: "250x52") %>
+		<% else %>
+			<%= image_tag(f.object.image_url, size:"250x52") %>
+		<% end %>
+	</div>
+	<%= f.hidden_field :image_cache %>
 </div>

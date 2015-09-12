@@ -13,6 +13,7 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     @member_cars = Car.where(user_id: @member.user.id).order('created_at DESC').page(params[:page]).per_page(10)
+    @latest_cars = Car.last(10)
   end
 
   # GET /members/new

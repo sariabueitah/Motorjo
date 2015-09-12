@@ -12,6 +12,7 @@ class DealersController < ApplicationController
   # GET /dealers/1.json
   def show
     @dealer_cars = Car.where(user_id: @dealer.user.id).order('created_at DESC').page(params[:page]).per_page(10)
+    @latest_cars = Car.last(10)
   end
 
   def edit_password

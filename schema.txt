@@ -1,0 +1,834 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: car_comfort_interiors; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE car_comfort_interiors (
+    id integer NOT NULL,
+    car_id integer,
+    comfort_interior_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.car_comfort_interiors OWNER TO sari;
+
+--
+-- Name: car_comfort_interiors_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE car_comfort_interiors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.car_comfort_interiors_id_seq OWNER TO sari;
+
+--
+-- Name: car_comfort_interiors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE car_comfort_interiors_id_seq OWNED BY car_comfort_interiors.id;
+
+
+--
+-- Name: car_images; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE car_images (
+    id integer NOT NULL,
+    car_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    image_file_name character varying,
+    image_content_type character varying,
+    image_file_size integer,
+    image_updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.car_images OWNER TO sari;
+
+--
+-- Name: car_images_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE car_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.car_images_id_seq OWNER TO sari;
+
+--
+-- Name: car_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE car_images_id_seq OWNED BY car_images.id;
+
+
+--
+-- Name: car_safety_features; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE car_safety_features (
+    id integer NOT NULL,
+    car_id integer,
+    safety_feature_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.car_safety_features OWNER TO sari;
+
+--
+-- Name: car_safety_features_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE car_safety_features_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.car_safety_features_id_seq OWNER TO sari;
+
+--
+-- Name: car_safety_features_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE car_safety_features_id_seq OWNED BY car_safety_features.id;
+
+
+--
+-- Name: cars; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE cars (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    year character varying,
+    mileage integer,
+    price numeric,
+    car_location text,
+    contact_number character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    color_id integer,
+    interior_color_id integer,
+    interior_design_id integer,
+    gearbox_id integer,
+    report_other text,
+    report integer,
+    car_make integer,
+    car_model integer,
+    user_id integer,
+    fuel_type integer,
+    cubic_capacity integer,
+    special_car boolean
+);
+
+
+ALTER TABLE public.cars OWNER TO sari;
+
+--
+-- Name: cars_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE cars_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cars_id_seq OWNER TO sari;
+
+--
+-- Name: cars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE cars_id_seq OWNED BY cars.id;
+
+
+--
+-- Name: colors; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE colors (
+    id integer NOT NULL,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.colors OWNER TO sari;
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE colors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.colors_id_seq OWNER TO sari;
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE colors_id_seq OWNED BY colors.id;
+
+
+--
+-- Name: comfort_interiors; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE comfort_interiors (
+    id integer NOT NULL,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.comfort_interiors OWNER TO sari;
+
+--
+-- Name: comfort_interiors_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE comfort_interiors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comfort_interiors_id_seq OWNER TO sari;
+
+--
+-- Name: comfort_interiors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE comfort_interiors_id_seq OWNED BY comfort_interiors.id;
+
+
+--
+-- Name: dealers; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE dealers (
+    id integer NOT NULL,
+    gallery_name character varying,
+    gallery_location text,
+    street_name character varying,
+    building_number character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    phone_number character varying,
+    mobile_number character varying,
+    city integer,
+    name character varying
+);
+
+
+ALTER TABLE public.dealers OWNER TO sari;
+
+--
+-- Name: dealers_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE dealers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dealers_id_seq OWNER TO sari;
+
+--
+-- Name: dealers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE dealers_id_seq OWNED BY dealers.id;
+
+
+--
+-- Name: interior_colors; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE interior_colors (
+    id integer NOT NULL,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.interior_colors OWNER TO sari;
+
+--
+-- Name: interior_colors_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE interior_colors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.interior_colors_id_seq OWNER TO sari;
+
+--
+-- Name: interior_colors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE interior_colors_id_seq OWNED BY interior_colors.id;
+
+
+--
+-- Name: interior_designs; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE interior_designs (
+    id integer NOT NULL,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.interior_designs OWNER TO sari;
+
+--
+-- Name: interior_designs_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE interior_designs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.interior_designs_id_seq OWNER TO sari;
+
+--
+-- Name: interior_designs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE interior_designs_id_seq OWNED BY interior_designs.id;
+
+
+--
+-- Name: makes; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE makes (
+    id integer NOT NULL,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.makes OWNER TO sari;
+
+--
+-- Name: makes_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE makes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.makes_id_seq OWNER TO sari;
+
+--
+-- Name: makes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE makes_id_seq OWNED BY makes.id;
+
+
+--
+-- Name: members; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE members (
+    id integer NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    phone_number character varying,
+    address text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.members OWNER TO sari;
+
+--
+-- Name: members_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE members_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.members_id_seq OWNER TO sari;
+
+--
+-- Name: members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE members_id_seq OWNED BY members.id;
+
+
+--
+-- Name: models; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE models (
+    id integer NOT NULL,
+    parent_id integer,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.models OWNER TO sari;
+
+--
+-- Name: models_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE models_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.models_id_seq OWNER TO sari;
+
+--
+-- Name: models_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE models_id_seq OWNED BY models.id;
+
+
+--
+-- Name: safety_features; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE safety_features (
+    id integer NOT NULL,
+    title character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.safety_features OWNER TO sari;
+
+--
+-- Name: safety_features_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE safety_features_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.safety_features_id_seq OWNER TO sari;
+
+--
+-- Name: safety_features_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE safety_features_id_seq OWNED BY safety_features.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO sari;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone,
+    meta_id integer,
+    meta_type character varying,
+    isadmin boolean
+);
+
+
+ALTER TABLE public.users OWNER TO sari;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: sari
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO sari;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sari
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY car_comfort_interiors ALTER COLUMN id SET DEFAULT nextval('car_comfort_interiors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY car_images ALTER COLUMN id SET DEFAULT nextval('car_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY car_safety_features ALTER COLUMN id SET DEFAULT nextval('car_safety_features_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY cars ALTER COLUMN id SET DEFAULT nextval('cars_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY colors ALTER COLUMN id SET DEFAULT nextval('colors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY comfort_interiors ALTER COLUMN id SET DEFAULT nextval('comfort_interiors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY dealers ALTER COLUMN id SET DEFAULT nextval('dealers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY interior_colors ALTER COLUMN id SET DEFAULT nextval('interior_colors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY interior_designs ALTER COLUMN id SET DEFAULT nextval('interior_designs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY makes ALTER COLUMN id SET DEFAULT nextval('makes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY members ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY models ALTER COLUMN id SET DEFAULT nextval('models_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY safety_features ALTER COLUMN id SET DEFAULT nextval('safety_features_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sari
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: car_comfort_interiors_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY car_comfort_interiors
+    ADD CONSTRAINT car_comfort_interiors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: car_images_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY car_images
+    ADD CONSTRAINT car_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: car_safety_features_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY car_safety_features
+    ADD CONSTRAINT car_safety_features_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cars_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY cars
+    ADD CONSTRAINT cars_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: colors_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY colors
+    ADD CONSTRAINT colors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comfort_interiors_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY comfort_interiors
+    ADD CONSTRAINT comfort_interiors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dealers_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY dealers
+    ADD CONSTRAINT dealers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: interior_colors_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY interior_colors
+    ADD CONSTRAINT interior_colors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: interior_designs_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY interior_designs
+    ADD CONSTRAINT interior_designs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: makes_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY makes
+    ADD CONSTRAINT makes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY members
+    ADD CONSTRAINT members_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: models_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY models
+    ADD CONSTRAINT models_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: safety_features_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY safety_features
+    ADD CONSTRAINT safety_features_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: sari; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: sari; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

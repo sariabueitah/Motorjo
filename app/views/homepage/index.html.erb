@@ -16,7 +16,7 @@
 		<div class="small-12 homepageSearchBlock clearfix " >
 			<%= form_tag  cars_path, :id => 'car_search_form', :method => :get do %>
 			  <div class="small-6 medium-3 columns">
-			    <%= label_tag :car_make %>
+			    <%= label_tag t(:car_make) %>
 			    <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: "All", class: "radius"  %>
 			  </div>
 			  <div id="HomeSearchModel" class="small-6 medium-3 columns">
@@ -42,7 +42,7 @@
 	<div class="row">
 		<h1>SPECIAL DEALS</h1>
 		<div class="small-12 large-6 left columns" >
-			
+			<% unless @latest_special_car.blank? %>
 	        <div class="mainSpecialCar">
 	        	<%= link_to (image_tag @latest_special_car.car_images[0].image.url(:special_car_main)), @latest_special_car %>
           		<div class="mainSpecialCarText">
@@ -58,8 +58,10 @@
 	      	<div class="link_more">
 	      		<%= link_to "View More Details", @latest_special_car %>
 	      	</div>
+	      	<% end %>
 		</div>
 		<div class="small-12 large-6 right columns">
+			<% unless @special_cars.blank? %>
 			<div class="special_Deal">
                 <div id="special_Deal">
                 	<% @special_cars.each do |s| %>
@@ -80,7 +82,8 @@
                 <a class="prev" id="special_offers_prev" href="#"><i class="fa fa-chevron-up fa-lg"></i></a>
             	<a class="next" id="special_offers_next" href="#"><i class="fa fa-chevron-down fa-lg"></i></a>
                 <div class="link_more"><a href="#">View All Special Offers</a></div>
-            </div>           
+            </div>      
+            <% end %>     
         <!--/ special offer -->			
 		</div>
 	</div>	
@@ -91,13 +94,7 @@
         <a href="#" class="link_more">View All Latest Added</a>
 	</div>
     <div id="latest_offers">
-    	<% @cars.each do |c| %>
-            <div class="latest_item">
-	            <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
-	            <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
-            </div>
-        <% end %>
-        <% @cars.each do |c| %>
+    	<% @latest_cars.each do |c| %>
             <div class="latest_item">
 	            <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
 	            <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>

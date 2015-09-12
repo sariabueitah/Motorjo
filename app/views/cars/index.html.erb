@@ -20,7 +20,7 @@
           </div>
           <div id="HomeSearchModel" class="formCarModel large-3 medium-3 columns">
             <%= label_tag :car_model %>
-            <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All" %>
+            <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All", disabled: true%>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag :cubic_capacity %>
@@ -100,9 +100,11 @@
         </li>
       <% end %>
       </ul>
-      <div class="pagerArea pagination-centered">
-        <%= will_paginate @cars %>  
-      </div>
+      <% if !(@cars.total_pages == 1) %>
+        <div class="pagerArea pagination-centered">
+          <%= will_paginate @cars %>  
+        </div>
+      <% end %>
       
     </div>
     <div class="large-2 columns">
@@ -119,4 +121,20 @@
       </div>
     </div>
   </div>
+</section>
+<section class="latest_offers">
+  <div class="row clearfix">              
+      <h2>LATEST CARS IN SHOWROOM</h2>
+        <a href="#" class="link_more">View All Latest Added</a>
+  </div>
+    <div id="latest_offers">
+      <% @latest_cars.each do |c| %>
+            <div class="latest_item">
+              <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
+              <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
+            </div>
+        <% end %>
+    </div>
+    <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
 </section>

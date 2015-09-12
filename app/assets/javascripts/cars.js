@@ -1,41 +1,4 @@
 var ready = function() {
-    $.fn.extend({detachOptions: function(o) {
-        var s = this;
-        return s.each(function(){
-            var d = s.data('selectOptions') || [];
-            s.find(o).each(function() {
-                d.push($(this).detach());
-            });
-            s.data('selectOptions', d);
-        });
-    }, attachOptions: function(o) {
-        var s = this;
-        return s.each(function(){
-            var d = s.data('selectOptions') || [];
-            for (var i in d) {
-                if (d[i].is(o)) {
-                    s.append(d[i]);
-                }
-            }
-        });
-    }});  
-    $("#car_make").change(function(){
-        if($(this).val() == ""){
-            $('#car_model').detachOptions('*');
-            $('#car_model').attachOptions('[value=""]');
-            $('#car_model').attachOptions('[parent_id]');
-            $("#car_model")[0].selectedIndex = 0;
-            $('#HomeSearchModel').hide();
-            
-        }else {
-            $('#car_model').detachOptions('*');
-            $('#car_model').attachOptions('[value=""]');
-            $('#car_model').attachOptions('[parent_id='+$(this).val()+']');
-            $("#car_model")[0].selectedIndex = 0;
-            $('#HomeSearchModel').show();
-        }
-        
-    });
     $('#carousel').flexslider({
         animation: "slide",
         controlNav: false,
@@ -55,6 +18,45 @@ var ready = function() {
         animationLoop: false,
         slideshow: false,
         sync: "#carousel"
+    });
+    if($("#FormCarMain").length > 0){
+        $('#car_car_model').detachOptions('*');
+        $('#car_car_model').attachOptions('[parent_id="1"');
+        $("#car_car_model")[0].selectedIndex = 0;
+
+        $("#car_car_make").change(function(){
+            $('#car_car_model').detachOptions('*');
+            $('#car_car_model').attachOptions('[parent_id='+$(this).val()+']');
+            $("#car_car_model")[0].selectedIndex = 0;
+        });
+    }
+    $('.file_field input').on('change', function(event) {
+      thisparent = $(this).parent("div");
+      var isIE = (navigator.appName=="Microsoft Internet Explorer");  
+      var path = this.value;  
+      var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
+
+      if(ext == "gif" || ext == "jpeg" || ext == "jpg" ||  ext == "png" )  
+      {       
+        if(isIE) {  
+          $(thisparent).children('img').attr("src",path);
+        } else {  
+          if (event.target.files[0]) 
+          {  
+            var files = event.target.files;
+            var image = files[0]
+            var reader = new FileReader();
+            reader.onload = function(file) {
+              var img = new Image();
+              img.src = file.target.result;
+              $(thisparent).children('img').attr("src",file.target.result);
+            }
+            reader.readAsDataURL(image);
+          }
+        }  
+      } else {  
+        alert("not supported");  
+      }   
     });
 };
 $(document).ready(ready);

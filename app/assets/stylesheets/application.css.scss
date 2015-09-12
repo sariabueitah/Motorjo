@@ -44,6 +44,15 @@
 	margin: 25px 0;
 	padding-top: 15px;
 }
+.pagerArea {
+	padding:10px;
+	background:$gray3;
+	margin-top: 10px;
+	margin-bottom:10px;
+	.pagination {
+		margin:0;
+	}
+}
 /*-----------------------------------*/
 /* special offers */
 /*-----------------------------------*/
@@ -385,7 +394,7 @@
 .searchResults {
     background: $gray1;
     border-top: 3px solid $gray2;
-    padding-top:40px;
+    padding:40px 0;
 	.car-search {
 		.carsItem{
 		    border-bottom: 3px solid $gray4;
@@ -435,15 +444,6 @@
 		}
 		.carsItem:last-child{
 			margin-bottom:0;
-		}
-		.pagerArea {
-			padding:10px;
-			background:$gray3;
-			margin-top: 10px;
-			margin-bottom:10px;
-			.pagination {
-				margin:0;
-			}
 		}
 	}
 }
@@ -694,6 +694,38 @@
     }
 }
 /* Dealer End */
+div.inputimagecontainer {
+  overflow: hidden;
+  position: relative;   
+  width:  100px;
+  height: 100px;
+  line-height: 90px;
+  text-align: center;
+  background: $gray3;
+  img {
+  	height: auto;
+  	max-width: 100%;
+  	text-align: center;
+  	max-height: 92px;
+  	vertical-align: middle;
+  	width: auto;
+  }
+}
+input.myfile {
+  height: 92px;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 100px;
+  z-index: 2;
+  margin:0;
+  opacity: 0.0; /* Standard: FF gt 1.5, Opera, Safari */
+  filter: alpha(opacity=0); /* IE lt 8 */
+  -ms-filter: "alpha(opacity=0)"; /* IE 8 */
+  -khtml-opacity: 0.0; /* Safari 1.x */
+  -moz-opacity: 0.0; /* FF lt 1.5, Netscape */
+}
 @media #{$small-up} { 
 	
 }
