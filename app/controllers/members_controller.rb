@@ -1,7 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :set_user , only: [:edit_password , :update_password]
+  before_action :set_user , only: [:update_password, :edit]
   before_action :authenticate_access!, :only => [:edit, :update, :destroy]
+  before_action :authenticate_admin!,:only =>[:admin_member]
   
   # GET /members
   # GET /members.json
@@ -24,9 +25,6 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-  end
-  def edit_password
-
   end
   # POST /members
   # POST /members.json
@@ -62,8 +60,8 @@ class MembersController < ApplicationController
   # PATCH/PUT 
   def update_password
     respond_to do |format|
-      if @user.update(dealer_params)
-        format.html { redirect_to @user, notice: 'Dealer Password was successfully updated. Please login again' }
+      if @user.update(member_params)
+        format.html { redirect_to @user, notice: 'Member Password was successfully updated. Please login again' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit_password }
@@ -80,17 +78,36 @@ class MembersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def admin_member
+    @members = Member.includes(:user).all.page(params[:page]).per_page(50)
+  end
+  def admin_member_update
+    params['user'].keys.each do |id|
+      @user = User.find(id.to_i)
+      @user.update_attributes(admin_user_params(id))
+    end
+    if(authenticate_admin?)
+      redirect_to(admin_member_members_path)
+    else
+      redirect_to root_path
+    end
+    
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
     end
     def set_user
-      @user = Member.find(current_user.id)
+      user = User.find(current_user.id)
+      @user = Member.find(user.meta_id)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
       params.require(:member).permit(:page ,:first_name, :last_name, :phone_number, :address, user_attributes: [ :id, :email, :password, :password_confirmation ])
+    end
+    def admin_user_params(id)
+      params.require(:user).fetch(id).permit(:isadmin)
     end
     def authenticate_access!
       if user_signed_in?

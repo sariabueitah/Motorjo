@@ -8,6 +8,37 @@
 }
 .PageHead {
 	padding-top:90px;
+	background:  center center no-repeat #000;
+	background-image:image-url("1.jpg");
+  background-size: 100% auto;
+  .AdContainer {
+  	background-color:rgba(255,255,255,0.8);
+		.columns {
+			height:128px;
+			padding-top:19px;
+			.AdArea {
+				width:725px;
+				height: 90px;
+				background:$gray7;
+				line-height: 90px;
+				text-align: center;
+				color:$white;
+				margin:0 auto;
+			}		
+		}
+	}
+}
+.PageTitle {
+	border-bottom: 3px solid #e6ecef;
+
+	.columns {
+		text-align: center;
+		h2 {
+			font-size: 16px;
+			margin:0;
+			padding:10px 0;
+		}
+	}
 }
 /* nav Bar Start */
 .top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {width:100%;  text-align: center;}
@@ -391,21 +422,24 @@
 }
 /* Footer End */
 /* Search Start */
+.searcharea {
+	padding-top:40px;
+}
 .searchResults {
-    background: $gray1;
-    border-top: 3px solid $gray2;
-    padding:40px 0;
+  background: $gray1;
+  border-top: 3px solid $gray2;
+  padding:40px 0;
 	.car-search {
 		.carsItem{
-		    border-bottom: 3px solid $gray4;
-		    background: $white;
-		    margin-bottom: 40px;
-		    border-radius: 0 0 3px 3px;
-		    -webkit-border-radius: 0 0 3px 3px;
-		    .carimage {
-		    	border-right: 3px solid $orange;
-		    	float:left;
-		    	width:27%;
+	    border-bottom: 3px solid $gray4;
+	    background: $white;
+	    margin-bottom: 40px;
+	    border-radius: 0 0 3px 3px;
+	    -webkit-border-radius: 0 0 3px 3px;
+	    .carimage {
+	    	border-right: 3px solid $orange;
+	    	float:left;
+	    	width:27%;
 			}
 			.infolist {
 				width:73%;
@@ -422,13 +456,13 @@
 					margin:5px 0px;
 					min-height: 79px;
 					overflow: hidden;
-				    color: $gray6;
-				    font-size: rem-calc(13);
-				    line-height: 1.6em;
-				    max-height:79px;
+			    color: $gray6;
+			    font-size: rem-calc(13);
+			    line-height: 1.6em;
+			    max-height:79px;
 				}
 				.info{
-				    color: $gray7;
+			    color: $gray7;
 					text-align: center;
 					.mileage {
 						float:left;
@@ -448,7 +482,8 @@
 	}
 }
 .search-checkbox {
-	margin-right:100px;
+	display:inline-block;
+	width: 33%;
 }
 .specialCarSideBar {
 	ul li {
@@ -467,7 +502,6 @@
 .CarDetailMainArea {
 	padding: 65px 0 75px 0;
     background: $gray1;
-    border-top: 3px solid $gray2;
     .flexslider {
     	position:relative;
     }
@@ -581,7 +615,7 @@
     		}
     		li{
     			float:left;
-    			margin-right:90px;
+    			width:50%;
     			color:$gray6;
     			font-size: rem-calc(13);
     			margin-bottom:10px;
@@ -618,7 +652,6 @@
 .UserInfoSection {
 	padding: 65px 0 75px 0;
     background: $gray1;
-    border-top: 3px solid $gray2;
     .carsItem{
 		    border-bottom: 3px solid $gray4;
 		    background: $white;
@@ -694,6 +727,110 @@
     }
 }
 /* Dealer End */
+.EditCar {
+	padding:20px 0px;
+	background-color:$gray1;
+	.tabs-content {
+		background-color:$white;
+	}
+}
+.NewCar {
+	background:$white;
+	padding:30px 0;
+	.prev {
+		position:absolute;
+		bottom:15px;
+		left:15px;
+	}
+	.next {
+		position:absolute;
+		bottom:15px;
+		right:15px;
+	}
+	#formContainer {
+		overflow:hidden;
+		position:relative;
+		#car_report {
+    	margin-bottom: 45px;
+		}
+		section {
+			width:100%;
+			background:$gray1;
+			padding:20px 0 40px;
+			border-radius:5px;
+		}
+		input,textarea {
+			background:$white;
+			resize: none;
+		}
+		select {
+			border-color: #d7dfe4 #e7ecee #eff2f4 #d1dae0;
+    	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		}
+		.createCar {
+			background-color:$orange;
+			position:absolute;
+			right:15px;
+			bottom:15px;
+			display: none;
+		}
+		.buttoncustom{
+			-webkit-box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+		  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+		  height: 30px;
+		  width:auto;
+		  margin-bottom:0px;
+		  padding:6px 20px;
+		  i {
+		  	vertical-align: middle;
+		  }
+		}
+		.prev i{
+	  	margin-right:5px;
+	  }
+	  .next i{
+	  	margin-left:5px;
+	  }
+		
+	}
+}
+.DeviseForms {
+	background:$white;
+	.FormContainer{
+		background-color:$gray1;
+		border-radius:5px;
+		margin:20px auto;
+		padding:20px 15px;
+		.userInfo {
+			border-right:1px solid $gray4;
+		}
+		.userLoginInfo {
+			.innerUserLoginInfo {
+				
+			}
+		}
+	}
+}
+#FormCarDetail {
+	label.inline.checkbox {
+		width:33%;
+		float:left;
+		margin: 0;
+		padding: 0.5625rem 0 0;
+		.checkbox {
+			margin-right:10px;
+		}
+	}
+}
+#FormCarImage {
+	.file_field {
+		.nested-fields {
+			float: left;
+	    width: 16%;
+	    text-align: center;
+		}
+	}
+}
 div.inputimagecontainer {
   overflow: hidden;
   position: relative;   
@@ -711,13 +848,14 @@ div.inputimagecontainer {
   	width: auto;
   }
 }
+
 input.myfile {
+	width:92px;
   height: 92px;
   cursor: pointer;
   position: absolute;
   top: 0px;
   right: 0px;
-  font-size: 100px;
   z-index: 2;
   margin:0;
   opacity: 0.0; /* Standard: FF gt 1.5, Opera, Safari */
@@ -725,6 +863,17 @@ input.myfile {
   -ms-filter: "alpha(opacity=0)"; /* IE 8 */
   -khtml-opacity: 0.0; /* Safari 1.x */
   -moz-opacity: 0.0; /* FF lt 1.5, Netscape */
+}
+.UserTabs {
+	margin:20px auto;
+	
+	.tabs-content {
+		background-color:$gray1;
+		padding:20px 15px;
+	}
+	.tabs .tab-title.active a {
+		background-color:$gray1;
+	}
 }
 @media #{$small-up} { 
 	

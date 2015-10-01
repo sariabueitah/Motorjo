@@ -1,0 +1,60 @@
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+          <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Dealers Admin Page</h2>
+    </div>
+  </div>
+</section>
+<section class="NewCar">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+    	<%= form_for :member, :url => admin_member_update_members_path, :html => { :method => :patch } do %>
+		    <table>
+		    	<thead>
+				    <tr>
+				      <th>Email</th>
+				      <th>First Name</th>
+				      <th>Last Name</th>
+				      <th>Last Sign In</th>
+				      <th>Created At</th>
+				      <th>Admin</th>
+				      <th colspan="2"></th>
+				    </tr>
+		  		</thead>
+				  <tbody>
+				    <% @members.each do |member| %>
+				      <tr>
+				        <td><%= member.user.email %></td>
+				        <td><%= member.first_name %></td>
+				        <td><%= member.last_name %></td>
+				        <td><%= member.user.last_sign_in_at %></td>
+				        <td><%= member.created_at %></td>
+				        <%= fields_for "user[]", member.user do |f| %>
+					      	<td><%= f.check_box :isadmin %></td>
+					      <% end %>
+				        <td><%= link_to 'Show', member %></td>
+				        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+				      </tr>
+				    <% end %>
+		  		</tbody>
+				</table>
+				<div class="actions">
+			    <%= submit_tag %>
+			  </div>
+		  <% end %>
+      <% if !(@members.total_pages == 1) %>
+        <div class="pagerArea pagination-centered"><%= will_paginate @members %></div>
+      <% end %>
+    </div>
+  </div>
+</section>
+

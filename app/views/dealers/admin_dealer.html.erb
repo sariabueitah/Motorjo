@@ -1,0 +1,58 @@
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+          <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Dealer Admin Page</h2>
+    </div>
+  </div>
+</section>
+<section class="NewCar">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+    	<%= form_for :dealer, :url => admin_dealer_update_dealers_path, :html => { :method => :patch } do %>
+		    <table>
+		    	<thead>
+				    <tr>
+				      <th>Email</th>
+				      <th>Name</th>
+				      <th>Gallery Name</th>
+				      <th>Last Sign in</th>
+				      <th>admin</th>
+				      <th colspan="2"></th>
+				    </tr>
+		  		</thead>
+				  <tbody>
+				    <% @dealers.each do |dealer| %>
+				      <tr>
+				        <td><%= dealer.user.email %></td>
+				        <td><%= dealer.name %></td>
+				        <td><%= dealer.gallery_name %></td>
+				        <td><%= dealer.user.last_sign_in_at %></td>
+				        <%= fields_for "user[]", dealer.user do |f| %>
+				      		<td><%= f.check_box :isadmin %></td>
+				      	<% end %>
+				        <td><%= link_to 'Show', dealer %></td>
+				        <td><%= link_to 'Edit', edit_dealer_path(dealer) %></td>
+				      </tr>
+				    <% end %>
+		  		</tbody>
+				</table>
+				<div class="actions">
+			    <%= submit_tag %>
+			  </div>
+		  <% end %>
+      <% if !(@dealers.total_pages == 1) %>
+        <div class="pagerArea pagination-centered"><%= will_paginate @dealers %></div>
+      <% end %>
+    </div>
+  </div>
+</section>
+

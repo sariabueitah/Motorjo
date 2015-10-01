@@ -1,12 +1,39 @@
-<section>
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+          <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
   <div class="row">
-    <div class="columns large-6 medium-6 medium-centered large-centered">
-			<h1>Editing Car</h1>
-
-			<%= render 'form' %>
-
-			<%= link_to 'Show', @car %> |
-			<%= link_to 'Back', cars_path %>
-		</div>
-	</div>
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Editing Car</h2>
+    </div>
+  </div>
+</section>
+<section class="EditCar">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+		<%= render 'edit_form' %>
+    </div>
+  </div>
+</section>
+<section class="latest_offers">
+  <div class="row clearfix">              
+      <h2>LATEST CARS IN SHOWROOM</h2>
+        <a href="#" class="link_more">View All Latest Added</a>
+  </div>
+    <div id="latest_offers">
+      <% @latest_cars.each do |c| %>
+            <div class="latest_item">
+              <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
+              <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
+            </div>
+        <% end %>
+    </div>
+    <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
 </section>

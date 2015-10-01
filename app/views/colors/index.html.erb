@@ -1,27 +1,41 @@
-<p id="notice"><%= notice %></p>
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+        <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Listing Color</h2>
+    </div>
+  </div>
+</section>
+<section class="DeviseForms">
+  <div class="row">
+    <div class="large-12 medium-12 columns UserTabs">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<h1>Listing Colors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @colors.each do |color| %>
-      <tr>
-        <td><%= color.title %></td>
-        <td><%= link_to 'Show', color %></td>
-        <td><%= link_to 'Edit', edit_color_path(color) %></td>
-        <td><%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Color', new_color_path %>
+        <tbody>
+          <% @colors.each do |color| %>
+            <tr>
+              <td><%= color.title %></td>
+              <td><%= link_to 'Edit', edit_color_path(color) %></td>
+              <td><%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'New Color', new_color_path %>
+    </div>
+  </div>
+</section>

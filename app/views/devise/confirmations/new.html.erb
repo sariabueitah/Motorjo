@@ -1,16 +1,36 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+          <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Resend confirmation instructions</h2>
+    </div>
   </div>
-<% end %>
+</section>
+<section class="DeviseForms">
+  <div class="row">
+    <div class="columns FormContainer large-6 medium-6 small-12 large-centered medium-centered">
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
 
-<%= render "devise/shared/links" %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="actions text-center">
+          <%= f.submit "Resend confirmation", :class => 'button tiny buttoncustom createCar' %><br>
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+

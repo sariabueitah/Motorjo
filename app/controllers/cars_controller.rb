@@ -6,7 +6,6 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    
     if params[:q]
       @search = Car.search do
         with(:car_make).equal_to(params[:q][:car_make]) if params[:q][:car_make].present?
@@ -25,7 +24,7 @@ class CarsController < ApplicationController
       end
       @cars = @search.results
     else 
-      @cars = Car.all.page(params[:page]).per_page(10)
+      @cars = Car.all.page(params[:page]).per_page(5)
     end
     @special_cars = Car.where(special_car: true)
     @latest_cars = Car.last(10)
@@ -45,7 +44,7 @@ class CarsController < ApplicationController
       5.times { @car.car_images.build } 
     end
     if current_user.meta_type == "Dealer"
-      8.times { @car.car_images.build } 
+      12.times { @car.car_images.build } 
     end
 
   end
@@ -54,7 +53,7 @@ class CarsController < ApplicationController
   def edit
     if current_user.meta_type == "Dealer"
         image_count = @car.car_images.size
-        image_count = 8-image_count    
+        image_count = 12-image_count    
         image_count.times { @car.car_images.build }
     end
     if current_user.meta_type == "Member"
@@ -62,6 +61,7 @@ class CarsController < ApplicationController
         image_count = 5-image_count    
         image_count.times { @car.car_images.build }
     end
+    @latest_cars = Car.last(10)
   end
 
   # POST /cars
@@ -77,7 +77,7 @@ class CarsController < ApplicationController
       else
         if current_user.meta_type == "Dealer"
             image_count = @car.car_images.size
-            image_count = 8-image_count    
+            image_count = 12-image_count    
             image_count.times { @car.car_images.build }
         end
         if current_user.meta_type == "Member"
@@ -121,6 +121,16 @@ class CarsController < ApplicationController
     ContactMailer.contact_email(params[:senderName], params[:senderEmail], params[:senderMessage], Car.find(params[:carId]), User.find(params[:ownerId])).deliver_now
     redirect_to @car, notice: 'Car was successfully created.'
   end
+  def admin_car
+    @cars = Car.includes(:user).all.page(params[:page]).per_page(50)
+  end
+  def admin_car_update
+    params['car'].keys.each do |id|
+      @car = Car.find(id.to_i)
+      @car.update_attributes(admin_car_params(id))
+    end
+    redirect_to(admin_car_cars_path)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
@@ -129,7 +139,10 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:page ,:ownerId ,:carId ,:senderEmail,:senderName,:senderMessage,:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :fuel_type, :cubic_capacity, :special_car, :interior_color_id, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id, :image, :_destroy, :image_cache])
+      params.require(:car).permit(:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :fuel_type, :cubic_capacity, :special_car, :interior_color_id, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id, :image, :_destroy, :image_cache])
+    end
+    def admin_car_params(id)
+      params.require(:car).fetch(id).permit(:special_car)
     end
     def authenticate_access!
       if user_signed_in?
@@ -142,5 +155,4 @@ class CarsController < ApplicationController
         redirect_to @car
       end
     end
-    
 end

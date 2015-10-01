@@ -9,6 +9,7 @@ class Car < ActiveRecord::Base
   has_one :interior_design
   has_one :make
   has_one :model
+  belongs_to :user
   validates :title, :car_make, :car_model, :year, :car_location, :contact_number, :gearbox_id, :color_id, :interior_design_id, :report, :car_images, presence: true
   validates :report_other, presence: true, if: :report_other?
   validates :car_images, length: { in: 1..8 }

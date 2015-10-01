@@ -3,7 +3,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -35,8 +35,29 @@ class ImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+  version :thumb do
+    process :resize_and_pad => [109, 78, "#CACDD0", Magick::CenterGravity]
+  end
+  version :homepage_carousel do
+    process :resize_and_pad => [230, 162, "#CACDD0", Magick::CenterGravity]
+  end
+  version :search do
+    process :resize_and_pad => [213, 150, "#CACDD0", Magick::CenterGravity]
+  end
+  version :special_car do
+    process :resize_and_pad => [287, 133, "#CACDD0", Magick::CenterGravity]
+  end
+  version :special_car_main do
+    process :resize_and_pad => [470, 286, "#CACDD0", Magick::CenterGravity]
+  end
+  version :car_main do
+    process :resize_and_pad => [470, 338, "#CACDD0", Magick::CenterGravity]
+  end
+  version :search_special do
+    process :resize_and_pad => [137, 99, "#CACDD0", Magick::CenterGravity]
+  end
 
-  # Add a white list of extensions which are allowed to be uploaded.
+  # Add a white list of extensions which ar,  allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
     %w(jpg jpeg gif png)

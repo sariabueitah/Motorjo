@@ -2,26 +2,40 @@ Rails.application.routes.draw do
   get 'homepage/index'
   root to: "homepage#index"
   devise_for :users, :skip => [:registrations]
-  resources :cars 
-  resources :members
-  resources :dealers
-  resources :makes
-  resources :models
-  resources :comfort_interiors
-  resources :interior_designs
-  resources :colors
-  resources :interior_colors
-  resources :safety_features
+  resources :cars do
+    collection do
+      get 'admin_car'
+      patch 'admin_car_update'
+      post "contact_submit" => "cars#contact_submit"
+    end
+  end
+  resources :members do
+    collection do
+      get 'admin_member'
+      patch 'admin_member_update'
+      patch  'member/edit/password/' => 'members#update_password'
+      put  'member/edit/password/' => 'members#update_password'
+    end
+  end
+  resources :dealers do
+    collection do
+      get 'admin_dealer'
+      patch 'admin_dealer_update'
+      patch  'dealer/edit/password/' => 'dealers#update_password'
+      put  'dealer/edit/password/' => 'dealers#update_password'
+    end
+  end
+  resources :makes, except: :show
+  resources :models, except: :show
+  resources :comfort_interiors, except: :show
+  resources :interior_designs, except: :show
+  resources :colors, except: :show
+  resources :interior_colors, except: :show
+  resources :safety_features, except: :show
   get 'admin', to: 'admin#index'
-  get 'dealer/edit/password/' => 'dealers#edit_password'
-  patch  'dealer/edit/password/' => 'dealers#update_password'
-  put  'dealer/edit/password/' => 'dealers#update_password'
-
-  get   'member/edit/password/' => 'members#edit_password'
-  patch  'member/edit/password/' => 'members#update_password'
-  put  'member/edit/password/' => 'members#update_password'
+  get 'admin/uers_admin', to: 'admin#uers_admin'
+  patch 'admin/update_users', to: 'admin#update_users'
   
-  post "lolz" => "cars#contact_submit"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

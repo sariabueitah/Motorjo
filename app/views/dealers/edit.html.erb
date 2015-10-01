@@ -1,12 +1,34 @@
-<section>
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+        <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
   <div class="row">
-    <div class="columns large-6 medium-6 medium-centered large-centered">
-			<h1>Editing Dealer</h1>
-
-			<%= render 'edit_form' %>
-
-			<%= link_to 'Show', @dealer %> |
-			<%= link_to 'Back', dealers_path %>
-		</div>
-	</div>
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Edit Your Profile</h2>
+    </div>
+  </div>
+</section>
+<section class="DeviseForms">
+  <div class="row">
+      <div class="large-12 medium-12 columns UserTabs">
+	    <ul data-options="deep_linking: true" class="tabs" data-tab>
+	      <li class="tab-title active"><a href="#Overview">My Information</a></li>
+	      <li class="tab-title"><a href="#Description">My Password</a></li>
+	    </ul>
+	    <div class="tabs-content">
+	      <div class="content active clearfix" id="Overview">
+	        <%= render 'edit_form' %>
+	      </div>
+	      <div class="content" id="Description">
+	        <%= render 'edit_password_form' %>
+	      </div>
+	    </div>
+	  </div>
+  </div>
 </section>

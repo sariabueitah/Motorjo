@@ -1,26 +1,43 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+          <div class="AdArea">Advertisement Area</div>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Log in</h2>
+    </div>
+  </div>
+</section>
+<section class="DeviseForms">
+  <div class="row">
+    <div class="columns FormContainer large-6 medium-6 small-12 large-centered medium-centered">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+        <div class="actions text-center">
+          <%= f.submit "Log in", :class => 'button tiny buttoncustom createCar'%><br>
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+      
+    </div>
+  </div>
+</section>

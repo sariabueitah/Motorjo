@@ -1,0 +1,63 @@
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+          <div class="AdArea">Advertisement Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Cars Admin Page</h2>
+    </div>
+  </div>
+</section>
+<section class="NewCar">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+    	<%= form_for :car, :url => admin_car_update_cars_path, :html => { :method => :patch } do %>
+		    <table>
+		    	<thead>
+				    <tr>
+				      <th>Title</th>
+				      <th>Type</th>
+				      <th>User</th>
+				      <th>User Type</th>
+				      <th>Created At</th>
+				      <th>Updated At</th>
+				      <th>Special Cars</th>
+				      <th colspan="7"></th>
+				    </tr>
+		  		</thead>
+				  <tbody>
+				    <% @cars.each do |car| %>
+				      <tr>
+				        <td><%= car.title %></td>
+				        <td><%= get_make(car.car_make) %> <%= get_model(car.car_model) %></td>
+				        <td><%= car.user.email %></td>
+				        <td><%= car.user.meta_type %></td>
+				        <td><%= car.created_at %></td>
+				        <td><%= car.updated_at %></td>
+				        <%= fields_for "car[]", car do |f| %>
+					      	<td><%= f.check_box :special_car %></td>
+					      <% end %>
+				        <td><%= link_to 'Show', car %></td>
+				        <td><%= link_to 'Edit', edit_car_path(car) %></td>
+				        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				      </tr>
+				    <% end %>
+		  		</tbody>
+				</table>
+				<div class="actions">
+			    <%= submit_tag %>
+			  </div>
+		  <% end %>
+      <% if !(@cars.total_pages == 1) %>
+        <div class="pagerArea pagination-centered"><%= will_paginate @cars %></div>
+      <% end %>
+    </div>
+  </div>
+</section>
+

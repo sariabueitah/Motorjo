@@ -71,15 +71,4 @@ class InteriorColorsController < ApplicationController
     def interior_color_params
       params.require(:interior_color).permit(:title)
     end
-    def authenticate_admin!
-      if user_signed_in?
-        if(current_user.isadmin)
-          true
-        else
-          redirect_to root_path
-        end
-      else
-        redirect_to root_path
-      end
-    end
 end

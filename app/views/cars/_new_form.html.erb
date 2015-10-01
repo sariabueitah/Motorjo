@@ -1,0 +1,25 @@
+<%= form_for(@car) do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="formContainer">
+    <%= render 'car_main_info', :f => f %>
+    <%= render 'car_image_upload', :f => f %>
+    <%= render 'car_detailed_info', :f => f %>
+    <a class="prev button tiny buttoncustom" href="javascript:void(0);"><i class="fa fa-chevron-left"></i>
+Prev</a>
+    <a class="next button tiny buttoncustom" href="javascript:void(0);">Next<i class="fa fa-chevron-right"></i>
+</a>
+    <%= f.submit "Create Car", :class => 'button tiny buttoncustom createCar' %>
+  </div>
+  
+
+<% end %>

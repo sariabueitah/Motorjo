@@ -10,55 +10,62 @@
       </ul>
     </div>
   <% end %>
-  <%= f.fields_for :user do |u| %>
-    <div class="col-lg-6">      
-      <%= u.label :email %><br>
-      <%= u.text_field :email %>
+  <div class="userInfo large-6 columns">
+    <div class="field">
+      <%= f.label :gallery_name %>
+      <%= f.text_field :gallery_name %>
     </div>
-    
-    <div class="col-lg-6">
-      <%= u.label :password %><br>
-      <%= u.password_field :password %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     </div>
-    
-    <div class="col-lg-6">
-      <%= u.label :password_confirmation %><br>
-      <%= u.password_field :password_confirmation %>
-    </div>    
-  <% end %>   
-  <div class="field">
-    <%= f.label :gallery_name %><br>
-    <%= f.text_field :gallery_name %>
+    <div class="field">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number %>
+    </div>
+    <div class="field">
+      <%= f.label :mobile_number %>
+      <%= f.text_field :mobile_number %>
+    </div>
+    <div>
+      <%= f.label "City" %>
+      <%= f.select :city, Dealer::City.map{ |s| [s[1] , s[0]] } %>
+    </div>
+    <div class="field">
+      <%= f.label :gallery_location %>
+      <%= f.text_area :gallery_location %>
+    </div>
+    <div class="field">
+      <%= f.label :street_name %>
+      <%= f.text_field :street_name %>
+    </div>
+    <div class="field">
+      <%= f.label :building_number %>
+      <%= f.text_field :building_number %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="userLoginInfo large-6 columns">
+    <div class="innerUserLoginInfo">
+      <%= f.fields_for :user do |u| %>
+        <div class="field">      
+          <%= u.label :email %>
+          <%= u.text_field :email %>
+        </div>
+        
+        <div class="field">
+          <%= u.label :password %>
+          <%= u.password_field :password %>
+        </div>
+        
+        <div class="field">
+          <%= u.label :password_confirmation %>
+          <%= u.password_field :password_confirmation %>
+        </div>    
+      <% end %>   
+      <div class="actions text-center">
+        <%= f.submit "Sign in", :class => 'button tiny buttoncustom createCar' %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_number %><br>
-    <%= f.text_field :mobile_number %>
-  </div>
-  <div>
-    <%= f.label "City" %><br>
-    <%= f.select :city, Dealer::City.map{ |s| [s[1] , s[0]] } %>
-  </div>
-  <div class="field">
-    <%= f.label :gallery_location %><br>
-    <%= f.text_area :gallery_location %>
-  </div>
-  <div class="field">
-    <%= f.label :street_name %><br>
-    <%= f.text_field :street_name %>
-  </div>
-  <div class="field">
-    <%= f.label :building_number %><br>
-    <%= f.text_field :building_number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
 <% end %>

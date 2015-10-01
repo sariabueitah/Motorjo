@@ -1,8 +1,35 @@
-<section id="FormCarImage">
-	<div class="file_field">
-		<%= f.fields_for :car_images do |image| %>
-		<%= render partial: 'car_image_fields' , locals:{:f => image} %>
-		<% end %>
+<section id="FormCarImage" class="clearfix">
+	<div class="columns medium-8">
+		<div class="file_field">
+			<%= f.fields_for :car_images do |image| %>
+				<div class="nested-fields">
+					<div class="inputimagecontainer th">
+						<%= image.file_field :image , animated: false, class: "myfile" %>
+						<% if(image.object.image_url.blank?) %>
+							<%= image_tag("CarIcon#{image.index}.png", size: "250x52") %>
+						<% else %>
+							<%= image_tag(image.object.image_url, size:"250x52") %>
+						<% end %>
+					</div>
+					<%= image.hidden_field :image_cache %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-	<div id="target"></div>
+  <div class="field columns medium-4">
+    <%= f.label :color_id %>
+    <%= collection_select(:car, :color_id, Color.all, :id, :title) %>
+  </div>
+  <div class="field columns medium-4">
+    <%= f.label :interior_design_id %>
+    <%= collection_select(:car, :interior_design_id, InteriorDesign.all, :id, :title) %>
+  </div>
+	<div class="field columns medium-4">
+    <%= f.label :interior_color_id %>
+    <%= collection_select(:car, :interior_color_id, InteriorColor.all, :id, :title) %>
+  </div>
+	<div class="field columns medium-12">
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => "3"%>
+  </div>
 </section>

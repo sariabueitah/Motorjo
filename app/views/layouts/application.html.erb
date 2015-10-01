@@ -37,7 +37,9 @@
                   <% elsif current_user.meta_type == 'Member' %>
                     <li><%= link_to 'Edit Profile', edit_member_path(current_user.meta_id) %></li>
                   <% end %>
-                    
+                  <% if authenticate_admin? %>
+                    <li><%= link_to 'Admin Page', admin_path() %></li>
+                  <% end %>
                   <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete%></li>
                 </ul>
               </li>

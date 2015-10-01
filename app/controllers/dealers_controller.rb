@@ -1,7 +1,8 @@
 class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
-  before_action :set_user , only: [:edit_password , :update_password]
+  before_action :set_user , only: [:edit , :update_password]
   before_action :authenticate_access!, :only => [:edit, :update, :destroy]
+  before_action :authenticate_admin!,:only =>[:admin_dealer]
   # GET /dealers
   # GET /dealers.json
   def index
@@ -14,11 +15,6 @@ class DealersController < ApplicationController
     @dealer_cars = Car.where(user_id: @dealer.user.id).order('created_at DESC').page(params[:page]).per_page(10)
     @latest_cars = Car.last(10)
   end
-
-  def edit_password
-
-  end
-  
   # GET /dealers/new
   def new
     @dealer = Dealer.new
@@ -82,6 +78,17 @@ class DealersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def admin_dealer
+    @dealers = Dealer.includes(:user).all.page(params[:page]).per_page(50)
+  end
+  def admin_dealer_update
+    params['user'].keys.each do |id|
+      @user = User.find(id.to_i)
+      @user.update_attributes(admin_user_params(id))
+    end
+    redirect_to(admin_dealer_dealers_path)
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dealer
@@ -89,14 +96,17 @@ class DealersController < ApplicationController
     end
 
     def set_user
-      @user = Dealer.find(current_user.id)
+      user = User.find(current_user.id)
+      @user = Dealer.find(user.meta_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dealer_params
       params.require(:dealer).permit(:page, :name, :mobile_number, :city, :gallery_name, :phone_number, :gallery_location, :street_name, :building_number, user_attributes: [ :id, :email, :password, :password_confirmation ])
     end
-    
+    def admin_user_params(id)
+      params.require(:user).fetch(id).permit(:isadmin)
+    end
     def authenticate_access!
       if user_signed_in?
         if(current_user.meta_id == Dealer.find(params[:id]).id || current_user.isadmin)
