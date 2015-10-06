@@ -20,19 +20,19 @@
 			    <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: "All", class: "radius"  %>
 			  </div>
 			  <div id="HomeSearchModel" class="small-6 medium-3 columns">
-			    <%= label_tag :car_model %>
+			    <%= label_tag t(:car_model) %>
 			    <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All", :disabled => true, class: "radius" %>
 			  </div>
 			  <div class="small-6 medium-3 columns">
-			    <%= label_tag :year %>
+			    <%= label_tag t(:year) %>
 			    <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: "All", class: "radius"  %>
 			  </div>
 			  <div class="small-6 medium-3 columns">
-			    <%= label_tag "Gear Box Type" %>
+			    <%= label_tag t("Gear_Box_Type") %>
 			    <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [s[1] , s[0]] }), include_blank: "All", class: "radius" %>
 			  </div>
 			  <div class="small-12 text-center columns">
-			      <%= submit_tag "Search" , class: "button tiny buttoncustom "%>
+			      <%= submit_tag t("Search") , class: "button tiny buttoncustom "%>
 			  </div>
 			<% end %>
 		</div>
@@ -40,7 +40,7 @@
 </section>
 <section class="homepageMiddleArea">
 	<div class="row">
-		<h1>SPECIAL DEALS</h1>
+		<h1><%= t("Special_Deals").capitalize %></h1>
 		<div class="small-12 large-6 left columns" >
 			<% unless @latest_special_car.blank? %>
 	        <div class="mainSpecialCar">
@@ -50,13 +50,13 @@
 		            <div class="price"><%= @latest_special_car.price %> JD</div>
 		            <div class="descr">
 		             	<%= truncate(@latest_special_car.description , :length => 160,  :separator => ' ') do
-				          link_to "see more..." ,car_path(@latest_special_car,:anchor => "Description")
+				          link_to t("see_more") ,car_path(@latest_special_car,:anchor => "Description")
 				        end %>
 		            </div>
 	          	</div>
 	      	</div>
 	      	<div class="link_more">
-	      		<%= link_to "View More Details", @latest_special_car %>
+	      		<%= link_to t("View_More_Details"), @latest_special_car %>
 	      	</div>
 	      	<% end %>
 		</div>
@@ -81,7 +81,7 @@
                 </div>
                 <a class="prev" id="special_offers_prev" href="#"><i class="fa fa-chevron-up fa-lg"></i></a>
             	<a class="next" id="special_offers_next" href="#"><i class="fa fa-chevron-down fa-lg"></i></a>
-                <div class="link_more"><a href="#">View All Special Offers</a></div>
+                <div class="link_more"><a href="#"><%= t("View_All_Special_Offers") %></a></div>
             </div>      
             <% end %>     
         <!--/ special offer -->			
@@ -90,8 +90,8 @@
 </section>
 <section class="latest_offers">
 	<div class="row clearfix">         			
-    	<h2>LATEST CARS IN SHOWROOM</h2>
-        <a href="#" class="link_more">View All Latest Added</a>
+    	<h2><%= t("Latest_Cars").capitalize %></h2>
+        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
 	</div>
     <div id="latest_offers">
     	<% @latest_cars.each do |c| %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'set_language/english'
+
+  get 'set_language/arabic'
+
   get 'homepage/index'
   root to: "homepage#index"
   devise_for :users, :skip => [:registrations]

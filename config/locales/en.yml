@@ -1,3 +1,50 @@
 en:
+  Admin_Page: Administrator Page
+  Arabic: Arabic
+  Buy_a_car: Buy a Car
+  Car_Report: Car Report
+  Car_Report_Details: Car Report Details
+  Car_location: Car Location
+  Comfort_and_Interior_Design: Comfort and Interior Design
+  Contact_Owner: Contact Owner
+  Create_Car: Create Car
+  Dealer_Page: Dealer Page
+  Description: Description
+  Edit_Profile: Edit Profile
+  Email: Email
+  English: English
+  Enter_Email: Enter Name
+  Enter_Message: Enter Message
+  Enter_Name: Enter Name
+  Gear_Box_Type: Gear Box Type
+  Interior_Color: Interior Color
+  Interior_Design: Interior Design
+  Latest_Cars: Latest Cars
+  Log_out: Log Out
+  Login: Login
+  Member_Page: Member Page
+  Message: Message
+  Name: Name
+  Overview: Overview
+  Phone_Number: Phone Number
+  Safety_Features: Safety Features
+  Search: Search
+  Sell_your_Car: Sell your Car
+  Send: Send
+  Sign_Up: Sign Up
+  Sign_Up_Dealer: Sign Up as Dealer
+  Sign_Up_Seller: Sign Up as Seller
+  Special_Deals: Special Deals
+  Terms_&_Conditions: Terms & Conditions
+  View_All_Latest_Added: View All Latest Added
+  View_All_Special_Offers: View All Special Offers
+  View_More_Details: View More Details
   car_make: Car Make
-  hello: Hello world
+  car_model: Car Model
+  color: Color
+  cubic_capacity: Cubic Capacity
+  cubic_capacity_from: Cubic Capacity From
+  cubic_capacity_to: Cubic Capacity To
+  fuel_type: Fuel Type
+  see_more: see more...
+  year: Year

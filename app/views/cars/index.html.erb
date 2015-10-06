@@ -13,43 +13,43 @@
       <div class="carSearchSideBar">
         <%= form_tag cars_path, :id => 'car_search_form', :method => :get do %>
           <div class="large-3 medium-3 columns">
-            <%= label_tag :car_make %>
+            <%= label_tag t(:car_make) %>
             <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: "All" %>
           </div>
           <div id="HomeSearchModel" class="formCarModel large-3 medium-3 columns">
-            <%= label_tag :car_model %>
+            <%= label_tag t(:car_model) %>
             <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All", disabled: true%>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag :cubic_capacity %>
+            <%= label_tag t(:cubic_capacity_from) %>
             <%= select_tag 'q[cubic_capacity_from]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: "All" %>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag :cubic_capacity %>
+            <%= label_tag t(:cubic_capacity_to) %>
             <%= select_tag 'q[cubic_capacity_to]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: "All" %>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag :year %>
+            <%= label_tag t(:year) %>
             <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: "All" %>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag "Gear Box Type" %>
+            <%= label_tag t("Gear_Box_Type") %>
             <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag :fuel_type %>
+            <%= label_tag t(:fuel_type) %>
             <%= select_tag 'q[fuel_type]' , options_for_select(Car::FUELTYPE.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag "color" %>
+            <%= label_tag t("color") %>
             <%= select_tag 'q[color_id]', options_for_select(Color.all.map{ |c| [c.title, c.id]}), include_blank: "All" %>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag "Car Report" %>
+            <%= label_tag t("Car_Report") %>
             <%= select_tag 'q[report]', options_for_select(Car::REPORT.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
           </div>
           <div class="large-12 medium-12 columns">
-            <%= label_tag "Comfort and Interior Design" %>
+            <%= label_tag t("Comfort_and_Interior_Design") %>
             <% ComfortInterior.all.each do |v| %>
               <span class="search-checkbox">
                 <%= check_box_tag 'q[comfort_interior_ids][]', v.id, false  %>
@@ -58,7 +58,7 @@
             <% end %>
           </div>
           <div class="large-12 medium-12 columns">
-            <%= label_tag "Safety Features" %>
+            <%= label_tag t("Safety_Features") %>
             <% SafetyFeature.all.each do |v| %>
               <span class="search-checkbox">
                 <%= check_box_tag 'q[safety_feature_ids][]', v.id, false  %>
@@ -67,7 +67,7 @@
             <% end %>
           </div>
           <div class="actions text-right large-12 medium-12 columns">
-              <%= submit_tag "Search", class: "button tiny radius" %>
+              <%= submit_tag t("Search"), class: "button tiny radius" %>
           </div>
         <% end %>
       </div>
@@ -121,8 +121,8 @@
 </section>
 <section class="latest_offers">
   <div class="row clearfix">              
-      <h2>LATEST CARS IN SHOWROOM</h2>
-        <a href="#" class="link_more">View All Latest Added</a>
+      <h2><%= t("Latest_Cars") %></h2>
+        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
   </div>
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>

@@ -64,46 +64,46 @@
       <ul class="ulStyle CarDetails ">
         <% unless @car.cubic_capacity.blank? %>
         <li>
-          <span class="lable">Cubic Capacity: </span>
+          <span class="lable"><%= t("cubic_capacity")%>: </span>
           <span class="value"><%= @car.cubic_capacity %></span>
         </li>
         <% end %>
         <li class="even">
-          <span class="lable">Color: </span>
+          <span class="lable"><%= t("color") %>: </span>
           <span class="value"><%= get_color(@car.color_id) %></span>
         </li>
         <li>
-          <span class="lable">Interior Design : </span>
+          <span class="lable"><%= t("Interior_Design")%> : </span>
           <span class="value"><%= get_interior_design(@car.interior_design_id) %></span>
         </li>
         <li class="even">
-          <span class="lable">Interior Color : </span>
+          <span class="lable"><%= t("Interior_Color")%> : </span>
           <span class="value"><%= get_interior_color(@car.interior_color_id) %></span>
         </li>
         
         <li> 
-          <span class="lable">Car Report : </span>
+          <span class="lable"><%= t("Car_Report")%> : </span>
           <span class="value"><%= Car::REPORT[@car.report.to_s] %></span>
         </li>
       </ul>
       <% if @car.report == 4 %>
         <div class="ReportOther">
-          <p>Car Report Details:</p>
+          <p><%= t("Car_Report_Details")%>:</p>
           <p><%= @car.report_other %></p>
         </div>
       <% end %>
     </div>
     <div class="large-12 medium-12 columns CarDetailTabs">
       <ul data-options="deep_linking: true" class="tabs" data-tab>
-        <li class="tab-title active"><a href="#Overview">Overview</a></li>
-        <li class="tab-title"><a href="#Description">Description</a></li>
-        <li class="tab-title"><a href="#Contact">Contact Owner</a></li>
+        <li class="tab-title active"><a href="#Overview"><%= t("Overview")%></a></li>
+        <li class="tab-title"><a href="#Description"><%= t("Description")%></a></li>
+        <li class="tab-title"><a href="#Contact"><%= t("Contact_Owner")%></a></li>
       </ul>
       <div class="tabs-content">
         <div class="content active clearfix" id="Overview">
          <% unless @car.comfort_interior_ids.blank? %>
             <div class="overview large-6 medium-6 columns">
-              <span><strong>Comfort Interior :</strong></span>
+              <span><strong><%= t("Comfort_and_Interior_Design")%> :</strong></span>
               <ul>
                 <% @car.comfort_interior_ids.each do |d| %>
                   <li>
@@ -115,7 +115,7 @@
           <% end %>
           <% unless @car.safety_feature_ids.blank? %>
             <div class="overview large-6 medium-6 columns">
-              <span><strong>Safety Features :</strong></span>
+              <span><strong><%= t("Safety_Features")%> :</strong></span>
               <ul>
                 <% @car.safety_feature_ids.each do |d| %>
                   <li>
@@ -133,12 +133,12 @@
         <div class="content clearfix" id="Contact">
           <div class="contact large-6 medium-6 columns">
             <% if(@user.meta_type == "Dealer") %>
-              <%= link_to "Dealer Page" , dealer_path(@user.meta_id) %>
+              <%= link_to t("Dealer_Page") , dealer_path(@user.meta_id) %>
             <% else %>
-              <%= link_to "Member Page" , member_path(@user.meta_id) %>
+              <%= link_to t("Member_Page") , member_path(@user.meta_id) %>
             <% end %>
-            <p class="phone"><span>Phone  Number: </span><%= @car.contact_number %></p>
-            <span class="locationLable">Car location</span>
+            <p class="phone"><span><%= t("Phone_Number")%>: </span><%= @car.contact_number %></p>
+            <span class="locationLable"><%= t("Car_location")%></span>
             <p class="Location"><%= @car.car_location %></p>
           </div>
           <div class="contact large-6 medium-6 columns">
@@ -146,21 +146,21 @@
               <%= hidden_field_tag :carId, @car.id %>
               <%= hidden_field_tag :ownerId, @car.user_id %>
               <div class="input-wrapper">
-                <%= label_tag :senderName, 'Name' %>
-                <%= text_field_tag :senderName,nil, :required => true, :placeholder => "Enter Name" %>
+                <%= label_tag :senderName, t('Name') %>
+                <%= text_field_tag :senderName,nil, :required => true, :placeholder => t("Enter_Name") %>
                 <small class="error">A Name is required.</small>
               </div>
               <div class="input-wrapper">
-                <%= label_tag :senderEmail, 'Email' %>
-                <%= text_field_tag :senderEmail,nil, :required => true, :placeholder => "Enter Email", :type => "email" %>
+                <%= label_tag :senderEmail, t('Email') %>
+                <%= text_field_tag :senderEmail,nil, :required => true, :placeholder => t("Enter_Email"), :type => "email" %>
                 <small class="error">A valid email address is required.</small>
               </div>
               <div class="input-wrapper">
-                <%= label_tag :senderMessage, 'Message' %>
-                <%= text_area_tag :senderMessage,nil, :required => true, :placeholder => "Enter Message", :rows => "5" %>
+                <%= label_tag :senderMessage, t('Message') %>
+                <%= text_area_tag :senderMessage,nil, :required => true, :placeholder => t("Enter_Message"), :rows => "5" %>
                 <small class="error">A Message is required.</small>
               </div>
-              <%= submit_tag 'Send', :class => "button tiny buttoncustom" %>
+              <%= submit_tag t('Send'), :class => "button tiny buttoncustom" %>
             <% end %>
           </div>
         </div>
@@ -170,8 +170,8 @@
 </section>
 <section class="latest_offers">
   <div class="row clearfix">              
-      <h2>LATEST CARS IN SHOWROOM</h2>
-        <a href="#" class="link_more">View All Latest Added</a>
+      <h2><%= t("Latest_Cars") %></h2>
+        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
   </div>
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>

@@ -1,3 +1,50 @@
 ar:
-  car_make: الصانع
-  hello: شسيبشسي
+  Admin_Page: صفحة الأدارة
+  Arabic: العربية
+  Buy_a_car: أشتري سيارة
+  Car_Report: حالة السيارة
+  Car_Report_Details: تقرير المركبة
+  Car_location: موقع السيارة
+  Comfort_and_Interior_Design: الأضافات الداخلية
+  Contact_Owner: الأتصال بالمعلن
+  Create_Car: اعلان جديد
+  Dealer_Page: صفحة التاجر
+  Description: وصف السيارة
+  Edit_Profile: تعديل المعلومات
+  Email: البريد الألكتروني
+  English: الانجليزية
+  Enter_Email: أدخل البريد الألكتروني
+  Enter_Message: أدخل الرسالة
+  Enter_Name: أدخل الأسم
+  Gear_Box_Type: نوع ناقل السرعة
+  Interior_Color: لون الفرش
+  Interior_Design: نوع الفرش
+  Latest_Cars: أحدث السيارات
+  Log_out: الخروج
+  Login: الدخول
+  Member_Page: صفحة البائع
+  Message: الرسالة
+  Name: الأسم
+  Overview: مواصفات السيارة
+  Phone_Number: رقم الهاتف
+  Safety_Features: أضافات الأمان
+  Search: ابحث
+  Sell_your_Car: بع سيارتك
+  Send: أرسل
+  Sign_Up: أنشاء حساب
+  Sign_Up_Dealer: أنشاء حساب تاجر
+  Sign_Up_Seller: أنشاء حساب بائع
+  Special_Deals: أعلانات مميزة
+  Terms_&_Conditions: شروط أستخدام الموقع
+  View_All_Latest_Added: المزيد من أخر السيارات
+  View_All_Special_Offers: المزيد من الأعلانات المميزة
+  View_More_Details: المزيد من المعلومات
+  car_make: نوع السيارة
+  car_model: فئة السيارة
+  color: اللون
+  cubic_capacity: سعة المحرك
+  cubic_capacity_from: سعة المحرك من
+  cubic_capacity_to: سعة المحرك الى
+  fuel_type: نوع الواقود
+  see_more: المزيد...
+  year: السنة
