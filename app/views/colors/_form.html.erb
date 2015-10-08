@@ -10,11 +10,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
+  <% Globalize.with_locale(:en) do %>
+    <div class="field">
+      <%= f.label :title, "English Title" %><br>
+      <%= f.text_field :title %>
+    </div>
+  <% end %>
+  <% Globalize.with_locale(:ar) do %>
+    <div class="field">
+      <%= f.label :title, "Arabic Title" %><br>
+      <%= f.text_field :title %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

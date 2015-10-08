@@ -95,6 +95,9 @@ GEM
       sass (>= 3.3.0, < 3.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize (5.0.1)
+      activemodel (>= 4.2.0, < 4.3)
+      activerecord (>= 4.2.0, < 4.3)
     hike (1.2.3)
     http_accept_language (2.0.5)
     i18n (0.7.0)
@@ -214,6 +217,7 @@ DEPENDENCIES
   devise
   font-awesome-sass
   foundation-rails
+  globalize
   http_accept_language
   jbuilder (~> 2.0)
   jquery-rails

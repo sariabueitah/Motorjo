@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002193641) do
+ActiveRecord::Schema.define(version: 20151008191853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,11 +61,33 @@ ActiveRecord::Schema.define(version: 20151002193641) do
     t.boolean  "special_car"
   end
 
+  create_table "color_translations", force: :cascade do |t|
+    t.integer  "color_id",   null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+  end
+
+  add_index "color_translations", ["color_id"], name: "index_color_translations_on_color_id", using: :btree
+  add_index "color_translations", ["locale"], name: "index_color_translations_on_locale", using: :btree
+
   create_table "colors", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "comfort_interior_translations", force: :cascade do |t|
+    t.integer  "comfort_interior_id", null: false
+    t.string   "locale",              null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "title"
+  end
+
+  add_index "comfort_interior_translations", ["comfort_interior_id"], name: "index_comfort_interior_translations_on_comfort_interior_id", using: :btree
+  add_index "comfort_interior_translations", ["locale"], name: "index_comfort_interior_translations_on_locale", using: :btree
 
   create_table "comfort_interiors", force: :cascade do |t|
     t.string   "title"
@@ -86,17 +108,50 @@ ActiveRecord::Schema.define(version: 20151002193641) do
     t.string   "name"
   end
 
+  create_table "interior_color_translations", force: :cascade do |t|
+    t.integer  "interior_color_id", null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "title"
+  end
+
+  add_index "interior_color_translations", ["interior_color_id"], name: "index_interior_color_translations_on_interior_color_id", using: :btree
+  add_index "interior_color_translations", ["locale"], name: "index_interior_color_translations_on_locale", using: :btree
+
   create_table "interior_colors", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "interior_design_translations", force: :cascade do |t|
+    t.integer  "interior_design_id", null: false
+    t.string   "locale",             null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "title"
+  end
+
+  add_index "interior_design_translations", ["interior_design_id"], name: "index_interior_design_translations_on_interior_design_id", using: :btree
+  add_index "interior_design_translations", ["locale"], name: "index_interior_design_translations_on_locale", using: :btree
+
   create_table "interior_designs", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "make_translations", force: :cascade do |t|
+    t.integer  "make_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+  end
+
+  add_index "make_translations", ["locale"], name: "index_make_translations_on_locale", using: :btree
+  add_index "make_translations", ["make_id"], name: "index_make_translations_on_make_id", using: :btree
 
   create_table "makes", force: :cascade do |t|
     t.string   "title"
@@ -113,12 +168,34 @@ ActiveRecord::Schema.define(version: 20151002193641) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "model_translations", force: :cascade do |t|
+    t.integer  "model_id",   null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+  end
+
+  add_index "model_translations", ["locale"], name: "index_model_translations_on_locale", using: :btree
+  add_index "model_translations", ["model_id"], name: "index_model_translations_on_model_id", using: :btree
+
   create_table "models", force: :cascade do |t|
     t.integer  "parent_id"
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "safety_feature_translations", force: :cascade do |t|
+    t.integer  "safety_feature_id", null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "title"
+  end
+
+  add_index "safety_feature_translations", ["locale"], name: "index_safety_feature_translations_on_locale", using: :btree
+  add_index "safety_feature_translations", ["safety_feature_id"], name: "index_safety_feature_translations_on_safety_feature_id", using: :btree
 
   create_table "safety_features", force: :cascade do |t|
     t.string   "title"
