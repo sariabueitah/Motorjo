@@ -1,47 +1,47 @@
 <section id="FormCarMain" class="clearfix">
   <div class="field medium-4 columns">
-    <%= f.label :title %>
+    <%= f.label t(:title) %>
     <%= f.text_field :title %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label :car_make %>
+    <%= f.label t(:car_make) %>
     <%= collection_select(:car, :car_make, Make.all, :id, :title) %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label :car_model %>
+    <%= f.label t(:car_model) %>
     <%= f.select :car_model, options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }, selected_key = f.object.car_model),:disabled => true %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label :year %>
+    <%= f.label t(:year) %>
     <%= f.select :year, ((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label "Fuel Type" %>
-    <%= f.select :fuel_type, Car::FUELTYPE.map{ |s| [s[1] , s[0]] } %>
+    <%= f.label t("fuel_type") %>
+    <%= f.select :fuel_type, Car::FUELTYPE.map{ |s| [I18n.t(s[1]) , s[0]] } %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label :cubic_capacity %>
+    <%= f.label t(:cubic_capacity) %>
     <%= f.number_field :cubic_capacity %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label :price %>
+    <%= f.label t(:price) %>
     <%= f.number_field :price %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label :mileage %>
+    <%= f.label t(:mileage) %>
     <%= f.number_field :mileage %>
   </div>
   <div class="field medium-4 columns">
-    <%= f.label "Gear Box Type" %>
-    <%= f.select :gearbox_id, Car::Gearbox.map{ |s| [s[1] , s[0]] } %>
+    <%= f.label t("Gear_Box_Type") %>
+    <%= f.select :gearbox_id, Car::Gearbox.map{ |s| [I18n.t(s[1]) , s[0]] } %>
   </div>
   
   <div class="field medium-4 columns">
-    <%= f.label "Car Report" %>
-    <%= f.select :report, Car::REPORT.map{ |s| [s[1] , s[0]] } %>
+    <%= f.label t("Car_Report") %>
+    <%= f.select :report, Car::REPORT.map{ |s| [I18n.t(s[1]) , s[0]] } %>
   </div>
   <div class="field medium-8 columns">
-    <%= f.label :report_other %>
+    <%= f.label :report_other ,t("Car_Report_Details") %>
     <%= f.text_area :report_other, :rows => "3" %>
   </div>
 </section>

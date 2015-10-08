@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     I18n.locale =  session[:locale] || http_accept_language.compatible_language_from(I18n.available_locales) || I18n.default_locale
     session[:locale] = I18n.locale
     if current_user
-      current_user.language |= session[:locale]
+      current_user.language = current_user.language || session[:locale]
       current_user.save
     end
   end

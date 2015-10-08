@@ -11,30 +11,38 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :gallery_name %><br>
-    <%= f.text_field :gallery_name %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :gallery_location %><br>
-    <%= f.text_area :gallery_location %>
-  </div>
-  <div class="field">
-    <%= f.label :street_name %><br>
-    <%= f.text_field :street_name %>
-  </div>
-  <div class="field">
-    <%= f.label :building_number %><br>
-    <%= f.text_field :building_number %>
-  </div>
+      <%= f.label t(:gallery_name) %>
+      <%= f.text_field :gallery_name %>
+    </div>
+    <div class="field">
+      <%= f.label t(:name) %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label t(:phone_number) %>
+      <%= f.text_field :phone_number %>
+    </div>
+    <div class="field">
+      <%= f.label t(:mobile_number) %>
+      <%= f.text_field :mobile_number %>
+    </div>
+    <div>
+      <%= f.label t("city") %>
+      <%= f.select :city, Dealer::City.map{ |s| [s[1] , s[0]] } %>
+    </div>
+    <div class="field">
+      <%= f.label t(:gallery_location) %>
+      <%= f.text_area :gallery_location %>
+    </div>
+    <div class="field">
+      <%= f.label t(:street_name) %>
+      <%= f.text_field :street_name %>
+    </div>
+    <div class="field">
+      <%= f.label t(:building_number) %>
+      <%= f.text_field :building_number %>
+    </div>
   <div class="actions text-center">
-    <%= f.submit "Update Information" , :class => 'button tiny buttoncustom' %>
+    <%= f.submit t("update_information") , :class => 'button tiny buttoncustom' %>
   </div>
 <% end %>

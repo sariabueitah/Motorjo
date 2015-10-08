@@ -2,6 +2,7 @@ en:
   Admin_Page: Administrator Page
   Arabic: Arabic
   Buy_a_car: Buy a Car
+  Car_Images_Appearance: Car Images and Appearance
   Car_Report: Car Report
   Car_Report_Details: Car Report Details
   Car_location: Car Location
@@ -16,12 +17,17 @@ en:
   Enter_Email: Enter Name
   Enter_Message: Enter Message
   Enter_Name: Enter Name
+  Features_Contact_Information: Features and Contact Information
+  GEAR: GEAR
   Gear_Box_Type: Gear Box Type
   Interior_Color: Interior Color
   Interior_Design: Interior Design
+  JD: JD
+  KM: KM
   Latest_Cars: Latest Cars
   Log_out: Log Out
   Login: Login
+  MILEAGE: MILEAGE
   Member_Page: Member Page
   Message: Message
   Name: Name
@@ -39,12 +45,51 @@ en:
   View_All_Latest_Added: View All Latest Added
   View_All_Special_Offers: View All Special Offers
   View_More_Details: View More Details
+  YEAR: YEAR
+  accident_free: Accident Free 
+  address: Address
+  all: All
+  automatic: Automatic
+  building_number: Building Number
+  car_information: Car Information
   car_make: Car Make
   car_model: Car Model
+  city: City
   color: Color
   cubic_capacity: Cubic Capacity
   cubic_capacity_from: Cubic Capacity From
   cubic_capacity_to: Cubic Capacity To
+  damaged:	Damaged
+  dealer_information: Dealer Information
+  diesel: Diesel
+  edit_your_profile: Edit Your Profile
+  editing_car: Editing Car
+  email: Email
+  first_name: First Name
   fuel_type: Fuel Type
+  gallery_location: Gallery Location
+  gallery_name: Gallery Name
+  hybrid: Hybrid
+  last_name: Last Name
+  manual: Manual
+  member_information: Member Information
+  mileage: Milage
+  mobile_number: Mobile Number
+  my_information: My Information
+  my_password: My Password
+  name: Name
+  new_car: New Car
+  other:	Other
+  password: Password
+  password_confirmation: Password Confirmation
+  petrol: Petrol
+  phone_number: Phone Number
+  price: Price
+  repaired: Repaired
   see_more: see more...
+  sign_in: Sign In
+  street_name: Street Name
+  title: Title
+  update_information: Update Information
+  update_password: Update Password
   year: Year

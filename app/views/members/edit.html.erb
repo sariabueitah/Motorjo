@@ -10,7 +10,7 @@
 <section class="PageTitle">
   <div class="row">
     <div class="columns large-12 medium-12 medium-centered large-centered">
-      <h2>Edit Your Profile</h2>
+      <h2><%= t("edit_your_profile")%></h2>
     </div>
   </div>
 </section>
@@ -18,8 +18,8 @@
   <div class="row">
       <div class="large-12 medium-12 columns UserTabs">
 	    <ul data-options="deep_linking: true" class="tabs" data-tab>
-	      <li class="tab-title active"><a href="#Overview">My Information</a></li>
-	      <li class="tab-title"><a href="#Description">My Password</a></li>
+	      <li class="tab-title active"><a href="#Overview"><%= t("my_information")%></a></li>
+	      <li class="tab-title"><a href="#Description"><%=t("my_password")%></a></li>
 	    </ul>
 	    <div class="tabs-content">
 	      <div class="content active clearfix" id="Overview">

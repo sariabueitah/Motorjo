@@ -10,7 +10,7 @@
 <section class="PageTitle">
   <div class="row">
     <div class="columns large-12 medium-12 medium-centered large-centered">
-      <h2>Editing Car</h2>
+      <h2><%=t("editing_car")%></h2>
     </div>
   </div>
 </section>
@@ -23,8 +23,8 @@
 </section>
 <section class="latest_offers">
   <div class="row clearfix">              
-      <h2>LATEST CARS IN SHOWROOM</h2>
-        <a href="#" class="link_more">View All Latest Added</a>
+      <h2><%= t("Latest_Cars") %></h2>
+        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
   </div>
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>

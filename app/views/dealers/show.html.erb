@@ -25,13 +25,13 @@
 	            <li class="title"><span><%= get_make(s.car_make) %></span> <span class=""><%= get_model(s.car_model) %></span></li>
 	            <li class="desc">
 	            <%= truncate(s.description , :length => 200,  :separator => ' ') do
-	              link_to "see more..." ,car_path(s,:anchor => "Description")
+	              link_to t("see_more") ,car_path(s,:anchor => "Description")
 	            end %>
 	            </li>
 	            <li class="info">
-	              <span class="mileage"><i class="fa fa-tachometer"></i><%= s.mileage %> KM</span>
+	              <span class="mileage"><i class="fa fa-tachometer"></i><%= s.mileage%><%= t("KM") %></span>
 	              <span class="year"><%= s.year %></span>
-	              <span class="price"><%= s.price %> JD</span>
+	              <span class="price"><%= s.price %> <%=t("JD")%></span>
 	            </li>
 	          </ul>
 	        </li>
@@ -43,28 +43,28 @@
 	    </div>
 		<div class="columns large-4 medium-4 UserInfo" >
 			<ul class="ulStyle">
-				<li class="text-center Title">Dealer Information</li>
+				<li class="text-center Title"><%=t("dealer_information")%></li>
 				<li>
-					Name :<span><%= @dealer.name %></span>
+					<%=t("name")%> :<span><%= @dealer.name %></span>
 			  	</li>
 			  	<li>
-					Phone Number : <span><%= @dealer.phone_number %></span>
+					<%=t("phone_number")%> : <span><%= @dealer.phone_number %></span>
 			  	</li>
 			  	<li>
-					Mobile Number :<span><%= @dealer.mobile_number %></span>
+					<%=t("mobile_number")%> :<span><%= @dealer.mobile_number %></span>
 			  	</li>
 			  	<li>
-					City :<span><%= Dealer::City[@dealer.city.to_s] %></span>
+					<%=t("city")%> :<span><%= Dealer::City[@dealer.city.to_s] %></span>
 			  	</li>
 			  	<li>
-					Street Name :<span><%= @dealer.street_name %></span>
+					<%=t("street_name")%> :<span><%= @dealer.street_name %></span>
 			  	</li>
 			  	<li>
-					Building Number : <span><%= @dealer.building_number %></span>
+					<%=t("building_number")%> : <span><%= @dealer.building_number %></span>
 			  	</li>
 					
 			</ul>
-			<p class="locationlabel">Location :</p>
+			<p class="locationlabel"><%=t("gallery_location")%> :</p>
 			<p class="location"><%= @dealer.gallery_location %></p>
 		</div>
 		
@@ -72,8 +72,8 @@
 </section>
 <section class="latest_offers">
 	<div class="row clearfix">         			
-    	<h2>LATEST CARS IN SHOWROOM</h2>
-        <a href="#" class="link_more">View All Latest Added</a>
+    	<h2><%= t("Latest_Cars") %></h2>
+        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
 	</div>
     <div id="latest_offers">
     	<% @latest_cars.each do |c| %>

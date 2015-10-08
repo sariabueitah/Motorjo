@@ -17,19 +17,19 @@
 			<%= form_tag  cars_path, :id => 'car_search_form', :method => :get do %>
 			  <div class="small-6 medium-3 columns">
 			    <%= label_tag t(:car_make) %>
-			    <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: "All", class: "radius"  %>
+			    <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: t("all"), class: "radius"  %>
 			  </div>
 			  <div id="HomeSearchModel" class="small-6 medium-3 columns">
 			    <%= label_tag t(:car_model) %>
-			    <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All", :disabled => true, class: "radius" %>
+			    <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), :disabled => true, class: "radius" %>
 			  </div>
 			  <div class="small-6 medium-3 columns">
 			    <%= label_tag t(:year) %>
-			    <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: "All", class: "radius"  %>
+			    <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all"), class: "radius"  %>
 			  </div>
 			  <div class="small-6 medium-3 columns">
 			    <%= label_tag t("Gear_Box_Type") %>
-			    <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [s[1] , s[0]] }), include_blank: "All", class: "radius" %>
+			    <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all"), class: "radius" %>
 			  </div>
 			  <div class="small-12 text-center columns">
 			      <%= submit_tag t("Search") , class: "button tiny buttoncustom "%>
@@ -47,7 +47,7 @@
 	        	<%= link_to (image_tag @latest_special_car.car_images[0].image.url(:special_car_main)), @latest_special_car %>
           		<div class="mainSpecialCarText">
         			<%= link_to "#{get_make(@latest_special_car.car_make)} #{get_model(@latest_special_car.car_model)}", @latest_special_car %>
-		            <div class="price"><%= @latest_special_car.price %> JD</div>
+		            <div class="price"><%= @latest_special_car.price %> <%=t("JD")%></div>
 		            <div class="descr">
 		             	<%= truncate(@latest_special_car.description , :length => 160,  :separator => ' ') do
 				          link_to t("see_more") ,car_path(@latest_special_car,:anchor => "Description")
@@ -71,10 +71,10 @@
 	                        </div>
 	                        <div class="special_text">
 	                        	<h3><%= link_to ("#{get_make(s.car_make)} #{get_model(s.car_model)}"), s %></h3>
-	                            <div class="info_row"><span>YEAR</span> <%= s.year %></div>
-	                            <div class="info_row"><span>GEAR</span><%= Car::Gearbox[s.gearbox_id.to_s] %></div>
-	                            <div class="info_row"><span>MILEAGE</span><%= s.mileage %></div>
-	                            <div class="special_price"><%= s.price %> JD</div>
+	                            <div class="info_row"><span><%=t("YEAR")%></span> <%= s.year %></div>
+	                            <div class="info_row"><span><%=t("GEAR")%></span><%= Car::Gearbox[s.gearbox_id.to_s] %></div>
+	                            <div class="info_row"><span><%=t("MILEAGE")%></span><%= s.mileage %></div>
+	                            <div class="special_price"><%= s.price %> <%=t("JD")%></div>
 	                        </div>
 	                    </div>
                     <% end %>

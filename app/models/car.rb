@@ -12,11 +12,11 @@ class Car < ActiveRecord::Base
   belongs_to :user
   validates :title, :car_make, :car_model, :year, :car_location, :contact_number, :gearbox_id, :color_id, :interior_design_id, :report, :car_images, presence: true
   validates :report_other, presence: true, if: :report_other?
-  validates :car_images, length: { in: 1..8 }
+  validates :car_images, length: { in: 1..12 }
   accepts_nested_attributes_for :car_images, :reject_if => :all_blank, :allow_destroy => true
-  Gearbox = {"1" => "Manual", "2" => "Automatic"}
-  FUELTYPE = {"1" => "Petrol", "2" => "Diesel", "3" => "Hybrid"}
-  REPORT = {"1" => "Accident Free", "2" => "Damaged", "3" => "Repaired", "4" => "Other"}
+  Gearbox = {"1" => "manual", "2" => "automatic"}
+  FUELTYPE = {"1" => "petrol", "2" => "diesel", "3" => "hybrid"}
+  REPORT = {"1" => "accident_free", "2" => "damaged", "3" => "repaired", "4" => "other"}
   def report_other?
     report === 4
   end

@@ -11,22 +11,22 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :first_name %><br>
+    <%= f.label t(:first_name) %><br>
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br>
+    <%= f.label  t(:last_name) %><br>
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :phone_number %><br>
+    <%= f.label t(:phone_number) %><br>
     <%= f.text_field :phone_number %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label t(:address) %><br>
     <%= f.text_area :address %>
   </div>
   <div class="actions text-center">
-    <%= f.submit "Update Information", :class => 'button tiny buttoncustom' %>
+    <%= f.submit t("update_information"), :class => 'button tiny buttoncustom' %>
   </div>
 <% end %>

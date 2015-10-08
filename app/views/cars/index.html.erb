@@ -14,39 +14,39 @@
         <%= form_tag cars_path, :id => 'car_search_form', :method => :get do %>
           <div class="large-3 medium-3 columns">
             <%= label_tag t(:car_make) %>
-            <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: "All" %>
+            <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: t("all") %>
           </div>
           <div id="HomeSearchModel" class="formCarModel large-3 medium-3 columns">
             <%= label_tag t(:car_model) %>
-            <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: "All", disabled: true%>
+            <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), disabled: true%>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t(:cubic_capacity_from) %>
-            <%= select_tag 'q[cubic_capacity_from]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: "All" %>
+            <%= select_tag 'q[cubic_capacity_from]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: t("all") %>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t(:cubic_capacity_to) %>
-            <%= select_tag 'q[cubic_capacity_to]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: "All" %>
+            <%= select_tag 'q[cubic_capacity_to]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: t("all") %>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t(:year) %>
-            <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: "All" %>
+            <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t("Gear_Box_Type") %>
-            <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
+            <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t(:fuel_type) %>
-            <%= select_tag 'q[fuel_type]' , options_for_select(Car::FUELTYPE.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
+            <%= select_tag 'q[fuel_type]' , options_for_select(Car::FUELTYPE.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t("color") %>
-            <%= select_tag 'q[color_id]', options_for_select(Color.all.map{ |c| [c.title, c.id]}), include_blank: "All" %>
+            <%= select_tag 'q[color_id]', options_for_select(Color.all.map{ |c| [c.title, c.id]}), include_blank: t("all") %>
           </div>
           <div class="large-3 medium-3 columns">
             <%= label_tag t("Car_Report") %>
-            <%= select_tag 'q[report]', options_for_select(Car::REPORT.map{ |s| [s[1] , s[0]] }), include_blank: "All" %>
+            <%= select_tag 'q[report]', options_for_select(Car::REPORT.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
           </div>
           <div class="large-12 medium-12 columns">
             <%= label_tag t("Comfort_and_Interior_Design") %>
@@ -89,9 +89,9 @@
             end %>
             </li>
             <li class="info">
-              <span class="mileage"><i class="fa fa-tachometer"></i><%= s.mileage %> KM</span>
+              <span class="mileage"><i class="fa fa-tachometer"></i><%= s.mileage %> <%=t("KM")%></span>
               <span class="year"><%= s.year %></span>
-              <span class="price"><%= s.price %> JD</span>
+              <span class="price"><%= s.price %> <%=t("JD")%></span>
             </li>
             
           </ul>

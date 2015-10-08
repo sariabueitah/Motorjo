@@ -12,35 +12,35 @@
   <% end %>
   <div class="userInfo large-6 columns">
     <div class="field">
-      <%= f.label :gallery_name %>
+      <%= f.label t(:gallery_name) %>
       <%= f.text_field :gallery_name %>
     </div>
     <div class="field">
-      <%= f.label :name %>
+      <%= f.label t(:name) %>
       <%= f.text_field :name %>
     </div>
     <div class="field">
-      <%= f.label :phone_number %>
+      <%= f.label t(:phone_number) %>
       <%= f.text_field :phone_number %>
     </div>
     <div class="field">
-      <%= f.label :mobile_number %>
+      <%= f.label t(:mobile_number) %>
       <%= f.text_field :mobile_number %>
     </div>
     <div>
-      <%= f.label "City" %>
+      <%= f.label t("city") %>
       <%= f.select :city, Dealer::City.map{ |s| [s[1] , s[0]] } %>
     </div>
     <div class="field">
-      <%= f.label :gallery_location %>
+      <%= f.label t(:gallery_location) %>
       <%= f.text_area :gallery_location %>
     </div>
     <div class="field">
-      <%= f.label :street_name %>
+      <%= f.label t(:street_name) %>
       <%= f.text_field :street_name %>
     </div>
     <div class="field">
-      <%= f.label :building_number %>
+      <%= f.label t(:building_number) %>
       <%= f.text_field :building_number %>
     </div>
   </div>
@@ -48,22 +48,22 @@
     <div class="innerUserLoginInfo">
       <%= f.fields_for :user do |u| %>
         <div class="field">      
-          <%= u.label :email %>
+          <%= u.label t(:email) %>
           <%= u.text_field :email %>
         </div>
         
         <div class="field">
-          <%= u.label :password %>
+          <%= u.label t(:password) %>
           <%= u.password_field :password %>
         </div>
         
         <div class="field">
-          <%= u.label :password_confirmation %>
+          <%= u.label t(:password_confirmation) %>
           <%= u.password_field :password_confirmation %>
         </div>    
       <% end %>   
       <div class="actions text-center">
-        <%= f.submit "Sign in", :class => 'button tiny buttoncustom createCar' %>
+        <%= f.submit t("sign_in"), :class => 'button tiny buttoncustom createCar' %>
       </div>
     </div>
   </div>

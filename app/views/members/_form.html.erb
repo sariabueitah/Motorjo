@@ -13,19 +13,19 @@
   
   <div class="userInfo large-6 columns">
     <div class="field">
-      <%= f.label :first_name %>
+      <%= f.label t(:first_name) %>
       <%= f.text_field :first_name %>
     </div>
     <div class="field">
-      <%= f.label :last_name %>
+      <%= f.label t(:last_name) %>
       <%= f.text_field :last_name %>
     </div>
     <div class="field">
-      <%= f.label :phone_number %>
+      <%= f.label t(:phone_number) %>
       <%= f.text_field :phone_number %>
     </div>
     <div class="field">
-      <%= f.label :address %>
+      <%= f.label t(:address)%>
       <%= f.text_area :address %>
     </div>
   </div>
@@ -33,22 +33,22 @@
     <div class="innerUserLoginInfo">
       <%= f.fields_for :user do |u| %>
         <div class="col-lg-6">      
-          <%= u.label :email %>
+          <%= u.label t(:email) %>
           <%= u.text_field :email %>
         </div>
         
         <div class="col-lg-6">
-          <%= u.label :password %>
+          <%= u.label t(:password) %>
           <%= u.password_field :password %>
         </div>
         
         <div class="col-lg-6">
-          <%= u.label :password_confirmation %>
+          <%= u.label t(:password_confirmation) %>
           <%= u.password_field :password_confirmation %>
         </div>    
       <% end %>
       <div class="actions text-center">
-        <%= f.submit "Sign in", :class => 'button tiny buttoncustom createCar' %>
+        <%= f.submit t("sign_in"), :class => 'button tiny buttoncustom createCar' %>
       </div>
     </div>
   </div>

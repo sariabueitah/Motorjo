@@ -2,6 +2,7 @@ ar:
   Admin_Page: صفحة الأدارة
   Arabic: العربية
   Buy_a_car: أشتري سيارة
+  Car_Images_Appearance: صور و معلومات السيارة
   Car_Report: حالة السيارة
   Car_Report_Details: تقرير المركبة
   Car_location: موقع السيارة
@@ -16,12 +17,17 @@ ar:
   Enter_Email: أدخل البريد الألكتروني
   Enter_Message: أدخل الرسالة
   Enter_Name: أدخل الأسم
+  Features_Contact_Information: مواصفات السيارة و معلومات الأتصال
+  GEAR: ناقل الحركة
   Gear_Box_Type: نوع ناقل السرعة
   Interior_Color: لون الفرش
   Interior_Design: نوع الفرش
+  JD: دأ
+  KM: كم
   Latest_Cars: أحدث السيارات
   Log_out: الخروج
   Login: الدخول
+  MILEAGE: المسافة المقطوعة
   Member_Page: صفحة البائع
   Message: الرسالة
   Name: الأسم
@@ -39,12 +45,51 @@ ar:
   View_All_Latest_Added: المزيد من أخر السيارات
   View_All_Special_Offers: المزيد من الأعلانات المميزة
   View_More_Details: المزيد من المعلومات
+  YEAR: السنة
+  accident_free:  بدون حوادث
+  address: العنوان
+  all: الكل
+  automatic: أوتوماتيك
+  building_number: رقم العمارة
+  car_information: معلوات السيارة
   car_make: نوع السيارة
   car_model: فئة السيارة
+  city: المدينة
   color: اللون
   cubic_capacity: سعة المحرك
   cubic_capacity_from: سعة المحرك من
   cubic_capacity_to: سعة المحرك الى
+  damaged:  مضروب
+  dealer_information: معلومات التاجر
+  diesel: ديزل
+  edit_your_profile: تعديل معلوماتك
+  editing_car: تعديل السيارة
+  email: البريد الألكتروني
+  first_name: الأسم الأول
   fuel_type: نوع الواقود
+  gallery_location: موقع المعرض
+  gallery_name: أسم المعرض
+  hybrid: هيبريد
+  last_name: أسم العائلة
+  manual: عادي
+  member_information: معلومات البائع
+  mileage: المسافة المقطوعة
+  mobile_number: رقم الهاتف النقال
+  my_information: معلوماتي
+  my_password: تعديل كلمة السر
+  name: الأسم
+  new_car: أضافة سيارة
+  other:  آخرى
+  password: كلمة السر
+  password_confirmation: تأكيد كلمة السر
+  petrol: بنزين
+  phone_number: رقم الهاتف
+  price: السعر
+  repaired: مصلح
   see_more: المزيد...
+  sign_in: الدخول
+  street_name: أسم الشارع
+  title: العنوان
+  update_information: تحديث المعلومات
+  update_password: تعديل كلمة السر
   year: السنة

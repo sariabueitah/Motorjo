@@ -17,19 +17,19 @@
 		</div>
 	</div>
   <div class="field columns medium-4">
-    <%= f.label :color_id %>
+    <%= f.label t(:color) %>
     <%= collection_select(:car, :color_id, Color.all, :id, :title) %>
   </div>
   <div class="field columns medium-4">
-    <%= f.label :interior_design_id %>
+    <%= f.label :interior_design, t("Interior_Design") %>
     <%= collection_select(:car, :interior_design_id, InteriorDesign.all, :id, :title) %>
   </div>
 	<div class="field columns medium-4">
-    <%= f.label :interior_color_id %>
+    <%= f.label :interior_color,t("Interior_Color") %>
     <%= collection_select(:car, :interior_color_id, InteriorColor.all, :id, :title) %>
   </div>
 	<div class="field columns medium-12">
-      <%= f.label :description %>
+      <%= f.label :description, t("Description") %>
       <%= f.text_area :description, :rows => "3"%>
   </div>
 </section>
