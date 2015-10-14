@@ -41,7 +41,7 @@
 <section class="homepageMiddleArea">
 	<div class="row">
 		<h1><%= t("Special_Deals").capitalize %></h1>
-		<div class="small-12 large-6 left columns" >
+		<div class="small-12 large-6 columns" >
 			<% unless @latest_special_car.blank? %>
 	        <div class="mainSpecialCar">
 	        	<%= link_to (image_tag @latest_special_car.car_images[0].image.url(:special_car_main)), @latest_special_car %>
@@ -60,7 +60,7 @@
 	      	</div>
 	      	<% end %>
 		</div>
-		<div class="small-12 large-6 right columns">
+		<div class="small-12 large-6 columns">
 			<% unless @special_cars.blank? %>
 			<div class="special_Deal">
                 <div id="special_Deal">
@@ -72,8 +72,8 @@
 	                        <div class="special_text">
 	                        	<h3><%= link_to ("#{get_make(s.car_make)} #{get_model(s.car_model)}"), s %></h3>
 	                            <div class="info_row"><span><%=t("YEAR")%></span> <%= s.year %></div>
-	                            <div class="info_row"><span><%=t("GEAR")%></span><%= Car::Gearbox[s.gearbox_id.to_s] %></div>
-	                            <div class="info_row"><span><%=t("MILEAGE")%></span><%= s.mileage %></div>
+	                            <div class="info_row"><span><%=t("GEAR")%></span><%= I18n.t(Car::Gearbox[s.gearbox_id.to_s])%></div>
+	                            <div class="info_row"><span><%=t("MILEAGE")%></span><%= s.mileage %><%=t("KM")%></div>
 	                            <div class="special_price"><%= s.price %> <%=t("JD")%></div>
 	                        </div>
 	                    </div>
@@ -81,7 +81,7 @@
                 </div>
                 <a class="prev" id="special_offers_prev" href="#"><i class="fa fa-chevron-up fa-lg"></i></a>
             	<a class="next" id="special_offers_next" href="#"><i class="fa fa-chevron-down fa-lg"></i></a>
-                <div class="link_more"><a href="#"><%= t("View_All_Special_Offers") %></a></div>
+                <div class="link_more"><%= link_to t("View_All_Special_Offers"), cars_path %></div>
             </div>      
             <% end %>     
         <!--/ special offer -->			
@@ -91,7 +91,7 @@
 <section class="latest_offers">
 	<div class="row clearfix">         			
     	<h2><%= t("Latest_Cars").capitalize %></h2>
-        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
+        <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
 	</div>
     <div id="latest_offers">
     	<% @latest_cars.each do |c| %>

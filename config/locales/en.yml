@@ -61,11 +61,14 @@ en:
   cubic_capacity_to: Cubic Capacity To
   damaged:	Damaged
   dealer_information: Dealer Information
+  did_not_receive_confirmation_instructions: Didn't Receive Confirmation Instructions
+  did_not_receive_unlock_instructions: Didn't Receive Unlock Instructions
   diesel: Diesel
   edit_your_profile: Edit Your Profile
   editing_car: Editing Car
   email: Email
   first_name: First Name
+  forgot_your_password: Forgot your Password?
   fuel_type: Fuel Type
   gallery_location: Gallery Location
   gallery_name: Gallery Name
@@ -79,13 +82,18 @@ en:
   my_password: My Password
   name: Name
   new_car: New Car
+  new_dealer: New Dealer
+  new_member: New Member
   other:	Other
   password: Password
   password_confirmation: Password Confirmation
   petrol: Petrol
   phone_number: Phone Number
   price: Price
+  remember_me: Remember Me
   repaired: Repaired
+  reset_password: Reset Password
+  resend_confirmation: Resend confirmation instructions
   see_more: see more...
   sign_in: Sign In
   street_name: Street Name

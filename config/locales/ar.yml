@@ -61,11 +61,14 @@ ar:
   cubic_capacity_to: سعة المحرك الى
   damaged:  مضروب
   dealer_information: معلومات التاجر
+  did_not_receive_confirmation_instructions: لم أحصل على  تعليمات التأكيد
+  did_not_receive_unlock_instructions: لم أحصل على  تعليمات فتح الحساب
   diesel: ديزل
   edit_your_profile: تعديل معلوماتك
   editing_car: تعديل السيارة
   email: البريد الألكتروني
   first_name: الأسم الأول
+  forgot_your_password: نسيت كلمة السر؟
   fuel_type: نوع الواقود
   gallery_location: موقع المعرض
   gallery_name: أسم المعرض
@@ -79,13 +82,18 @@ ar:
   my_password: تعديل كلمة السر
   name: الأسم
   new_car: أضافة سيارة
+  new_dealer: تاجر جديد
+  new_member: بائع جديد
   other:  آخرى
   password: كلمة السر
   password_confirmation: تأكيد كلمة السر
   petrol: بنزين
   phone_number: رقم الهاتف
   price: السعر
+  remember_me: تذكرني
   repaired: مصلح
+  reset_password: إعادة تعيين كلمة المرور
+  resend_confirmation: أرسال التأكيد
   see_more: المزيد...
   sign_in: الدخول
   street_name: أسم الشارع

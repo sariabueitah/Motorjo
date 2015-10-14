@@ -43,9 +43,20 @@
 /* nav Bar Start */
 .top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {width:100%;  text-align: center;}
 .top-bar {background:none;}
-.MainNavBar {position:absolute;z-index:1;}
-.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
-	line-height:rem-calc(40);
+.MainNavBar {
+	position:absolute;
+	z-index:1;
+	.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+		line-height:rem-calc(40);
+	}
+	.top-bar-section ul li > a.UserIcon {
+		font-size:rem-calc(25);
+	}
+	.top-bar-section {
+		.right-area {
+			float:left;
+		}
+	}
 }
 .buttoncustom{
 	-webkit-box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
@@ -54,9 +65,7 @@
   width:180px;
   margin-bottom:0px;
 }
-.top-bar-section ul li > a.UserIcon {
-	font-size:rem-calc(25);
-}
+
 /* nav Bar End */
 /* Homepage Start */
 .homepageMiddleArea {
@@ -107,7 +116,7 @@
 		  font-size: rem-calc(17);
 		  font-weight: 500;
 		  top: 25px;
-		  right: 30px;
+		  left: 30px;
   	}
   	.descr{
   		color: $gray6;
@@ -137,7 +146,7 @@
 		height:136px;
 		.special_image {
 			width:62%;
-			float:left;
+			float:right;
 			border-right:4px solid $orange;
 			img {
 				border-radius:3px 0 0 0;
@@ -171,10 +180,10 @@
 				line-height:22px;
 				color:$gray5;
 				font-size:rem-calc(10);
-				text-align:right;
+				text-align:left;
 				position:relative;
 				span {
-					float:left;
+					float:right;
 				}
 			}
 			.special_price {
@@ -218,7 +227,7 @@
 	}
 	.link_more {
 		position:absolute;
-		right:0;
+		left:0;
 		top:2px;
 		color:$lightblue;
 		font-size:13px;
@@ -273,6 +282,7 @@
 /* Hero Flex Slider */
 /*-----------------------------------*/
 .heroFlex {
+	direction:ltr;
 	position:relative;
 	.slides, .slides > li, .flex-control-nav, .flex-direction-nav {
 	  margin: 0;
@@ -424,6 +434,9 @@
 /* Search Start */
 .searcharea {
 	padding-top:40px;
+	.actions {
+		text-align:left;
+	}
 }
 .searchResults {
   background: $gray1;
@@ -438,12 +451,12 @@
 	    -webkit-border-radius: 0 0 3px 3px;
 	    .carimage {
 	    	border-right: 3px solid $orange;
-	    	float:left;
+	    	float:right;
 	    	width:27%;
 			}
 			.infolist {
 				width:73%;
-				float:left;
+				float:right;
 				padding:5px 20px;
 				.title{
 					text-align: center;
@@ -504,6 +517,7 @@
     background: $gray1;
     .flexslider {
     	position:relative;
+    	direction: ltr;
     }
     #carousel {
     	padding:5px 30px;
@@ -550,12 +564,12 @@
 	    		display: inline-block;
 	    		text-align: center;
 	    		width:24%;
-	    		border-left:1px solid $gray4;
+	    		border-right:1px solid $gray4;
 	    		font-size: rem-calc(15);
 	    		color:$gray7;
 	    	}
 	    	li:first-child{
-	    		border-left:none;
+	    		border-right:none;
 	    	}
 
     	}
@@ -577,7 +591,7 @@
 			    font-size: rem-calc(13);
 			    font-weight: bold;
 			    .value {
-			    	float:right;
+			    	float:left;
 			    	color:$lightblue
 			    }
     		}
@@ -598,8 +612,11 @@
     }
     .CarDetailTabs {
     	margin-top:60px;
+    	ul {
+    		margin-right:0;
+    	}
     	.tab-title {
-    		border-right:1px solid $gray4;
+    		border-left:1px solid $gray4;
     	}
     	.tab-title:last-child {
     		border-right:none;
@@ -802,7 +819,7 @@
 		margin:20px auto;
 		padding:20px 15px;
 		.userInfo {
-			border-right:1px solid $gray4;
+			border-left:1px solid $gray4;
 		}
 		.userLoginInfo {
 			.innerUserLoginInfo {

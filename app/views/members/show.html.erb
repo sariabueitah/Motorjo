@@ -59,7 +59,7 @@
 <section class="latest_offers">
 	<div class="row clearfix">         			
     	<h2><%= t("Latest_Cars") %></h2>
-        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
+        <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
 	</div>
     <div id="latest_offers">
     	<% @latest_cars.each do |c| %>

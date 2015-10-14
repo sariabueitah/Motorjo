@@ -38,7 +38,7 @@
     </div>
     <div class="large-6 medium-6 columns CarDetailArea">
       <% unless @car.price.blank? %>
-        <span class="price"><strong><%= @car.price %> JD</strong></span>
+        <span class="price"><strong><%= @car.price %> <%= t("JD") %></strong></span>
       <% end %>
       <ul class="ulStyle CarInlineList">
         <li>
@@ -50,15 +50,15 @@
         </li>
         <% end %>
         <li>
-          <%= Car::FUELTYPE[@car.fuel_type.to_s] %>
+          <%= I18n.t(Car::FUELTYPE[@car.fuel_type.to_s]) %>
         </li>
         <li>
-          <%= Car::Gearbox[@car.gearbox_id.to_s] %>
+          <%= I18n.t(Car::Gearbox[@car.gearbox_id.to_s]) %>
         </li>
       </ul>
       <p class="description">
         <%= truncate(@car.description , :length => 200,  :separator => ' ') do
-          link_to "see more..." ,"#Description"
+          link_to t("see more") ,"#Description"
         end %>
       </p>
       <ul class="ulStyle CarDetails ">
@@ -83,7 +83,7 @@
         
         <li> 
           <span class="lable"><%= t("Car_Report")%> : </span>
-          <span class="value"><%= Car::REPORT[@car.report.to_s] %></span>
+          <span class="value"><%= I18n.t(Car::REPORT[@car.report.to_s]) %></span>
         </li>
       </ul>
       <% if @car.report == 4 %>
@@ -171,7 +171,7 @@
 <section class="latest_offers">
   <div class="row clearfix">              
       <h2><%= t("Latest_Cars") %></h2>
-        <a href="#" class="link_more"><%= t("View_All_Latest_Added") %></a>
+        <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
   </div>
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>

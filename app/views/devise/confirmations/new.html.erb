@@ -10,7 +10,7 @@
 <section class="PageTitle">
   <div class="row">
     <div class="columns large-12 medium-12 medium-centered large-centered">
-      <h2>Resend confirmation instructions</h2>
+      <h2><%= t("resend_confirmation")%></h2>
     </div>
   </div>
 </section>
@@ -21,12 +21,12 @@
         <%= devise_error_messages! %>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label t(:email) %><br />
           <%= f.email_field :email, autofocus: true %>
         </div>
 
         <div class="actions text-center">
-          <%= f.submit "Resend confirmation", :class => 'button tiny buttoncustom createCar' %><br>
+          <%= f.submit t("resend_confirmation"), :class => 'button tiny buttoncustom createCar' %><br>
           <%= render "devise/shared/links" %>
         </div>
       <% end %>
