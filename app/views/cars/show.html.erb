@@ -1,3 +1,27 @@
+<% 
+  set_meta_tags title: get_make(@car.car_make)+ " " + get_model(@car.car_model),
+                keywords: @customKeywords + "," + get_make(@car.car_make) + "," + get_model(@car.car_model),
+                author: @page_author,
+                publisher: @page_publisher,
+                og: {
+                  title:    get_make(@car.car_make)+ " " + get_model(@car.car_model),
+                  type:     'website',
+                  url:      request.original_url,
+                  image:    [{
+                    _: "http://"+request.domain+@car.car_images[0].image.url(:car_main),
+                    width: 470,
+                    height: 338,
+                  }]
+                },
+                twitter: {
+                  card:  "photo",
+                  image:    {
+                    _: "http://"+request.domain+@car.car_images[0].image.url(:car_main),
+                    width: 470,
+                    height: 338,
+                  }
+                }
+%>
 <section class="PageHead">
   <div class="AdContainer">
     <div class="row">
