@@ -35,6 +35,13 @@ class CarsController < ApplicationController
   def show
     @user = User.find(@car.user_id)
     @latest_cars = Car.last(10)
+    if(@user.meta_type == "Dealer")
+      @page_author = request.original_url + dealer_path(@user.meta_id)
+      @page_publisher = request.original_url + dealer_path(@user.meta_id)
+    else
+      @page_author = request.original_url + member_path(@user.meta_id)
+      @page_publisher = request.original_url + member_path(@user.meta_id)
+    end
   end
 
   # GET /cars/new

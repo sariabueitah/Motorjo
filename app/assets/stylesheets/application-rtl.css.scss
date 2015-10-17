@@ -892,10 +892,18 @@ input.myfile {
 		background-color:$gray1;
 	}
 }
+.mobileMenuIcon {
+	float:left;
+    font-size: 32px;
+    padding: 0 15px;
+}
 @media #{$small-up} { 
 	
 }
 @media #{$small-only} {
+	.logoSection.tab-bar-section {
+		margin-top:10px;
+	}
 	.special_Deal {
 		height:620px;
 		.special_Deal_item {
@@ -938,6 +946,9 @@ input.myfile {
 	  	width: 100%;
 	  	text-align: center;
 	  }
+	}
+	.footer .row .footer_contacts .phone {
+		margin:0;
 	}
 }
 

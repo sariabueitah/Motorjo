@@ -7,8 +7,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <%= display_meta_tags site: 'MotorsJo', reverse: true %>
+    <meta name="alexaVerifyID" content="mWQ4AfPHjLKo0aouGKGBRpfLhGo"/>
     <%if I18n.locale == :en %>
       <%= stylesheet_link_tag    "application" %>
     <% else %>
@@ -21,95 +21,140 @@
   </head>
 
   <body>
-    <div class="contain-to-grid MainNavBar">
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-            <h1><a href="/"><%= image_tag("Logo2.png", size: "250x52") %></a></h1>
-          </li>
-        </ul>
-        <section class="top-bar-section">
-          <!-- Right Nav Section -->
-          <ul class="right-area">
-            <li class="has-dropdown">
-              <%if I18n.locale == :en %>
-                <a href="javascript:void(0);"><%= t("English") %></a>
-              <% else %>
-                <a href="javascript:void(0);"><%= t("Arabic") %></a>
-              <% end %>
-              <ul class="dropdown">
-                <%if I18n.locale == :en %>
-                  <li><%= link_to t("Arabic"), set_language_arabic_path, data: { no_turbolink: true } %></li>
-                <% else %>
-                  <li><%= link_to t("English"), set_language_english_path, data: { no_turbolink: true } %></li>
-                <% end %>
-              </ul>
-            </li>
-            <% if user_signed_in? %>
-              <li class="has-dropdown">
-                <% if current_user.meta_type == 'Dealer' %>
-                  <%= link_to raw("<i class='fa fa-user'></i>"), dealer_path(current_user.meta_id), :class => "UserIcon" %>
-                <% elsif current_user.meta_type == 'Member' %>
-                  <%= link_to raw("<i class='fa fa-user'></i>"), member_path(current_user.meta_id), :class => "UserIcon" %>
-                <% end %>
-                <ul class="dropdown">
-                  <li><%= link_to t('Create_Car'), new_car_path %></li>
-                  <% if current_user.meta_type == 'Dealer' %>
-                  <li><%= link_to t('Edit_Profile'), edit_dealer_path(current_user.meta_id) %></li>
-                  <% elsif current_user.meta_type == 'Member' %>
-                    <li><%= link_to t('Edit_Profile'), edit_member_path(current_user.meta_id) %></li>
-                  <% end %>
-                  <% if authenticate_admin? %>
-                    <li><%= link_to t('Admin_Page'), admin_path() %></li>
-                  <% end %>
-                  <li><%= link_to t('Log_out'), destroy_user_session_path, :method => :delete%></li>
-                </ul>
-              </li>
-              
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <%if I18n.locale == :en %>
+              <li><%= link_to t("Arabic"), set_language_arabic_path, data: { no_turbolink: true } %></li>
             <% else %>
-              <li><%= link_to t('Login'), new_user_session_path %></li>
-              <li class="has-dropdown">
-                <a href="javascript:void(0);"><%= t("Sign_Up") %></a>
-                <ul class="dropdown">
-                  <li><%= link_to t('Sign_Up_Seller'), new_member_path %></li>
-                  <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li>
-                </ul>
-              </li>
+              <li><%= link_to t("English"), set_language_english_path, data: { no_turbolink: true } %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li>
+              <% if current_user.meta_type == 'Dealer' %>
+                <%= link_to t("my_profile"), dealer_path(current_user.meta_id), :class => "UserIcon" %>
+              <% elsif current_user.meta_type == 'Member' %>
+                <%= link_to t("my_profile"), member_path(current_user.meta_id), :class => "UserIcon" %>
+              <% end %>
+            </li>
+            <li><%= link_to t('Create_Car'), new_car_path %></li>
+            <% if current_user.meta_type == 'Dealer' %>
+              <li><%= link_to t('Edit_Profile'), edit_dealer_path(current_user.meta_id) %></li>
+            <% elsif current_user.meta_type == 'Member' %>
+              <li><%= link_to t('Edit_Profile'), edit_member_path(current_user.meta_id) %></li>
+            <% end %>
+            <% if authenticate_admin? %>
+              <li><%= link_to t('Admin_Page'), admin_path() %></li>
+            <% end %>
+            <li><%= link_to t('Log_out'), destroy_user_session_path, :method => :delete%></li>
+            <% else %>
+              <li><%= link_to t('Sign_Up_Seller'), new_member_path %></li>
+              <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li>
             <% end %>
           </ul>
-          <!-- Left Nav Section -->
-        </section>
-      </nav>
-    </div>
-    
-    <%= yield %>
-    <div class="footer">
-      <div class="row clearfix">
-            <div class="footer-link">
-                <ul class="ulStyle">
-                    <li><a href="/cars"><span><%= t("Buy_a_car") %></span></a></li> 
-                    <li><a href="/cars/new"><span><%= t("Sell_your_Car") %></span></a></li>
-                    <li><a href="#"><span><%= t("Terms_&_Conditions") %></span></a></li> 
-                </ul>
-            </div>       
-            <div class="footer_social">
-              <div class="social_inner"> 
-                <a href="#" class="social-fb"><i class="fa fa-facebook-official"></i></a>
-                <a href="#" class="social-twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="social-google"><i class="fa fa-google-plus"></i></a>
-                </div>
+        </aside>
+        <a class="exit-off-canvas"></a>
+        <div class="contain-to-grid MainNavBar">
+          <nav class="top-bar" data-topbar role="navigation">
+            <section class="logoSection tab-bar-section">
+              <h1><a href="/"><%= image_tag("Logo2.png", size: "250x52") %></a></h1>
+            </section>
+            <section class="hide-for-small-only top-bar-section">
+              <ul class="right-area">
+                <li class="has-dropdown">
+                  <%if I18n.locale == :en %>
+                    <a href="javascript:void(0);"><%= t("English") %></a>
+                  <% else %>
+                    <a href="javascript:void(0);"><%= t("Arabic") %></a>
+                  <% end %>
+                  <ul class="dropdown">
+                    <%if I18n.locale == :en %>
+                      <li><%= link_to t("Arabic"), set_language_arabic_path, data: { no_turbolink: true } %></li>
+                    <% else %>
+                      <li><%= link_to t("English"), set_language_english_path, data: { no_turbolink: true } %></li>
+                    <% end %>
+                  </ul>
+                </li>
+                <% if user_signed_in? %>
+                  <li class="has-dropdown">
+                    <% if current_user.meta_type == 'Dealer' %>
+                      <%= link_to raw("<i class='fa fa-user'></i>"), dealer_path(current_user.meta_id), :class => "UserIcon" %>
+                    <% elsif current_user.meta_type == 'Member' %>
+                      <%= link_to raw("<i class='fa fa-user'></i>"), member_path(current_user.meta_id), :class => "UserIcon" %>
+                    <% end %>
+                    <ul class="dropdown">
+                      <li><%= link_to t('Create_Car'), new_car_path %></li>
+                      <% if current_user.meta_type == 'Dealer' %>
+                      <li><%= link_to t('Edit_Profile'), edit_dealer_path(current_user.meta_id) %></li>
+                      <% elsif current_user.meta_type == 'Member' %>
+                        <li><%= link_to t('Edit_Profile'), edit_member_path(current_user.meta_id) %></li>
+                      <% end %>
+                      <% if authenticate_admin? %>
+                        <li><%= link_to t('Admin_Page'), admin_path() %></li>
+                      <% end %>
+                      <li><%= link_to t('Log_out'), destroy_user_session_path, :method => :delete%></li>
+                    </ul>
+                  </li>
+                  
+                <% else %>
+                  <li><%= link_to t('Login'), new_user_session_path %></li>
+                  <li class="has-dropdown">
+                    <a href="javascript:void(0);"><%= t("Sign_Up") %></a>
+                    <ul class="dropdown">
+                      <li><%= link_to t('Sign_Up_Seller'), new_member_path %></li>
+                      <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li>
+                    </ul>
+                  </li>
+                <% end %>
+              </ul>
+            </section>
+            <section class="mobileMenuIcon hide-for-medium-up">
+              <a class="left-off-canvas-toggle" href="#" ><i class="fa fa-bars"></i></a>
+            </section>
+          </nav>
         </div>
-            
-            <div class="footer_contacts">
-              <span class="phone"><i class="fa fa-phone"></i> 0788833382 - 0799833328</span>
-                <span class="email">admin@motorsjo.com</span>
+        
+        <%= yield %>
+        <div class="footer">
+          <div class="row clearfix">
+                <div class="footer-link">
+                    <ul class="ulStyle">
+                        <li><a href="/cars"><span><%= t("Buy_a_car") %></span></a></li> 
+                        <li><a href="/cars/new"><span><%= t("Sell_your_Car") %></span></a></li>
+                        <li><a href="#"><span><%= t("Terms_&_Conditions") %></span></a></li> 
+                    </ul>
+                </div>       
+                <div class="footer_social">
+                  <div class="social_inner"> 
+                    <a href="https://www.facebook.com/Motorsjordan-1031824210175355/?ref=bookmarks" class="social-fb"><i class="fa fa-facebook-official"></i></a>
+                    <a href="https://twitter.com/motorsjordan" class="social-twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="https://instagram.com/motorsjordan/" class="social-instagram"><i class="fa fa-instagram"></i></a>
+                    </div>
             </div>
-            
-            <div class="copyright">
-            MotorsJo.com by <a href="javascript:void(0)">DotsWorld</a>
-            </div>
-                      
-        </div> 
+                
+                <div class="footer_contacts">
+                  <span class="phone"><i class="fa fa-phone"></i> 0788833382 - 0799833328</span>
+                    <span class="email">admin@motorsjo.com</span>
+                </div>
+                
+                <div class="copyright">
+                MotorsJo.com by <a href="javascript:void(0)">DotsWorld</a>
+                </div>
+                          
+            </div> 
+        </div>
+      </div>
     </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68969192-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
   </body>
 </html>

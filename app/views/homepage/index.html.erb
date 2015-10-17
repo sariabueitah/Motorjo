@@ -1,3 +1,25 @@
+<% 
+  set_meta_tags title: '',
+  				keywords: @test ,
+                og: {
+                  title:    'MotorsJo',
+                  type:     'website',
+                  url:      request.original_url,
+                  image:    [{
+                    _: "http://"+request.domain+image_path('Logo2.png'),
+                    width: 300,
+                    height: 63,
+                  }]
+                },
+                twitter: {
+                  card:  "photo",
+                  image: {
+                    _: "http://"+request.domain+image_path('Logo2.png'),
+                    width: 300,
+                    height: 63,
+                  }
+                }
+%>
 <section id="homePageContainer">
 	<div class="heroFlex">
 		<ul class="slides">
