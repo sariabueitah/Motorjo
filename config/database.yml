@@ -81,5 +81,8 @@ test:
 production:
   <<: *default
   database: motorsjo_production
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
   username: motorsjo
   password: <%= ENV['MOTORSJO_DATABASE_PASSWORD'] %>
