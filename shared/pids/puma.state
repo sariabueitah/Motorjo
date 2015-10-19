@@ -1,0 +1,30 @@
+---
+pid: 11151
+config: !ruby/object:Puma::Configuration
+  cli_options: 
+  conf: 
+  options:
+    :min_threads: 1
+    :max_threads: 6
+    :quiet: false
+    :debug: false
+    :binds:
+    - unix:///var/www/Motorjo/shared/sockets/puma.sock
+    :workers: 1
+    :daemon: false
+    :mode: :http
+    :before_fork: []
+    :worker_timeout: 60
+    :worker_shutdown_timeout: 30
+    :environment: production
+    :redirect_stdout: "/var/www/Motorjo/shared/log/puma.stdout.log"
+    :redirect_stderr: "/var/www/Motorjo/shared/log/puma.stderr.log"
+    :redirect_append: true
+    :pidfile: "/var/www/Motorjo/shared/pids/puma.pid"
+    :state: "/var/www/Motorjo/shared/pids/puma.state"
+    :control_url: unix:///tmp/puma-status-1445112979312-11151
+    :worker_directory: "/var/www/Motorjo"
+    :config_file: config/puma.rb
+    :control_url_temp: "/tmp/puma-status-1445112979312-11151"
+    :control_auth_token: 1869e1a39abcce997b807fe755353a
+    :tag: Motorjo
