@@ -28,7 +28,7 @@ class SafetyFeaturesController < ApplicationController
 
     respond_to do |format|
       if @safety_feature.save
-        format.html { redirect_to safety_feature_path, notice: 'Safety feature was successfully created.' }
+        format.html { redirect_to safety_features_path, notice: 'Safety feature was successfully created.' }
         format.json { render :show, status: :created, location: @safety_feature }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SafetyFeaturesController < ApplicationController
   def update
     respond_to do |format|
       if @safety_feature.update(safety_feature_params)
-        format.html { redirect_to safety_feature_path, notice: 'Safety feature was successfully updated.' }
+        format.html { redirect_to safety_features_path, notice: 'Safety feature was successfully updated.' }
         format.json { render :show, status: :ok, location: @safety_feature }
       else
         format.html { render :edit }

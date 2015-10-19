@@ -28,7 +28,7 @@ class InteriorDesignsController < ApplicationController
 
     respond_to do |format|
       if @interior_design.save
-        format.html { redirect_to interior_design_path, notice: 'Interior design was successfully created.' }
+        format.html { redirect_to interior_designs_path, notice: 'Interior design was successfully created.' }
         format.json { render :show, status: :created, location: @interior_design }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class InteriorDesignsController < ApplicationController
   # PATCH/PUT /interior_designs/1.json
   def update
     respond_to do |format|
-      if @interior_design.update(interior_design_params)
+      if @interior_design.update(interior_designs_params)
         format.html { redirect_to interior_design_path, notice: 'Interior design was successfully updated.' }
         format.json { render :show, status: :ok, location: @interior_design }
       else

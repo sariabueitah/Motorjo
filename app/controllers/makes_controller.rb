@@ -28,7 +28,7 @@ class MakesController < ApplicationController
 
     respond_to do |format|
       if @make.save
-        format.html { redirect_to make_path, notice: 'Make was successfully created.' }
+        format.html { redirect_to makes_path, notice: 'Make was successfully created.' }
         format.json { render :show, status: :created, location: @make }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MakesController < ApplicationController
   def update
     respond_to do |format|
       if @make.update(make_params)
-        format.html { redirect_to make_path, notice: 'Make was successfully updated.' }
+        format.html { redirect_to makes_path, notice: 'Make was successfully updated.' }
         format.json { render :show, status: :ok, location: @make }
       else
         format.html { render :edit }

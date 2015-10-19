@@ -28,7 +28,7 @@ class InteriorColorsController < ApplicationController
 
     respond_to do |format|
       if @interior_color.save
-        format.html { redirect_to interior_color_path, notice: 'Interior color was successfully created.' }
+        format.html { redirect_to interior_colors_path, notice: 'Interior color was successfully created.' }
         format.json { render :show, status: :created, location: @interior_color }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class InteriorColorsController < ApplicationController
   # PATCH/PUT /interior_colors/1.json
   def update
     respond_to do |format|
-      if @interior_color.update(interior_color_params)
+      if @interior_color.update(interior_colors_params)
         format.html { redirect_to interior_color_path, notice: 'Interior color was successfully updated.' }
         format.json { render :show, status: :ok, location: @interior_color }
       else
