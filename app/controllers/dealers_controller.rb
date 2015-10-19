@@ -1,8 +1,8 @@
 class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
   before_action :set_user , only: [:edit , :update_password]
-  before_action :authenticate_access!, :only => [:edit, :update, :destroy]
-  before_action :authenticate_admin!,:only =>[:admin_dealer]
+  before_action :authenticate_access!, :only => [:index ,:edit, :update, :destroy]
+  before_action :authenticate_admin!,:only =>[:admin_member ,:index]
   # GET /dealers
   # GET /dealers.json
   def index
@@ -112,10 +112,18 @@ class DealersController < ApplicationController
         if(current_user.meta_id == Dealer.find(params[:id]).id || current_user.isadmin)
           true
         else
-          redirect_to @dealer
+          if(@dealer)
+            redirect_to @dealer
+          else
+            redirect_to :root
+          end
         end
       else
-        redirect_to @dealer
+        if(@dealer)
+            redirect_to @dealer
+          else
+            redirect_to :root
+          end
       end
     end
 end

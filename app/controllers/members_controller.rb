@@ -1,8 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_user , only: [:update_password, :edit]
-  before_action :authenticate_access!, :only => [:edit, :update, :destroy]
-  before_action :authenticate_admin!,:only =>[:admin_member]
+  before_action :authenticate_access!, :only => [:index ,:edit, :update, :destroy]
+  before_action :authenticate_admin!,:only =>[:admin_member ,:index]
   
   # GET /members
   # GET /members.json
@@ -111,13 +111,21 @@ class MembersController < ApplicationController
     end
     def authenticate_access!
       if user_signed_in?
-        if(current_user.meta_id == Member.find(params[:id]).id || current_user.isadmin)
+        if(current_user.meta_id == Dealer.find(params[:id]).id || current_user.isadmin)
           true
         else
-          redirect_to @member
+          if(@member)
+            redirect_to @member
+          else
+            redirect_to :root
+          end
         end
       else
-        redirect_to @member
+        if(@member)
+            redirect_to @member
+          else
+            redirect_to :root
+          end
       end
     end
 end

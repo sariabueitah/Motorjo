@@ -49,6 +49,7 @@
             <% end %>
             <li><%= link_to t('Log_out'), destroy_user_session_path, :method => :delete%></li>
             <% else %>
+              <li><%= link_to t('Login'), new_user_session_path %></li>
               <li><%= link_to t('Sign_Up_Seller'), new_member_path %></li>
               <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li>
             <% end %>
@@ -135,7 +136,7 @@
                 
                 <div class="footer_contacts">
                   <span class="phone"><i class="fa fa-phone"></i> 0788833382 - 0799833328</span>
-                    <span class="email">admin@motorsjo.com</span>
+                    <span class="email">info@motorsjo.com</span>
                 </div>
                 
                 <div class="copyright">
