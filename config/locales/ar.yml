@@ -49,7 +49,7 @@ ar:
   accident_free:  بدون حوادث
   address: العنوان
   advanced_search: البحث المتقدم
-  advanced_search: أخفاء البحث المتقدم
+  advanced_search_hide: أخفاء البحث المتقدم
   all: الكل
   automatic: أوتوماتيك
   building_number: رقم العمارة
