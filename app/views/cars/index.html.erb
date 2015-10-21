@@ -21,14 +21,6 @@
             <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), disabled: true%>
           </div>
           <div class="large-3 medium-3 columns">
-            <%= label_tag t(:cubic_capacity_from) %>
-            <%= select_tag 'q[cubic_capacity_from]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: t("all") %>
-          </div>
-          <div class="large-3 medium-3 columns">
-            <%= label_tag t(:cubic_capacity_to) %>
-            <%= select_tag 'q[cubic_capacity_to]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: t("all") %>
-          </div>
-          <div class="large-3 medium-3 columns">
             <%= label_tag t(:year) %>
             <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
           </div>
@@ -36,36 +28,48 @@
             <%= label_tag t("Gear_Box_Type") %>
             <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
           </div>
-          <div class="large-3 medium-3 columns">
-            <%= label_tag t(:fuel_type) %>
-            <%= select_tag 'q[fuel_type]' , options_for_select(Car::FUELTYPE.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
-          </div>
-          <div class="large-3 medium-3 columns">
-            <%= label_tag t("color") %>
-            <%= select_tag 'q[color_id]', options_for_select(Color.all.map{ |c| [c.title, c.id]}), include_blank: t("all") %>
-          </div>
-          <div class="large-3 medium-3 columns">
-            <%= label_tag t("Car_Report") %>
-            <%= select_tag 'q[report]', options_for_select(Car::REPORT.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
-          </div>
-          <div class="large-12 medium-12 columns">
-            <%= label_tag t("Comfort_and_Interior_Design") %>
-            <% ComfortInterior.all.each do |v| %>
-              <span class="search-checkbox">
-                <%= check_box_tag 'q[comfort_interior_ids][]', v.id, false  %>
-                <%= v.title %>
-              </span>
-            <% end %>
-          </div>
-          <div class="large-12 medium-12 columns">
-            <%= label_tag t("Safety_Features") %>
-            <% SafetyFeature.all.each do |v| %>
-              <span class="search-checkbox">
-                <%= check_box_tag 'q[safety_feature_ids][]', v.id, false  %>
-                <%= v.title %>
-              </span>
-            <% end %>
-          </div>
+              <a id="advancedSearchToggleOn" href="javascript:void(0);"><%= t("advanced_search") %></a>
+              <div id="advancedSearch" class="clearfix">
+                <div class="large-3 medium-3 columns">
+                  <%= label_tag t(:cubic_capacity_from) %>
+                  <%= select_tag 'q[cubic_capacity_from]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: t("all") %>
+                </div>
+                <div class="large-3 medium-3 columns">
+                  <%= label_tag t(:cubic_capacity_to) %>
+                  <%= select_tag 'q[cubic_capacity_to]' , options_for_select([1000,1200,1600,1800,2000,2600,3000,5000,7500,8000,9000]), include_blank: t("all") %>
+                </div>
+                <div class="large-3 medium-3 columns">
+                  <%= label_tag t(:fuel_type) %>
+                  <%= select_tag 'q[fuel_type]' , options_for_select(Car::FUELTYPE.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
+                </div>
+                <div class="large-3 medium-3 columns">
+                  <%= label_tag t("color") %>
+                  <%= select_tag 'q[color_id]', options_for_select(Color.all.map{ |c| [c.title, c.id]}), include_blank: t("all") %>
+                </div>
+                <div class="large-3 medium-3 columns">
+                  <%= label_tag t("Car_Report") %>
+                  <%= select_tag 'q[report]', options_for_select(Car::REPORT.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all") %>
+                </div>
+                <div class="large-12 medium-12 columns">
+                  <%= label_tag t("Comfort_and_Interior_Design") %>
+                  <% ComfortInterior.all.each do |v| %>
+                    <span class="search-checkbox">
+                      <%= check_box_tag 'q[comfort_interior_ids][]', v.id, false  %>
+                      <%= v.title %>
+                    </span>
+                  <% end %>
+                </div>
+                <div class="large-12 medium-12 columns">
+                  <%= label_tag t("Safety_Features") %>
+                  <% SafetyFeature.all.each do |v| %>
+                    <span class="search-checkbox">
+                      <%= check_box_tag 'q[safety_feature_ids][]', v.id, false  %>
+                      <%= v.title %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+              <a id="advancedSearchToggleOff" href="javascript:void(0);"><%= t("advanced_search_hide") %></a>
           <div class="actions text-right large-12 medium-12 columns">
               <%= submit_tag t("Search"), class: "button tiny radius" %>
           </div>

@@ -1,4 +1,17 @@
 var ready = function() {
+    if($("#advancedSearch").length > 0){
+      $("#advancedSearchToggleOff").hide();
+      $("#advancedSearchToggleOn").click(function(event) {
+        $(this).hide();
+        $("#advancedSearchToggleOff").css("display","block");
+        $("#advancedSearch").slideToggle(500)
+      });
+      $("#advancedSearchToggleOff").click(function(event) {
+        $(this).hide();
+        $("#advancedSearchToggleOn").css("display","block");
+        $("#advancedSearch").slideToggle(500)
+      });
+    }
     $('#carousel').flexslider({
         animation: "slide",
         controlNav: false,

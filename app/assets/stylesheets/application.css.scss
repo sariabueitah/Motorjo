@@ -891,6 +891,12 @@ input.myfile {
     font-size: 32px;
     padding: 0 15px;
 }
+#advancedSearch {
+	display:none;
+}
+#advancedSearchToggleOff {
+	display:none;
+}
 @media #{$small-up} { 
 	
 }

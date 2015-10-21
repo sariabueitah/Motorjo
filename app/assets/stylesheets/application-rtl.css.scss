@@ -897,6 +897,17 @@ input.myfile {
     font-size: 32px;
     padding: 0 15px;
 }
+#advancedSearch {
+	display:none;
+}
+#advancedSearchToggleOff {
+	display:block;
+	text-align:center;
+}
+#advancedSearchToggleOn {
+	display:block;
+	text-align:center;
+}
 @media #{$small-up} { 
 	
 }
