@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+/public
+Gemfile.lock
+/solr/development/data/index/write.lock
