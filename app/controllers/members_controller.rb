@@ -1,8 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_user , only: [:update_password, :edit]
-  before_action :authenticate_access!, :only => [:index ,:edit, :update, :destroy]
-  before_action :authenticate_admin!,:only =>[:admin_member ,:index]
+  before_action :authenticate_access!, :only => [:index ,:edit, :update]
+  before_action :authenticate_admin!,:only =>[:admin_member ,:index, :destroy]
   
   # GET /members
   # GET /members.json
@@ -74,7 +74,7 @@ class MembersController < ApplicationController
   def destroy
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
+      format.html { redirect_to admin_member_members_path, notice: 'Member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

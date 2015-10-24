@@ -10,13 +10,24 @@
       </ul>
     </div>
   <% end %>
-  <% Globalize.with_locale(:en) do %>
+  <%if I18n.locale == :en %>
+    <% Globalize.with_locale(:ar) do %>
+      <div class="field">
+        <%= f.label :title, "Arabic Title" %><br>
+        <%= @color.title %>
+      </div>
+    <% end %>
     <div class="field">
-      <%= f.label :title, "English Title" %><br>
-      <%= f.text_field :title %>
-    </div>
-  <% end %>
-  <% Globalize.with_locale(:ar) do %>
+        <%= f.label :title, "English Title" %><br>
+        <%= f.text_field :title %>
+      </div>
+  <% else %>
+    <% Globalize.with_locale(:en) do %>
+      <div class="field">
+        <%= f.label :title, "English Title" %><br>
+        <%= @color.title %>
+      </div>
+    <% end %>
     <div class="field">
       <%= f.label :title, "Arabic Title" %><br>
       <%= f.text_field :title %>

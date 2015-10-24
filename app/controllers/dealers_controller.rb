@@ -1,8 +1,8 @@
 class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
   before_action :set_user , only: [:edit , :update_password]
-  before_action :authenticate_access!, :only => [:index ,:edit, :update, :destroy]
-  before_action :authenticate_admin!,:only =>[:admin_member ,:index]
+  before_action :authenticate_access!, :only => [:index ,:edit, :update]
+  before_action :authenticate_admin!,:only =>[:admin_member ,:index ,:destroy]
   # GET /dealers
   # GET /dealers.json
   def index
@@ -74,7 +74,7 @@ class DealersController < ApplicationController
   def destroy
     @dealer.destroy
     respond_to do |format|
-      format.html { redirect_to dealers_url, notice: 'Dealer was successfully destroyed.' }
+      format.html { redirect_to admin_dealer_dealers_path, notice: 'Dealer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -87,7 +87,11 @@ class DealersController < ApplicationController
       @user = User.find(id.to_i)
       @user.update_attributes(admin_user_params(id))
     end
-    redirect_to(admin_dealer_dealers_path)
+    if(authenticate_admin?)
+      redirect_to(admin_dealer_dealers_path)
+    else
+      redirect_to root_path
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.
