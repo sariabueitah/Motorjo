@@ -12,7 +12,10 @@ class CarsController < ApplicationController
         with(:car_model).equal_to(params[:q][:car_model]) if params[:q][:car_model].present?
         with(:cubic_capacity).greater_than_or_equal_to(params[:q][:cubic_capacity_from].to_i) if params[:q][:cubic_capacity_from].present?
         with(:cubic_capacity).less_than_or_equal_to(params[:q][:cubic_capacity_to].to_i) if params[:q][:cubic_capacity_to].present?
-        with(:year).equal_to(params[:q][:year]) if params[:q][:year].present?
+        with(:year).greater_than_or_equal_to(params[:q][:year_from].to_i) if params[:q][:year_from].present?
+        with(:year).less_than_or_equal_to(params[:q][:year_to].to_i) if params[:q][:year_to].present?
+        with(:price).greater_than_or_equal_to(params[:q][:price_from].to_i) if params[:q][:price_from].present?
+        with(:price).less_than_or_equal_to(params[:q][:price_to].to_i) if params[:q][:price_to].present?
         with(:gearbox_id).equal_to(params[:q][:gearbox_id]) if params[:q][:gearbox_id].present?
         with(:fuel_type).equal_to(params[:q][:fuel_type]) if params[:q][:fuel_type].present?
         with(:color_id).equal_to(params[:q][:color_id]) if params[:q][:color_id].present?

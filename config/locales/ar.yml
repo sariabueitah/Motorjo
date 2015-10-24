@@ -46,7 +46,7 @@ ar:
   View_All_Special_Offers: المزيد من الأعلانات المميزة
   View_More_Details: المزيد من المعلومات
   YEAR: السنة
-  accident_free:  بدون حوادث
+  accident_free: بدون حوادث
   address: العنوان
   advanced_search: البحث المتقدم
   advanced_search_hide: أخفاء البحث المتقدم
@@ -61,7 +61,7 @@ ar:
   cubic_capacity: سعة المحرك
   cubic_capacity_from: سعة المحرك من
   cubic_capacity_to: سعة المحرك الى
-  damaged:  مضروب
+  damaged: مضروب
   dealer_information: معلومات التاجر
   did_not_receive_confirmation_instructions: لم أحصل على  تعليمات التأكيد
   did_not_receive_unlock_instructions: لم أحصل على  تعليمات فتح الحساب
@@ -87,16 +87,19 @@ ar:
   new_car: أضافة سيارة
   new_dealer: تاجر جديد
   new_member: بائع جديد
-  other:  آخرى
+  no_results: لا يوجد نتائج
+  other: آخرى
   password: كلمة السر
   password_confirmation: تأكيد كلمة السر
   petrol: بنزين
   phone_number: رقم الهاتف
   price: السعر
+  price_from: السعر من
+  price_to: السعر الى
   remember_me: تذكرني
   repaired: مصلح
-  reset_password: إعادة تعيين كلمة المرور
   resend_confirmation: أرسال التأكيد
+  reset_password: إعادة تعيين كلمة المرور
   see_more: المزيد...
   sign_in: الدخول
   street_name: أسم الشارع
@@ -104,3 +107,5 @@ ar:
   update_information: تحديث المعلومات
   update_password: تعديل كلمة السر
   year: السنة
+  year_from: سنة من
+  year_to: سنة الى

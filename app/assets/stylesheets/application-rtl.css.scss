@@ -908,6 +908,12 @@ input.myfile {
 	display:block;
 	text-align:center;
 }
+.noResults {
+	text-align:center;
+	background-color:$white;
+	padding:20px;
+	font-size:rem-calc(20);
+}
 @media #{$small-up} { 
 	
 }

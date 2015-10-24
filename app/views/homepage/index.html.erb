@@ -47,14 +47,14 @@
 			    <%= label_tag t(:car_model) %>
 			    <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), :disabled => true, class: "radius" %>
 			  </div>
-			  <div class="small-6 medium-3 columns">
-			    <%= label_tag t(:year) %>
-			    <%= select_tag 'q[year]', options_for_select(((Time.zone.now.year - 50)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all"), class: "radius"  %>
-			  </div>
-			  <div class="small-6 medium-3 columns">
-			    <%= label_tag t("Gear_Box_Type") %>
-			    <%= select_tag 'q[gearbox_id]', options_for_select(Car::Gearbox.map{ |s| [I18n.t(s[1]) , s[0]] }), include_blank: t("all"), class: "radius" %>
-			  </div>
+			  <div class="large-3 medium-3 columns">
+            	<%= label_tag t(:year_from) %>
+	            <%= select_tag 'q[year_from]', options_for_select(((Time.zone.now.year - 70)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
+	          </div>
+	          <div class="large-3 medium-3 columns">
+	            <%= label_tag t(:year_to) %>
+	            <%= select_tag 'q[year_to]', options_for_select(((Time.zone.now.year - 70)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
+	          </div>
 			  <div class="small-12 text-center columns">
 			      <%= submit_tag t("Search") , class: "button tiny buttoncustom "%>
 			  </div>

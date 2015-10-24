@@ -87,12 +87,15 @@ en:
   new_car: New Car
   new_dealer: New Dealer
   new_member: New Member
+  no_results: No Results Found
   other:	Other
   password: Password
   password_confirmation: Password Confirmation
   petrol: Petrol
   phone_number: Phone Number
   price: Price
+  price_from: Price From
+  price_to: Price To
   remember_me: Remember Me
   repaired: Repaired
   reset_password: Reset Password
@@ -104,3 +107,5 @@ en:
   update_information: Update Information
   update_password: Update Password
   year: Year
+  year_from: Year From
+  year_to: Year To

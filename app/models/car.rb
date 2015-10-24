@@ -24,12 +24,13 @@ class Car < ActiveRecord::Base
     integer :car_make
     integer :car_model
     integer :cubic_capacity
-    string  :year
+    integer  :year
     integer :mileage
     integer :gearbox_id
     integer :fuel_type
     integer :color_id
     integer :report
+    integer :price
     date :created_at
     integer :comfort_interior_ids, multiple: true do
       comfort_interiors.map(&:id)
