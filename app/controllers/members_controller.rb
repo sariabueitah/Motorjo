@@ -111,7 +111,7 @@ class MembersController < ApplicationController
     end
     def authenticate_access!
       if user_signed_in?
-        if(current_user.meta_id == Dealer.find(params[:id]).id || current_user.isadmin)
+        if(current_user.meta_id == Member.find(params[:id]).id || current_user.isadmin)
           true
         else
           if(@member)
