@@ -34,7 +34,7 @@ var ready = function() {
     });
     if($("#FormCarMain").length > 0){
         $('#car_car_model').detachOptions('*');
-        $('#car_car_model').attachOptions('[parent_id="1"');
+        $('#car_car_model').attachOptions('[parent_id="'+$("#car_car_make :selected").val()+'"');
         $("#car_car_model")[0].selectedIndex = 0;
 
         $("#car_car_make").change(function(){
