@@ -1,3 +1,30 @@
+<% 
+  set_meta_tags title: @member.first_name+ " " + @member.last_name,
+                keywords: @customKeywords + "," + @member.first_name + "," + @member.last_name,
+                author: @member.first_name+ " " + @member.last_name,
+                publisher: @member.first_name+ " " + @member.last_name
+    if(!@member_cars.blank?)
+	  	set_meta_tags  og: {
+                og: {
+                  title:    @member.first_name+ " " + @member.last_name,
+                  type:     'website',
+                  url:      request.original_url,
+                  image:    [{
+                    _: "http://"+request.domain+@member_cars.last.car_images[0].image.url(:car_main),
+                    width: 470,
+                    height: 338,
+                  }]
+                },
+                twitter: {
+                  card:  "photo",
+                  image:    {
+                    _: "http://"+request.domain+@member_cars.last.car_images[0].image.url(:car_main),
+                    width: 470,
+                    height: 338,
+                  }
+                }
+            end
+%>
 <section class="PageHead">
   <div class="AdContainer">
     <div class="row">

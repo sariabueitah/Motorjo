@@ -918,6 +918,61 @@ input.myfile {
 	
 }
 @media #{$small-only} {
+	.searchResults .car-search .carsItem {
+		.carimage {
+			width: 100%;
+			img {
+				width:100%
+			}
+		}
+		.infolist {
+			width:100%;
+			.info {
+				.price {
+					clear:both;
+					display: block;
+					text-align: center;
+					float:none;
+				}
+				.year {
+					float:left;
+				}
+			}
+		}
+
+	}
+	.CarDetailArea {
+    	.price{
+    		text-align:center;
+    	}
+    }
+	.CarDetailTabs {
+    	margin-top:60px;
+    	.tab-title {
+    		border-right:1px solid $gray4;
+    		width:33.333%;
+    		a {
+    			padding:10px 0;
+    			text-align: center;
+    		}
+    	}
+    }
+    .search-checkbox {
+		display:inline-block;
+		width: 49%;
+	}
+	#FormCarDetail {
+		label.inline.checkbox {
+			width:50%;
+		}
+	}
+	#FormCarImage {
+	.file_field {
+		.nested-fields {
+	    	width: 33.3333%;
+		}
+	}
+}
 	.logoSection.tab-bar-section {
 		margin-top:10px;
 	}

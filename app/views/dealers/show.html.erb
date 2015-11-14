@@ -1,3 +1,29 @@
+<% 
+	set_meta_tags title: @dealer.gallery_name,
+                keywords: @customKeywords + "," + @dealer.gallery_name,
+                author: @dealer.gallery_name,
+                publisher: @dealer.gallery_name
+	if(!@dealer_cars.blank?)
+	  	set_meta_tags  og: {
+	      title:    @dealer.gallery_name,
+	      type:     'website',
+	      url:      request.original_url,
+	      image:    [{
+	        _: "http://"+request.domain+@dealer_cars.last.car_images[0].image.url(:car_main),
+	        width: 470,
+	        height: 338,
+	      }]
+	    },
+	    twitter: {
+	      card:  "photo",
+	      image:    {
+	        _: "http://"+request.domain+@dealer_cars.last.car_images[0].image.url(:car_main),
+	        width: 470,
+	        height: 338,
+	      }
+	    }
+	end
+%>
 <section class="PageHead">
   <div class="AdContainer">
     <div class="row">
