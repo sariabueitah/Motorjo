@@ -24,3 +24,14 @@ module Motorsjo
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+ActionMailer::Base.smtp_settings = {  
+  :address              => "127.0.0.1",  
+  :port                 => 25, # => *1  
+  :domain               => 'www.motorsjo.com', # => *2  
+#  :user_name            => 'notification@your.domain.com,  
+#  :password             => 'password',  
+#  :authentication       => 'plain',  
+#  :tls   => true,  
+#  :openssl_verify_mode  => 'none',  
+  :enable_starttls_auto => false  
+}  
