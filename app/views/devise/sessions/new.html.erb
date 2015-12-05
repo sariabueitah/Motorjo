@@ -28,6 +28,13 @@
   <div class="row">
     <div class="columns FormContainer large-6 medium-6 small-12 large-centered medium-centered">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <% flash.each do |key, value| %>
+          <div data-alert class="alert-box warning">
+            <%= value %>
+            <a href="#" class="close">&times;</a>
+          </div>
+          <%= devise_error_messages! %>
+        <% end %>
         <div class="field">
           <%= f.label t(:email) %>
           <%= f.email_field :email, autofocus: true %>

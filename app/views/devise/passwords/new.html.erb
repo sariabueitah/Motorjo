@@ -29,7 +29,6 @@
     <div class="columns FormContainer large-6 medium-6 small-12 large-centered medium-centered">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= devise_error_messages! %>
-
         <div class="field">
           <%= f.label t(:email) %><br />
           <%= f.email_field :email, autofocus: true %>
