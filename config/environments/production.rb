@@ -78,5 +78,10 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.assets.raise_runtime_errors = true
   config.action_mailer.default_url_options = { :host => 'motorsjo.com' }
-  config.action_mailer.delivery_method = :mail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:                 "motorsjo.com",
+    port:                    25,
+    enable_starttls_auto:    false
+  }
 end
