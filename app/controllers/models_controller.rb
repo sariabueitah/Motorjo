@@ -4,7 +4,7 @@ class ModelsController < ApplicationController
   # GET /models
   # GET /models.json
   def index
-    @models = Model.all.with_translations.order("parent_id").order("title")
+    @models = Model.all.with_translations(I18n.locale).order("parent_id").order("title")
   end
 
   # GET /models/1

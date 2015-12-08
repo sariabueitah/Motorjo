@@ -4,7 +4,7 @@ class MakesController < ApplicationController
   # GET /makes
   # GET /makes.json
   def index
-    @makes = Make.all.with_translations.order("title")
+    @makes = Make.all.with_translations(I18n.locale).order("title")
   end
 
   # GET /makes/1
