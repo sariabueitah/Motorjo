@@ -138,6 +138,9 @@
 	height:435px;
 	float:left;
 	position:relative;
+	.link_more {
+		text-align: left;
+	}
 	.special_Deal_item {
 		border-bottom:3px solid $gray4;
 		border-radius:3px;

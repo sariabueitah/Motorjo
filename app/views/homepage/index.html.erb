@@ -41,11 +41,11 @@
 			<%= form_tag  cars_path, :id => 'car_search_form', :method => :get do %>
 			  <div class="small-6 medium-3 columns">
 			    <%= label_tag t(:car_make) %>
-			    <%= select_tag 'q[car_make]', options_for_select(Make.all.map{ |c| [c.title, c.id] }), include_blank: t("all"), class: "radius"  %>
+			    <%= select_tag 'q[car_make]', options_for_select(Make.all.order("title").map{ |c| [c.title, c.id] }), include_blank: t("all"), class: "radius"  %>
 			  </div>
 			  <div id="HomeSearchModel" class="small-6 medium-3 columns">
 			    <%= label_tag t(:car_model) %>
-			    <%= select_tag 'q[car_model]', options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), :disabled => true, class: "radius" %>
+			    <%= select_tag 'q[car_model]', options_for_select(Model.all.order("title").map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), :disabled => true, class: "radius" %>
 			  </div>
 			  <div class="large-3 medium-3 columns">
             	<%= label_tag t(:year_from) %>

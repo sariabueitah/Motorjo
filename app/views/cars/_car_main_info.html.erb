@@ -5,11 +5,11 @@
   </div>
   <div class="field medium-4 columns">
     <%= f.label t(:car_make) %>
-    <%= collection_select(:car, :car_make, Make.all, :id, :title) %>
+    <%= collection_select(:car, :car_make, Make.all.order("title"), :id, :title) %>
   </div>
   <div class="field medium-4 columns">
     <%= f.label t(:car_model) %>
-    <%= f.select :car_model, options_for_select(Model.all.map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }, selected_key = f.object.car_model),:disabled => true %>
+    <%= f.select :car_model, options_for_select(Model.all.order("title").map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }, selected_key = f.object.car_model),:disabled => true %>
   </div>
   <div class="field medium-4 columns">
     <%= f.label t(:year) %>
