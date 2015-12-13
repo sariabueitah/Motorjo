@@ -30,7 +30,8 @@
       <table>
         <thead>
           <tr>
-            <th>Title</th>
+            <th>English</th>
+            <th>Arabic</th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -38,7 +39,8 @@
         <tbody>
           <% @makes.each do |make| %>
             <tr>
-              <td><%= make.title %></td>
+              <td><%= make.title_en %></td>
+              <td><%= make.title_ar %></td>
               <td><%= link_to 'Edit', edit_make_path(make) %></td>
               <td><%= link_to 'Destroy', make, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

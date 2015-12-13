@@ -31,7 +31,8 @@
         <thead>
           <tr>
             <th>Parent</th>
-            <th>Title</th>
+            <th>Title English</th>
+            <th>Title Arabic</th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -40,7 +41,8 @@
           <% @models.each do |model| %>
             <tr>
               <td><%= model.parent_id %></td>
-              <td><%= model.title %></td>
+              <td><%= model.title_en %></td>
+              <td><%= model.title_ar %></td>
               <td><%= link_to 'Edit', edit_model_path(model) %></td>
               <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

@@ -4,7 +4,7 @@ class MakesController < ApplicationController
   # GET /makes
   # GET /makes.json
   def index
-    @makes = Make.all.with_translations(I18n.locale).order("title")
+    @makes = Make.all.order("title")
   end
 
   # GET /makes/1
@@ -69,6 +69,6 @@ class MakesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def make_params
-      params.require(:make).permit(:title)
+      params.require(:make).permit(:title,Make.globalize_attribute_names)
     end
 end

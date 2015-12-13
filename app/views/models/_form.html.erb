@@ -14,29 +14,14 @@
     <%= f.label :parent_id %>
     <%= collection_select(:model, :parent_id, Make.all, :id, :title) %>
   </div>
-  <%if I18n.locale == :en %>
-    <% Globalize.with_locale(:ar) do %>
-      <div class="field">
-        <%= f.label :title, "Arabic Title" %><br>
-        <%= @model.title %>
-      </div>
-    <% end %>
-    <div class="field">
-        <%= f.label :title, "English Title" %><br>
-        <%= f.text_field :title %>
-      </div>
-  <% else %>
-    <% Globalize.with_locale(:en) do %>
-      <div class="field">
-        <%= f.label :title, "English Title" %><br>
-        <%= @model.title %>
-      </div>
-    <% end %>
-    <div class="field">
-      <%= f.label :title, "Arabic Title" %><br>
-      <%= f.text_field :title %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :title_ar, "Arabic Title" %><br>
+    <%= f.text_field :title_ar %>
+  </div>
+  <div class="field">
+    <%= f.label :title_en, "English Title" %><br>
+    <%= f.text_field :title_en %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -30,7 +30,8 @@
       <table>
         <thead>
           <tr>
-            <th>Title</th>
+            <th>Title English</th>
+            <th>Title Arabic</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -38,7 +39,8 @@
         <tbody>
           <% @interior_colors.each do |interior_color| %>
             <tr>
-              <td><%= interior_color.title %></td>
+              <td><%= interior_color.title_en %></td>
+              <td><%= interior_color.title_ar %></td>
               <td><%= link_to 'Edit', edit_interior_color_path(interior_color) %></td>
               <td><%= link_to 'Destroy', interior_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

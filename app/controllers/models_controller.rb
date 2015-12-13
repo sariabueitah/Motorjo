@@ -4,7 +4,7 @@ class ModelsController < ApplicationController
   # GET /models
   # GET /models.json
   def index
-    @models = Model.all.with_translations(I18n.locale).order("parent_id").order("title")
+    @models = Model.all.order("parent_id").order("title")
   end
 
   # GET /models/1
@@ -69,6 +69,6 @@ class ModelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def model_params
-      params.require(:model).permit(:parent_id, :title)
+      params.require(:model).permit(:parent_id, :title,Model.globalize_attribute_names)
     end
 end

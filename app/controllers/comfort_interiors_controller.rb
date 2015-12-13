@@ -69,6 +69,6 @@ class ComfortInteriorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comfort_interior_params
-      params.require(:comfort_interior).permit(:title)
+      params.require(:comfort_interior).permit(:title,ComfortInterior.globalize_attribute_names)
     end
 end

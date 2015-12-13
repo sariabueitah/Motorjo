@@ -69,6 +69,6 @@ class SafetyFeaturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def safety_feature_params
-      params.require(:safety_feature).permit(:title)
+      params.require(:safety_feature).permit(:title,SafetyFeature.globalize_attribute_names)
     end
 end

@@ -69,6 +69,6 @@ class InteriorDesignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interior_design_params
-      params.require(:interior_design).permit(:title)
+      params.require(:interior_design).permit(:title,InteriorDesign.globalize_attribute_names)
     end
 end

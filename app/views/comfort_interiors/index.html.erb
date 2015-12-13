@@ -30,7 +30,8 @@
       <table>
         <thead>
           <tr>
-            <th>Title</th>
+            <th>Title English</th>
+            <th>Title Arabic</th>
             <th colspan="2"></th>
           </tr>
         </thead>
@@ -38,7 +39,8 @@
         <tbody>
           <% @comfort_interiors.each do |comfort_interior| %>
             <tr>
-              <td><%= comfort_interior.title %></td>
+              <td><%= comfort_interior.title_en %></td>
+              <td><%= comfort_interior.title_ar %></td>
               <td><%= link_to 'Edit', edit_comfort_interior_path(comfort_interior) %></td>
               <td><%= link_to 'Destroy', comfort_interior, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

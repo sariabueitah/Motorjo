@@ -70,7 +70,7 @@ class ColorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def color_params
-      params.require(:color).permit(:title)
+      params.require(:color).permit(:title,Color.globalize_attribute_names)
     end
     
 end
