@@ -16,7 +16,7 @@ gem "compass-rails", git: 'https://github.com/Compass/compass-rails', branch: 'm
 gem 'foundation-rails'
 gem 'font-awesome-sass'
 gem 'sunspot_rails'
-gem 'sunspot_solr'
+
 gem 'will_paginate'
 gem 'http_accept_language'
 gem 'globalize'
@@ -26,7 +26,7 @@ gem 'globalize-accessors'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'sunspot_solr'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
