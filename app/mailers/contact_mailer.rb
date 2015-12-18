@@ -1,5 +1,5 @@
 class ContactMailer < ApplicationMailer
-	default from: 'info <motorsjo@motorsjo.com>'
+	default from: 'info <motorsjodev@motorsjo.com>'
  
   def contact_email(name,email,message,carid,owner)
     @name = name
