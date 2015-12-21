@@ -46,8 +46,8 @@
 				      <tr>
 				        <td><%= car.title %></td>
 				        <td><%= get_make(car.car_make) %> <%= get_model(car.car_model) %></td>
-				        <td><% unless car.user.email.blank? %><%= car.user.email %><%end%></td>
-				        <td><% unless car.user.meta_type.blank? %><%= car.user.meta_type %><%end%></td>
+				        <td><% unless car.user.blank? %><%= car.user.email %><%end%></td>
+				        <td><% unless car.user.blank? %><%= car.user.meta_type %><%end%></td>
 				        <td><%= car.created_at %></td>
 				        <td><%= car.updated_at %></td>
 				        <%= fields_for "car[]", car do |f| %>
