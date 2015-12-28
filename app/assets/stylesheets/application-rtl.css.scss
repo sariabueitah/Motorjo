@@ -673,14 +673,20 @@
 	padding: 65px 0 75px 0;
     background: $gray1;
     .carsItem{
+    		position:relative;
 		    border-bottom: 3px solid $gray4;
 		    background: $white;
 		    margin-bottom: 20px;
 		    border-radius: 0 0 3px 3px;
 		    -webkit-border-radius: 0 0 3px 3px;
+		    .carEdit {
+		    	position:absolute;
+		    	top:5px;
+		    	left:20px;
+		    }
 		    .carimage {
 		    	border-right: 3px solid $orange;
-		    	float:left;
+		    	float:right;
 		    	width: 34%;
 			}
 			.infolist {

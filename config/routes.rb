@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'admin_car'
       patch 'admin_car_update'
       post "contact_submit" => "cars#contact_submit"
+      delete "delete_image/:id" => "cars#delete_image"
     end
   end
   resources :members do

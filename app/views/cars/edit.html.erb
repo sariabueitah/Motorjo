@@ -43,7 +43,9 @@
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>
             <div class="latest_item">
+              <% unless c.car_images[0].blank? %>
               <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
+              <% end %>
               <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
             </div>
         <% end %>

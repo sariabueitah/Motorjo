@@ -72,6 +72,9 @@
 	              <span class="price"><%= s.price %> <%=t("JD")%></span>
 	            </li>
 	          </ul>
+            <% if (current_user == @member.user) %>
+              <%= link_to(('<i class="fa fa-cog"></i>').html_safe , edit_car_path(s),:class => "carEdit") %>
+            <%end%>
 	        </li>
 	      <% end %>
 	      </ul>

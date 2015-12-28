@@ -68,7 +68,7 @@ var ready = function() {
           }
         }  
       } else {  
-        alert("not supported");  
+        alert("this file extension is not supported");  
       }   
     });
     if($("#car_report").length > 0){

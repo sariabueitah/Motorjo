@@ -71,6 +71,9 @@
 	              <span class="price"><%= s.price %> <%=t("JD")%></span>
 	            </li>
 	          </ul>
+	          <%= link_to  edit_car_path(s.id) %>
+	          	<i class="fa fa-cog"></i>
+	          <%end%>
 	        </li>
 	      <% end %>
 	      </ul>

@@ -12,6 +12,10 @@
 						<% end %>
 					</div>
 					<%= image.hidden_field :image_cache %>
+					<% unless (image.object.id.blank?) %>
+  						<%= link_to "remove" , "/cars/delete_image/#{image.object.id}", method: :delete %>
+  					<% end %>
+				
 				</div>
 			<% end %>
 		</div>
