@@ -81,7 +81,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'motorsjo.com' }
   config.action_mailer.delivery_method = :sendmail
   ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.server_settings = {
+  ActionMailer::Base.smtp_settings = {
     :address => 'smtpout.secureserver.net',
     :domain  => 'www.motorsjo.com',
     :port      => 80,
