@@ -5,6 +5,7 @@
                 publisher: @dealer.gallery_name
 	if(!@dealer_cars.blank?)
 	  	set_meta_tags  og: {
+  		og:{
 	      title:    @dealer.gallery_name,
 	      type:     'website',
 	      url:      request.original_url,
@@ -22,7 +23,7 @@
 	        height: 338,
 	      }
 	    }
-	}
+	  }  
 	end
 %>
 <section class="PageHead">
@@ -71,9 +72,7 @@
 	              <span class="price"><%= s.price %> <%=t("JD")%></span>
 	            </li>
 	          </ul>
-	          <%= link_to  edit_car_path(s.id) %>
-	          	<i class="fa fa-cog"></i>
-	          <%end%>
+	          <%= link_to(('<i class="fa fa-cog"></i>').html_safe , edit_car_path(s.id),:class => "carEdit") %>
 	        </li>
 	      <% end %>
 	      </ul>
