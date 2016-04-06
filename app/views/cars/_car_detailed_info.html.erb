@@ -1,7 +1,7 @@
 <section id="FormCarDetail">
   <div class="medium-8 columns">
     <div class="field clearfix">
-      <%= f.label t("Comfort_and_Interior_Design") %>                      
+      <%= f.label t("Comfort_and_Interior_Design") %>
       <%= f.collection_check_boxes :comfort_interior_ids, ComfortInterior.all, :id, :title, include_hidden: false do |cb| %>
         <% cb.label(class: "checkbox inline") {cb.check_box(class:"checkbox") + cb.text} %>
       <% end %>
@@ -17,6 +17,10 @@
     <div class="field">
       <%= f.label :contact_number, t("Phone_Number") %>
       <%= f.text_field :contact_number %>
+    </div>
+    <div>
+      <%= f.label t("city") %>
+      <%= f.select :city, Car::City.map{ |s| [s[1] , s[0]] } %>
     </div>
     <div class="field">
       <%= f.label :car_location, t("Car_location") %>

@@ -3,5 +3,6 @@ class HomepageController < ApplicationController
   	@latest_cars = Car.last(10)
     @latest_special_car = Car.where(special_car: true).last
     @special_cars = Car.where(special_car: true).order(created_at: :desc).all[1..-1]
+    @admin_main_sliders = Admin::MainSlider.all.order(order: :asc)
   end
 end

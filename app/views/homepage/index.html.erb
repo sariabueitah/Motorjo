@@ -1,4 +1,4 @@
-<% 
+<%
   set_meta_tags title: '',
   				keywords: @test ,
                 og: {
@@ -23,11 +23,17 @@
 <section id="homePageContainer">
 	<div class="heroFlex">
 		<ul class="slides">
-		    <li><%= image_tag("1.jpg")%></li>
-		    <li><%= image_tag("2.jpg")%></li>
-		    <li><%= image_tag("3.jpg")%></li>
-		    <li><%= image_tag("4.jpg")%></li>
-		    <li><%= image_tag("5.jpg")%></li>
+      <% @admin_main_sliders.each do |admin_main_slider| %>
+        <li>
+          <%= image_tag(admin_main_slider.image_url)%>
+          <div class="heroFlexTextContainer color_<%= Admin::MainSlider::Color[admin_main_slider.color.to_s] %> position_<%=Admin::MainSlider::Position[admin_main_slider.position.to_s] %>">
+            <div class="topBar"></div>
+            <h2 class="direction_<%= Admin::MainSlider::Direction[admin_main_slider.title_direction.to_s] %>"><%= admin_main_slider.title %></h2>
+            <p class="direction_<%= Admin::MainSlider::Direction[admin_main_slider.description_direction.to_s] %>"><%= admin_main_slider.description %></p>
+            <div class="bottomBar"></div>
+          </div>
+        </li>
+      <% end %>
 	    </ul>
 	    <div class="custom-navigation">
 		  <a href="#" class="flex-prev"><i class="fa fa-chevron-left"></i></a>
@@ -106,14 +112,14 @@
                 <a class="prev" id="special_offers_prev" href="#"><i class="fa fa-chevron-up fa-lg"></i></a>
             	<a class="next" id="special_offers_next" href="#"><i class="fa fa-chevron-down fa-lg"></i></a>
                 <div class="link_more"><%= link_to t("View_All_Special_Offers"), cars_path %></div>
-            </div>      
-            <% end %>     
-        <!--/ special offer -->			
+            </div>
+            <% end %>
+        <!--/ special offer -->
 		</div>
-	</div>	
+	</div>
 </section>
 <section class="latest_offers">
-	<div class="row clearfix">         			
+	<div class="row clearfix">
     	<h2><%= t("Latest_Cars").capitalize %></h2>
         <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
 	</div>
@@ -126,6 +132,5 @@
         <% end %>
     </div>
     <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
-    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>
 </section>
-

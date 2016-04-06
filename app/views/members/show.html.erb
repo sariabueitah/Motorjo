@@ -1,4 +1,4 @@
-<% 
+<%
   set_meta_tags title: @member.first_name+ " " + @member.last_name,
                 keywords: @customKeywords + "," + @member.first_name + "," + @member.last_name,
                 author: @member.first_name+ " " + @member.last_name,
@@ -74,12 +74,13 @@
 	          </ul>
             <% if (current_user == @member.user) %>
               <%= link_to(('<i class="fa fa-cog"></i>').html_safe , edit_car_path(s),:class => "carEdit") %>
+              <%= link_to(('<i class="fa fa-trash"></i>').html_safe ,car_path(s), method: :delete, data: { confirm: 'Are you sure?' },:class => "carDestroy") %>
             <%end%>
 	        </li>
 	      <% end %>
 	      </ul>
 	      <div class="pagerArea pagination-centered">
-	        <%= will_paginate @member_cars %>  
+	        <%= will_paginate @member_cars %>
 	      </div>
 	    </div>
 		<div class="columns large-4 medium-4 UserInfo" >
@@ -98,7 +99,7 @@
 	</div>
 </section>
 <section class="latest_offers">
-	<div class="row clearfix">         			
+	<div class="row clearfix">
     	<h2><%= t("Latest_Cars") %></h2>
         <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
 	</div>
@@ -111,5 +112,5 @@
         <% end %>
     </div>
     <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
-    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>
 </section>

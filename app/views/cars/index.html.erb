@@ -1,6 +1,6 @@
-<% 
+<%
   set_meta_tags title: t('Search'),
-                keywords: @customKeywords + ",البحث عن سيارات" 
+                keywords: @customKeywords + ",البحث عن سيارات"
 %>
 <section class="PageHead">
   <div class="AdContainer">
@@ -109,6 +109,14 @@
     <div class="large-10 columns car-search small-8">
       <ul class="ulStyle">
       <% if(@cars) %>
+        <select id="searchSort">
+          <option value="1">Date new to old</option>
+          <option value="2">Date old to new</option>
+          <option value="3">Price highest to lowest</option>
+          <option value="4">Price lowest to highest</option>
+          <option value="5">Year new to old</option>
+          <option value="6">Year old to new</option>
+        </select>
         <% @cars.each do |s| %>
           <li class="carsItem clearfix">
             <%= link_to (image_tag s.car_images[0].image.url(:search)), s ,:class => "carimage" %>
@@ -124,7 +132,7 @@
                 <span class="year"><%= s.year %></span>
                 <span class="price"><%= s.price %> <%=t("JD")%></span>
               </li>
-              
+
             </ul>
           </li>
         <% end %>
@@ -134,7 +142,7 @@
       </ul>
       <% if !(@cars.total_pages == 1) %>
         <div class="pagerArea pagination-centered">
-          <%= will_paginate @cars %>  
+          <%= will_paginate @cars %>
         </div>
       <% end %>
     </div>
@@ -143,10 +151,10 @@
         <ul class="ulStyle">
         <% @special_cars.each do |s| %>
           <li>
-            <%= link_to (image_tag s.car_images[0].image.url(:search_special)), s ,:class => "inlineBlockImage" %> 
+            <%= link_to (image_tag s.car_images[0].image.url(:search_special)), s ,:class => "inlineBlockImage" %>
           </li>
           <li><%= s.year %></li>
-          
+
         <% end %>
         </ul>
       </div>
@@ -154,7 +162,7 @@
   </div>
 </section>
 <section class="latest_offers">
-  <div class="row clearfix">              
+  <div class="row clearfix">
       <h2><%= t("Latest_Cars") %></h2>
         <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
   </div>
@@ -167,5 +175,5 @@
         <% end %>
     </div>
     <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
-    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>
 </section>

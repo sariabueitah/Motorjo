@@ -16,7 +16,9 @@ module CarsHelper
   end
 
   def get_interior_color (id)
-    @make = InteriorColor.find(id).title
+		if(id)
+    	@make = InteriorColor.find(id).title
+		end
   end
 
 end

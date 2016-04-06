@@ -42,5 +42,3 @@ var ready = function() {
 }
 $(document).ready(ready);
 $(document).on('page:load', ready);
-
- //1.3.8.11.16.27a.28.31.37.40.

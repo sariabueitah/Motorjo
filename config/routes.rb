@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :main_sliders
+  end
+
   get 'set_language/english'
 
   get 'set_language/arabic'
@@ -38,9 +42,7 @@ Rails.application.routes.draw do
   resources :interior_colors, except: :show
   resources :safety_features, except: :show
   get 'admin', to: 'admin#index'
-  get 'admin/uers_admin', to: 'admin#uers_admin'
-  patch 'admin/update_users', to: 'admin#update_users'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

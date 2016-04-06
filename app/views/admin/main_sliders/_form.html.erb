@@ -1,0 +1,55 @@
+<%= form_for(@admin_main_slider) do |f| %>
+  <% if @admin_main_slider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_main_slider.errors.count, "error") %> prohibited this admin_main_slider from being saved:</h2>
+
+      <ul>
+      <% @admin_main_slider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :order %><br>
+    <%= f.text_field :order %>
+  </div>
+  <div>
+    <%= f.label :color %>
+    <%= f.select :color, Admin::MainSlider::Color.map{ |s| [s[1] , s[0]] } %>
+  </div>
+  <div>
+    <%= f.label :position %>
+    <%= f.select :position, Admin::MainSlider::Position.map{ |s| [s[1] , s[0]] } %>
+  </div>
+  <div>
+    <%= f.label :title_direction %>
+    <%= f.select :title_direction, Admin::MainSlider::Direction.map{ |s| [s[1] , s[0]] } %>
+  </div>
+  <div>
+    <%= f.label :description_direction %>
+    <%= f.select :description_direction, Admin::MainSlider::Direction.map{ |s| [s[1] , s[0]] } %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= image_tag(@admin_main_slider.image_url) if @admin_main_slider.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

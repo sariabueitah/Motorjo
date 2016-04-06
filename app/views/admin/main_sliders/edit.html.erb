@@ -24,22 +24,15 @@
     </div>
   </div>
 </section>
-<section class="NewCar">
+<section class="admin">
   <div class="row">
     <div class="columns large-12 medium-12 medium-centered large-centered">
-    	<ul>
-    		<li><%= link_to 'Cars', admin_car_cars_path() %></li>
-        <li><%= link_to 'Dealers', admin_dealer_dealers_path() %></li>
-        <li><%= link_to 'Members', admin_member_members_path() %></li>
-				<li><%= link_to 'Car Make', makes_path() %></li>
-				<li><%= link_to 'Car Model', models_path() %></li>
-				<li><%= link_to 'Comfort Interiors', comfort_interiors_path() %></li>
-				<li><%= link_to 'Interior Design', interior_designs_path() %></li>
-				<li><%= link_to 'Color', colors_path() %></li>
-				<li><%= link_to 'Interior Color', interior_colors_path() %></li>
-				<li><%= link_to 'Safety Features', safety_features_path() %></li>
-        <li><%= link_to 'Main Slider', admin_main_sliders_path() %></li>
-			</ul>
+      <h1>Editing Admin Main Slider</h1>
+
+      <%= render 'form' %>
+
+      <%= link_to 'Show', @admin_main_slider %> |
+      <%= link_to 'Back', admin_main_sliders_path %>
     </div>
   </div>
 </section>

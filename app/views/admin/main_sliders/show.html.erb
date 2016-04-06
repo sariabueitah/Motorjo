@@ -1,0 +1,69 @@
+<section class="PageHead">
+  <div class="AdContainer">
+    <div class="row">
+      <div class="columns large-12 medium-12 medium-centered large-centered">
+        <div class="AdArea">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- ????? -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9051649943133421"
+                 data-ad-slot="1612164192"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="PageTitle">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <h2>Admin Panel</h2>
+    </div>
+  </div>
+</section>
+<section class="admin">
+  <div class="row">
+    <div class="columns large-12 medium-12 medium-centered large-centered">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Title:</strong>
+        <%= @admin_main_slider.title %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @admin_main_slider.description %>
+      </p>
+
+      <p>
+        <strong>Order:</strong>
+        <%= @admin_main_slider.order %>
+      </p>
+      <p>
+        <strong>Color:</strong>
+        <%= Admin::MainSlider::Color[@admin_main_slider.color.to_s] %>
+      </p>
+
+      <p>
+        <strong>Position:</strong>
+        <%= Admin::MainSlider::Position[@admin_main_slider.position.to_s] %>
+      </p>
+      <p>
+        <strong>Title Direction:</strong>
+        <%= Admin::MainSlider::Direction[@admin_main_slider.title_direction.to_s] %>
+      </p>
+      <p>
+        <strong>Description Direction:</strong>
+        <%= Admin::MainSlider::Direction[@admin_main_slider.description_direction.to_s] %>
+      </p>
+
+      <%= image_tag(@admin_main_slider.image_url) if @admin_main_slider.image? %>
+      <%= link_to 'Edit', edit_admin_main_slider_path(@admin_main_slider) %> |
+      <%= link_to 'Back', admin_main_sliders_path %>
+    </div>
+  </div>
+</section>

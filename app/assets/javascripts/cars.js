@@ -45,17 +45,17 @@ var ready = function() {
     }
     $('.file_field input').on('change', function(event) {
       thisparent = $(this).parent("div");
-      var isIE = (navigator.appName=="Microsoft Internet Explorer");  
-      var path = this.value;  
+      var isIE = (navigator.appName=="Microsoft Internet Explorer");
+      var path = this.value;
       var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
 
-      if(ext == "gif" || ext == "jpeg" || ext == "jpg" ||  ext == "png" )  
-      {       
-        if(isIE) {  
+      if(ext == "gif" || ext == "jpeg" || ext == "jpg" ||  ext == "png" )
+      {
+        if(isIE) {
           $(thisparent).children('img').attr("src",path);
-        } else {  
-          if (event.target.files[0]) 
-          {  
+        } else {
+          if (event.target.files[0])
+          {
             var files = event.target.files;
             var image = files[0]
             var reader = new FileReader();
@@ -66,10 +66,10 @@ var ready = function() {
             }
             reader.readAsDataURL(image);
           }
-        }  
-      } else {  
-        alert("this file extension is not supported");  
-      }   
+        }
+      } else {
+        alert("this file extension is not supported");
+      }
     });
     if($("#car_report").length > 0){
       if($("#car_report").val() == 4){
@@ -200,7 +200,7 @@ var ready = function() {
             }
           });
         }
-        
+
       }
       var CurrentPage = 0;
       var numberofSlides = $("#formContainer section").length;
@@ -217,6 +217,28 @@ var ready = function() {
       });
       $(".next").bind('click',next);
       $(".prev").bind('click',prev);
+    }
+    $("#searchSort").change(function(){
+      gotoURL = window.location.href +"&q%5Bsort%5D="+$(this).val();
+      debugger;
+      window.location.href = gotoURL;
+    });
+    if($("#searchSort").length > 0){
+      var query = getQueryParams(document.location.search);
+      $("#searchSort").val(query["q[sort]"]);
+    }
+    function getQueryParams(qs) {
+        qs = qs.split('+').join(' ');
+
+        var params = {},
+            tokens,
+            re = /[?&]?([^=]+)=([^&]*)/g;
+
+        while (tokens = re.exec(qs)) {
+            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+        }
+
+        return params;
     }
 };
 $(document).ready(ready);

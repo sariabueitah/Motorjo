@@ -1,4 +1,4 @@
-@import "foundation_and_overrides-rtl"; 
+@import "foundation_and_overrides-rtl";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 .ulStyle {
@@ -24,7 +24,7 @@
 				text-align: center;
 				color:$white;
 				margin:0 auto;
-			}		
+			}
 		}
 	}
 }
@@ -277,7 +277,7 @@
 		filter:alpha(opacity=50);
 		cursor:default;
 	}
-} 	
+}
 #latest_offers {
 	margin:15px 0 0 0;
 }
@@ -682,7 +682,12 @@
 		    .carEdit {
 		    	position:absolute;
 		    	top:5px;
-		    	left:20px;
+		    	left:30px;
+		    }
+        .carDestroy {
+		    	position:absolute;
+		    	top:5px;
+		    	left:10px;
 		    }
 		    .carimage {
 		    	border-right: 3px solid $orange;
@@ -817,7 +822,7 @@
 	  .next i{
 	  	margin-left:5px;
 	  }
-		
+
 	}
 }
 .DeviseForms {
@@ -832,7 +837,7 @@
 		}
 		.userLoginInfo {
 			.innerUserLoginInfo {
-				
+
 			}
 		}
 	}
@@ -859,7 +864,7 @@
 }
 div.inputimagecontainer {
   overflow: hidden;
-  position: relative;   
+  position: relative;
   width:  100px;
   height: 100px;
   line-height: 90px;
@@ -892,7 +897,7 @@ input.myfile {
 }
 .UserTabs {
 	margin:20px auto;
-	
+
 	.tabs-content {
 		background-color:$gray1;
 		padding:20px 15px;
@@ -923,8 +928,8 @@ input.myfile {
 	padding:20px;
 	font-size:rem-calc(20);
 }
-@media #{$small-up} { 
-	
+@media #{$small-up} {
+
 }
 @media #{$small-only} {
 	.searchResults .car-search .carsItem {

@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008191853) do
+ActiveRecord::Schema.define(version: 20160403191709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_main_sliders", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "order"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "image"
+    t.integer  "position"
+    t.integer  "color"
+    t.integer  "title_direction"
+    t.integer  "description_direction"
+  end
 
   create_table "car_comfort_interiors", force: :cascade do |t|
     t.integer  "car_id"
@@ -59,6 +72,7 @@ ActiveRecord::Schema.define(version: 20151008191853) do
     t.integer  "fuel_type"
     t.integer  "cubic_capacity"
     t.boolean  "special_car"
+    t.integer  "city"
   end
 
   create_table "color_translations", force: :cascade do |t|

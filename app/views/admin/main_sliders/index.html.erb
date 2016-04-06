@@ -24,22 +24,40 @@
     </div>
   </div>
 </section>
-<section class="NewCar">
+<section class="admin">
   <div class="row">
     <div class="columns large-12 medium-12 medium-centered large-centered">
-    	<ul>
-    		<li><%= link_to 'Cars', admin_car_cars_path() %></li>
-        <li><%= link_to 'Dealers', admin_dealer_dealers_path() %></li>
-        <li><%= link_to 'Members', admin_member_members_path() %></li>
-				<li><%= link_to 'Car Make', makes_path() %></li>
-				<li><%= link_to 'Car Model', models_path() %></li>
-				<li><%= link_to 'Comfort Interiors', comfort_interiors_path() %></li>
-				<li><%= link_to 'Interior Design', interior_designs_path() %></li>
-				<li><%= link_to 'Color', colors_path() %></li>
-				<li><%= link_to 'Interior Color', interior_colors_path() %></li>
-				<li><%= link_to 'Safety Features', safety_features_path() %></li>
-        <li><%= link_to 'Main Slider', admin_main_sliders_path() %></li>
-			</ul>
+      <p id="notice"><%= notice %></p>
+
+      <h1>Listing Admin Main Sliders</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Order</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @admin_main_sliders.each do |admin_main_slider| %>
+            <tr>
+              <td><%= admin_main_slider.title %></td>
+              <td><%= admin_main_slider.description %></td>
+              <td><%= admin_main_slider.order %></td>
+              <td><%= link_to 'Show', admin_main_slider %></td>
+              <td><%= link_to 'Edit', edit_admin_main_slider_path(admin_main_slider) %></td>
+              <td><%= link_to 'Destroy', admin_main_slider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%= link_to 'New Main slider', new_admin_main_slider_path %>
     </div>
   </div>
 </section>

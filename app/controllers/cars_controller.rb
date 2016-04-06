@@ -2,11 +2,37 @@ class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :only => [:new, :create]
   before_action :authenticate_access!, :only => [:edit, :update, :destroy]
-  
+
   # GET /cars
   # GET /cars.json
   def index
     if params[:q]
+
+      if params[:q][:sort]
+        case params[:q][:sort]
+        when "1"
+          column = "created_at"
+          type = "desc"
+        when "2"
+          column = "created_at"
+          type = "asc"
+        when "3"
+          column = "price"
+          type = "desc"
+        when "4"
+          column = "price"
+          type = "asc"
+        when "5"
+          column = "year"
+          type = "desc"
+        when "6"
+          column = "year"
+          type = "desc"
+        end
+      else
+        column = "created_at"
+        type = "desc"
+      end
       @search = Car.search do
         with(:car_make).equal_to(params[:q][:car_make]) if params[:q][:car_make].present?
         with(:car_model).equal_to(params[:q][:car_model]) if params[:q][:car_model].present?
@@ -22,15 +48,15 @@ class CarsController < ApplicationController
         with(:report).equal_to(params[:q][:report]) if params[:q][:report].present?
         with(:comfort_interior_ids).all_of(params[:q][:comfort_interior_ids]) if params[:q][:comfort_interior_ids].present?
         with(:safety_feature_ids).all_of(params[:q][:safety_feature_ids]) if params[:q][:safety_feature_ids].present?
-        order_by :created_at, :desc
-        paginate :page => params[:page] || 1, :per_page => 5
+        order_by column, type
+        paginate :page => params[:page] || 1, :per_page => 50
       end
       @cars = @search.results
-    else 
-      @cars = Car.all.page(params[:page]).per_page(5)
+    else
+      @cars = Car.all.page(params[:page]).per_page(50)
     end
     @special_cars = Car.where(special_car: true)
-    @latest_cars = Car.last(10)
+    @latest_cars = Car.last(50)
   end
 
   # GET /cars/1
@@ -51,10 +77,10 @@ class CarsController < ApplicationController
   def new
     @car = Car.new
     if current_user.meta_type == "Member"
-      5.times { @car.car_images.build } 
+      5.times { @car.car_images.build }
     end
     if current_user.meta_type == "Dealer"
-      12.times { @car.car_images.build } 
+      12.times { @car.car_images.build }
     end
 
   end
@@ -63,12 +89,12 @@ class CarsController < ApplicationController
   def edit
     if current_user.meta_type == "Dealer"
         image_count = @car.car_images.size
-        image_count = 12-image_count    
+        image_count = 12-image_count
         image_count.times { @car.car_images.build }
     end
     if current_user.meta_type == "Member"
         image_count = @car.car_images.size
-        image_count = 5-image_count    
+        image_count = 5-image_count
         image_count.times { @car.car_images.build }
     end
     @latest_cars = Car.last(10)
@@ -87,12 +113,12 @@ class CarsController < ApplicationController
       else
         if current_user.meta_type == "Dealer"
             image_count = @car.car_images.size
-            image_count = 12-image_count    
+            image_count = 12-image_count
             image_count.times { @car.car_images.build }
         end
         if current_user.meta_type == "Member"
             image_count = @car.car_images.size
-            image_count = 5-image_count    
+            image_count = 5-image_count
             image_count.times { @car.car_images.build }
         end
         format.html { render :new }
@@ -153,7 +179,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:remove_image,:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :fuel_type, :cubic_capacity, :special_car, :interior_color_id, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id, :image, :_destroy, :image_cache])
+      params.require(:car).permit(:sort,:remove_image,:title, :description, :year, :mileage, :price, :car_location, :contact_number, :report, :report_other, :gearbox_id, :color_id, :car_make, :car_model, :interior_design_id, :fuel_type, :cubic_capacity, :special_car, :interior_color_id, :city, :safety_feature_ids => [], :comfort_interior_ids => [], car_images_attributes: [:id, :image, :_destroy, :image_cache])
     end
     def admin_car_params(id)
       params.require(:car).fetch(id).permit(:special_car)

@@ -1,4 +1,4 @@
-<% 
+<%
   set_meta_tags title: get_make(@car.car_make)+ " " + get_model(@car.car_model),
                 keywords: @customKeywords + "," + get_make(@car.car_make) + "," + get_model(@car.car_model),
                 author: @page_author,
@@ -114,8 +114,8 @@
           <span class="lable"><%= t("Interior_Color")%> : </span>
           <span class="value"><%= get_interior_color(@car.interior_color_id) %></span>
         </li>
-        
-        <li> 
+
+        <li>
           <span class="lable"><%= t("Car_Report")%> : </span>
           <span class="value"><%= I18n.t(Car::REPORT[@car.report.to_s]) %></span>
         </li>
@@ -162,7 +162,7 @@
         </div>
         <div class="content" id="Description">
             <h3><%= @car.title %></h3>
-            <p><%= @car.description %></p> 
+            <p><%= @car.description %></p>
         </div>
         <div class="content clearfix" id="Contact">
           <div class="contact large-6 medium-6 columns">
@@ -172,6 +172,7 @@
               <%= link_to t("Member_Page") , member_path(@user.meta_id) %>
             <% end %>
             <p class="phone"><span><%= t("Phone_Number")%>: </span><%= @car.contact_number %></p>
+            <p class="city"><%=t("city")%> : <span><%= Car::City[@car.city.to_s] %></span></p>
             <span class="locationLable"><%= t("Car_location")%></span>
             <p class="Location"><%= @car.car_location %></p>
           </div>
@@ -203,7 +204,7 @@
   </div>
 </section>
 <section class="latest_offers">
-  <div class="row clearfix">              
+  <div class="row clearfix">
       <h2><%= t("Latest_Cars") %></h2>
         <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
   </div>
@@ -216,5 +217,5 @@
         <% end %>
     </div>
     <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
-    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>
 </section>

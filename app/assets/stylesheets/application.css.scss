@@ -1,4 +1,4 @@
-@import "foundation_and_overrides"; 
+@import "foundation_and_overrides";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 .ulStyle {
@@ -24,7 +24,7 @@
 				text-align: center;
 				color:$white;
 				margin:0 auto;
-			}		
+			}
 		}
 	}
 }
@@ -273,7 +273,7 @@
 		filter:alpha(opacity=50);
 		cursor:default;
 	}
-} 	
+}
 #latest_offers {
 	margin:15px 0 0 0;
 }
@@ -286,6 +286,85 @@
 	  margin: 0;
 	  padding: 0;
 	  list-style: none;
+    position: relative;
+    .heroFlexTextContainer.color_Black h2 ,.heroFlexTextContainer.color_Black p {
+      text-shadow: 0 2px 1px $white;
+      color:$black;
+    }
+    .heroFlexTextContainer.color_White h2 ,.heroFlexTextContainer.color_White p{
+      text-shadow: 0 2px 1px $black;
+      color:$white;
+    }
+    .heroFlexTextContainer.position_right {
+      right: 10%;
+    }
+    .heroFlexTextContainer.position_left {
+      left: 10%;
+    }
+    .heroFlexTextContainer {
+      position: absolute;
+      top: 35%;
+      width:30%;
+      .topBar {
+        border-top:1px solid $white;
+        opacity: 0;
+        top:-200px;
+        position: absolute;
+        width: 100%;
+      }
+      .bottomBar {
+        border-top:1px solid $white;
+        opacity:0;
+        position: absolute;
+        width: 100%;
+      }
+      h2 {
+        position: absolute;
+        top:0;
+        width:100%;
+        padding:0;
+        margin:0;
+        font-family: serif;
+        font-size: rem-calc(50);
+        font-weight: bold;
+        opacity: 0;
+      }
+      h2.direction_top {
+        top:-200px;
+      }
+      h2.direction_down {
+        top:200px;
+      }
+      h2.direction_right {
+        right:-200px;
+      }
+      h2.direction_left {
+        right:200px;
+      }
+      p {
+        position: absolute;
+        width:100%;
+        margin:0;
+        padding:0;
+        font-family: serif;
+        font-size: rem-calc(20);
+        font-weight: bold;
+        opacity: 0;
+        padding-bottom:20px;
+      }
+      p.direction_top {
+        top:-200px;
+      }
+      p.direction_down {
+        top:200px;
+      }
+      p.direction_right {
+        right:-200px;
+      }
+      p.direction_left {
+        right:200px;
+      }
+    }
 	}
 	.flex-control-paging {
 		position: absolute;
@@ -673,7 +752,12 @@
 		    .carEdit {
 		    	position:absolute;
 		    	top:5px;
-		    	right:20px;
+		    	right:30px;
+		    }
+        .carDestroy {
+		    	position:absolute;
+		    	top:5px;
+		    	right:10px;
 		    }
 		    .carimage {
 		    	border-right: 3px solid $orange;
@@ -808,7 +892,7 @@
 	  .next i{
 	  	margin-left:5px;
 	  }
-		
+
 	}
 }
 .DeviseForms {
@@ -823,7 +907,7 @@
 		}
 		.userLoginInfo {
 			.innerUserLoginInfo {
-				
+
 			}
 		}
 	}
@@ -850,7 +934,7 @@
 }
 div.inputimagecontainer {
   overflow: hidden;
-  position: relative;   
+  position: relative;
   width:  100px;
   height: 100px;
   line-height: 90px;
@@ -883,7 +967,7 @@ input.myfile {
 }
 .UserTabs {
 	margin:20px auto;
-	
+
 	.tabs-content {
 		background-color:$gray1;
 		padding:20px 15px;
@@ -914,8 +998,8 @@ input.myfile {
 	padding:20px;
 	font-size:rem-calc(20);
 }
-@media #{$small-up} { 
-	
+@media #{$small-up} {
+
 }
 @media #{$small-only} {
 	.searchResults .car-search .carsItem {
