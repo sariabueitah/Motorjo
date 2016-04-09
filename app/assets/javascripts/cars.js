@@ -48,7 +48,10 @@ var ready = function() {
       var isIE = (navigator.appName=="Microsoft Internet Explorer");
       var path = this.value;
       var ext = path.substring(path.lastIndexOf('.') + 1).toLowerCase();
-
+      if((event.target.files[0].size/1024) > 5000) {
+        alert("Please upload smaller images");
+        return ;
+      }
       if(ext == "gif" || ext == "jpeg" || ext == "jpg" ||  ext == "png" )
       {
         if(isIE) {
@@ -57,7 +60,7 @@ var ready = function() {
           if (event.target.files[0])
           {
             var files = event.target.files;
-            var image = files[0]
+            var image = files[0];
             var reader = new FileReader();
             reader.onload = function(file) {
               var img = new Image();
