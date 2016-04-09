@@ -304,7 +304,7 @@
     .heroFlexTextContainer {
       position: absolute;
       top: 35%;
-      width:30%;
+      width:45%;
       .topBar {
         border-top:1px solid $white;
         opacity: 0;
@@ -1056,6 +1056,9 @@ input.myfile {
 	    	width: 33.3333%;
 		}
 	}
+  .heroFlexTextContainer {
+    display: none;
+  }
 }
 	.logoSection.tab-bar-section {
 		margin-top:10px;
