@@ -15,3 +15,4 @@
 Gemfile.lock
 /solr/development/data/index/write.lock
 .byebug_history
+/solr/*
