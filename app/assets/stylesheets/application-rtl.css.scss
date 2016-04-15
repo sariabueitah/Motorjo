@@ -17,7 +17,7 @@
 			height:128px;
 			padding-top:19px;
 			.AdArea {
-				width:725px;
+				max-width:725px;
 				height: 90px;
 				background:$gray7;
 				line-height: 90px;
@@ -291,6 +291,85 @@
 	  margin: 0;
 	  padding: 0;
 	  list-style: none;
+    position: relative;
+    .heroFlexTextContainer.color_Black h2 ,.heroFlexTextContainer.color_Black p {
+      text-shadow: 0 2px 1px $white;
+      color:$black;
+    }
+    .heroFlexTextContainer.color_White h2 ,.heroFlexTextContainer.color_White p{
+      text-shadow: 0 2px 1px $black;
+      color:$white;
+    }
+    .heroFlexTextContainer.position_right {
+      right: 10%;
+    }
+    .heroFlexTextContainer.position_left {
+      left: 10%;
+    }
+    .heroFlexTextContainer {
+      position: absolute;
+      top: 35%;
+      width:45%;
+      .topBar {
+        border-top:1px solid $white;
+        opacity: 0;
+        top:-200px;
+        position: absolute;
+        width: 100%;
+      }
+      .bottomBar {
+        border-top:1px solid $white;
+        opacity:0;
+        position: absolute;
+        width: 100%;
+      }
+      h2 {
+        position: absolute;
+        top:0;
+        width:100%;
+        padding:0;
+        margin:0;
+        font-family: serif;
+        font-size: rem-calc(50);
+        font-weight: bold;
+        opacity: 0;
+      }
+      h2.direction_top {
+        top:-200px;
+      }
+      h2.direction_down {
+        top:200px;
+      }
+      h2.direction_right {
+        right:-200px;
+      }
+      h2.direction_left {
+        right:200px;
+      }
+      p {
+        position: absolute;
+        width:100%;
+        margin:0;
+        padding:0;
+        font-family: serif;
+        font-size: rem-calc(20);
+        font-weight: bold;
+        opacity: 0;
+        padding-bottom:20px;
+      }
+      p.direction_top {
+        top:-200px;
+      }
+      p.direction_down {
+        top:200px;
+      }
+      p.direction_right {
+        right:-200px;
+      }
+      p.direction_left {
+        right:200px;
+      }
+    }
 	}
 	.flex-control-paging {
 		position: absolute;
@@ -986,9 +1065,13 @@ input.myfile {
 	    	width: 33.3333%;
 		}
 	}
+  .heroFlexTextContainer {
+    display: none;
+  }
 }
 	.logoSection.tab-bar-section {
 		margin-top:10px;
+    right:0;
 	}
 	.special_Deal {
 		height:620px;
@@ -1007,6 +1090,7 @@ input.myfile {
 			}
 		}
 	}
+
 	.MainNavBar {
 	  position: relative;
 	  background:$black;
