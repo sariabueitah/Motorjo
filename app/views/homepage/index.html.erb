@@ -1,136 +1,115 @@
-<%
-  set_meta_tags title: '',
-  				keywords: @test ,
-                og: {
-                  title:    'MotorsJo',
-                  type:     'website',
-                  url:      request.original_url,
-                  image:    [{
-                    _: "http://"+request.domain+image_path('Logo2.png'),
-                    width: 300,
-                    height: 63,
-                  }]
-                },
-                twitter: {
-                  card:  "photo",
-                  image: {
-                    _: "http://"+request.domain+image_path('Logo2.png'),
-                    width: 300,
-                    height: 63,
-                  }
-                }
-%>
+<% set_meta_tags title: '', keywords: @test , og: { title: 'MotorsJo', type: 'website', url: request.original_url, image: [{ _: "http://"+request.domain+image_path('Logo2.png'), width: 300, height: 63, }] }, twitter: { card: "photo", image: { _:
+"http://"+request.domain+image_path('Logo2.png'), width: 300, height: 63, } } %>
 <section id="homePageContainer">
-	<div class="heroFlex">
-		<ul class="slides">
+  <div class="heroFlex">
+    <ul class="slides">
       <% @admin_main_sliders.each do |admin_main_slider| %>
-        <li>
-          <%= image_tag(admin_main_slider.image_url)%>
-          <div class="heroFlexTextContainer color_<%= Admin::MainSlider::Color[admin_main_slider.color.to_s] %> position_<%=Admin::MainSlider::Position[admin_main_slider.position.to_s] %>">
-            <div class="topBar"></div>
-            <h2 class="direction_<%= Admin::MainSlider::Direction[admin_main_slider.title_direction.to_s] %>"><%= admin_main_slider.title %></h2>
-            <p class="direction_<%= Admin::MainSlider::Direction[admin_main_slider.description_direction.to_s] %>"><%= admin_main_slider.description %></p>
-            <div class="bottomBar"></div>
-          </div>
-        </li>
+      <li>
+        <%= image_tag(admin_main_slider.image_url)%>
+        <div class="heroFlexTextContainer color_<%= Admin::MainSlider::Color[admin_main_slider.color.to_s] %> position_<%=Admin::MainSlider::Position[admin_main_slider.position.to_s] %>">
+          <div class="topBar"></div>
+          <h2 class="direction_<%= Admin::MainSlider::Direction[admin_main_slider.title_direction.to_s] %>"><%= admin_main_slider.title %></h2>
+          <p class="direction_<%= Admin::MainSlider::Direction[admin_main_slider.description_direction.to_s] %>"><%= admin_main_slider.description %></p>
+          <div class="bottomBar"></div>
+        </div>
+      </li>
       <% end %>
-	    </ul>
-	    <div class="custom-navigation">
-		  <a href="#" class="flex-prev"><i class="fa fa-chevron-left"></i></a>
-		  <a href="#" class="flex-next"><i class="fa fa-chevron-right"></i></a>
-		</div>
-	</div>
+    </ul>
+    <div class="custom-navigation">
+      <a href="#" class="flex-prev">
+        <i class="fa fa-chevron-left"></i>
+      </a>
+      <a href="#" class="flex-next">
+        <i class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
 </section>
 <section>
-	<div class="row">
-		<div class="small-12 homepageSearchBlock clearfix " >
-			<%= form_tag  cars_path, :id => 'car_search_form', :method => :get do %>
-			  <div class="small-6 medium-3 columns">
-			    <%= label_tag t(:car_make) %>
-			    <%= select_tag 'q[car_make]', options_for_select(Make.all.with_translations(I18n.locale).order("title").map{ |c| [c.title, c.id] }), include_blank: t("all"), class: "radius"  %>
-			  </div>
-			  <div id="HomeSearchModel" class="small-6 medium-3 columns">
-			    <%= label_tag t(:car_model) %>
-			    <%= select_tag 'q[car_model]', options_for_select(Model.all.with_translations(I18n.locale).order("title").map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), :disabled => true, class: "radius" %>
-			  </div>
-			  <div class="large-3 medium-3 columns">
-            	<%= label_tag t(:year_from) %>
-	            <%= select_tag 'q[year_from]', options_for_select(((Time.zone.now.year - 70)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
-	          </div>
-	          <div class="large-3 medium-3 columns">
-	            <%= label_tag t(:year_to) %>
-	            <%= select_tag 'q[year_to]', options_for_select(((Time.zone.now.year - 70)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
-	          </div>
-			  <div class="small-12 text-center columns">
-			      <%= submit_tag t("Search") , class: "button tiny buttoncustom "%>
-			  </div>
-			<% end %>
-		</div>
-	</div>
+  <div class="row">
+    <div class="small-12 homepageSearchBlock clearfix ">
+      <%= form_tag  cars_path, :id => 'car_search_form', :method => :get do %>
+      <div class="small-6 medium-3 columns">
+        <%= label_tag t(:car_make) %>
+        <%= select_tag 'q[car_make]', options_for_select(Make.all.with_translations(I18n.locale).order("title").map{ |c| [c.title, c.id] }), include_blank: t("all"), class: "radius"  %>
+      </div>
+      <div id="HomeSearchModel" class="small-6 medium-3 columns">
+        <%= label_tag t(:car_model) %>
+        <%= select_tag 'q[car_model]', options_for_select(Model.all.with_translations(I18n.locale).order("title").map{ |c| [c.title, c.id, {'parent_id'=>c.parent_id}] }), include_blank: t("all"), :disabled => true, class: "radius" %>
+      </div>
+      <div class="large-3 medium-3 columns">
+        <%= label_tag t(:year_from) %>
+        <%= select_tag 'q[year_from]', options_for_select(((Time.zone.now.year - 70)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
+      </div>
+      <div class="large-3 medium-3 columns">
+        <%= label_tag t(:year_to) %>
+        <%= select_tag 'q[year_to]', options_for_select(((Time.zone.now.year - 70)..(Time.zone.now.year + 1)).to_a.reverse), include_blank: t("all") %>
+      </div>
+      <div class="small-12 text-center columns">
+        <%= submit_tag t("Search") , class: "button tiny buttoncustom "%>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </section>
 <section class="homepageMiddleArea">
-	<div class="row">
-		<h1><%= t("Special_Deals").capitalize %></h1>
-		<div class="small-12 large-6 columns" >
-			<% unless @latest_special_car.blank? %>
-	        <div class="mainSpecialCar">
-	        	<%= link_to (image_tag @latest_special_car.car_images[0].image.url(:special_car_main)), @latest_special_car %>
-          		<div class="mainSpecialCarText">
-        			<%= link_to "#{get_make(@latest_special_car.car_make)} #{get_model(@latest_special_car.car_model)}", @latest_special_car %>
-		            <div class="price"><%= @latest_special_car.price %> <%=t("JD")%></div>
-		            <div class="descr">
-		             	<%= truncate(@latest_special_car.description , :length => 160,  :separator => ' ') do
-				          link_to t("see_more") ,car_path(@latest_special_car,:anchor => "Description")
-				        end %>
-		            </div>
-	          	</div>
-	      	</div>
-	      	<div class="link_more">
-	      		<%= link_to t("View_More_Details"), @latest_special_car %>
-	      	</div>
-	      	<% end %>
-		</div>
-		<div class="small-12 large-6 columns">
-			<% unless @special_cars.blank? %>
-			<div class="special_Deal">
-                <div id="special_Deal">
-                	<% @special_cars.each do |s| %>
-	                	<div class="special_Deal_item clearfix">
-	                    	<div class="special_image">
-	                    		<%= link_to (image_tag s.car_images[0].image.url(:special_car)), s %>
-	                        </div>
-	                        <div class="special_text">
-	                        	<h3><%= link_to ("#{get_make(s.car_make)} #{get_model(s.car_model)}"), s %></h3>
-	                            <div class="info_row"><span><%=t("YEAR")%></span> <%= s.year %></div>
-	                            <div class="info_row"><span><%=t("GEAR")%></span><%= I18n.t(Car::Gearbox[s.gearbox_id.to_s])%></div>
-	                            <div class="info_row"><span><%=t("MILEAGE")%></span><%= s.mileage %><%=t("KM")%></div>
-	                            <div class="special_price"><%= s.price %> <%=t("JD")%></div>
-	                        </div>
-	                    </div>
-                    <% end %>
-                </div>
-                <a class="prev" id="special_offers_prev" href="#"><i class="fa fa-chevron-up fa-lg"></i></a>
-            	<a class="next" id="special_offers_next" href="#"><i class="fa fa-chevron-down fa-lg"></i></a>
-                <div class="link_more"><%= link_to t("View_All_Special_Offers"), cars_path %></div>
+  <div class="row">
+    <div class="small-12 large-8 large-offset-2 medium-10 medium-offset-1 columns">
+      <% unless @special_cars.blank? %>
+      <div class="special_Deal">
+        <div id="special_Deal">
+          <% @special_cars.each do |s| %>
+          <div class="special_Deal_item clearfix">
+            <div class="special_image">
+              <%= link_to (image_tag s.car_images[0].image.url(:medium)), s %>
             </div>
-            <% end %>
-        <!--/ special offer -->
-		</div>
-	</div>
+            <div class="special_text">
+              <h3><%= link_to ("#{get_make(s.car_make)} #{get_model(s.car_model)}"), s %></h3>
+              <div class="info_row">
+                <span><%=t("YEAR")%></span>
+                <%= s.year %></div>
+              <div class="info_row">
+                <span><%=t("GEAR")%></span><%= I18n.t(Car::Gearbox[s.gearbox_id.to_s])%></div>
+              <div class="info_row">
+                <span><%=t("MILEAGE")%></span><%= s.mileage %><%=t("KM")%></div>
+              <div class="info_row">
+                <span><%=t("cubic_capacity")%></span><%= s.cubic_capacity %></div>
+              <div class="special_price"><%= s.price %>
+                <%=t("JD")%></div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+        <a class="prev" id="special_offers_prev" href="#">
+          <i class="fa fa-chevron-up fa-lg"></i>
+        </a>
+        <a class="next" id="special_offers_next" href="#">
+          <i class="fa fa-chevron-down fa-lg"></i>
+        </a>
+        <div class="link_more"><%= link_to t("View_All_Special_Offers"), cars_path %></div>
+      </div>
+      <% end %>
+      <!--/ special offer -->
+    </div>
+  </div>
 </section>
 <section class="latest_offers">
-	<div class="row clearfix">
-    	<h2><%= t("Latest_Cars").capitalize %></h2>
-        <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
-	</div>
-    <div id="latest_offers">
-    	<% @latest_cars.each do |c| %>
-            <div class="latest_item">
-	            <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
-	            <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
-            </div>
-        <% end %>
+  <div class="row clearfix">
+    <h2><%= t("Latest_Cars").capitalize %></h2>
+    <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
+  </div>
+  <div id="latest_offers">
+    <% @latest_cars.each do |c| %>
+    <div class="latest_item">
+      <%= link_to (image_tag c.car_images[0].image.url(:medium)), c %>
+      <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
     </div>
-    <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
-    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>
+    <% end %>
+  </div>
+  <a class="prev" id="latest_offers_prev" href="#">
+    <i class="fa fa-chevron-left fa-lg"></i>
+  </a>
+  <a class="next" id="latest_offers_next" href="#">
+    <i class="fa fa-chevron-right fa-lg"></i>
+  </a>
 </section>

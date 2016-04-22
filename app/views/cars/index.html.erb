@@ -119,7 +119,7 @@
         </select>
         <% @cars.each do |s| %>
           <li class="carsItem clearfix">
-            <%= link_to (image_tag s.car_images[0].image.url(:search)), s ,:class => "carimage" %>
+            <%= link_to (image_tag s.car_images[0].image.url(:medium)), s ,:class => "carimage" %>
             <ul class="ulStyle infolist">
               <li class="title"><span><%= get_make(s.car_make) %></span> <span class=""><%= get_model(s.car_model) %></span></li>
               <li class="desc">
@@ -151,7 +151,7 @@
         <ul class="ulStyle">
         <% @special_cars.each do |s| %>
           <li>
-            <%= link_to (image_tag s.car_images[0].image.url(:search_special)), s ,:class => "inlineBlockImage" %>
+            <%= link_to (image_tag s.car_images[0].image.url(:small)), s ,:class => "inlineBlockImage" %>
           </li>
           <li><%= s.year %></li>
 
@@ -169,7 +169,7 @@
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>
             <div class="latest_item">
-              <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
+              <%= link_to (image_tag c.car_images[0].image.url(:medium)), c %>
               <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
             </div>
         <% end %>

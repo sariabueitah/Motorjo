@@ -223,12 +223,16 @@ var ready = function() {
     }
     $("#searchSort").change(function(){
       gotoURL = window.location.href +"&q%5Bsort%5D="+$(this).val();
-      debugger;
       window.location.href = gotoURL;
     });
     if($("#searchSort").length > 0){
       var query = getQueryParams(document.location.search);
-      $("#searchSort").val(query["q[sort]"]);
+      if(typeof query["q[sort]"] != "undefined"){
+        $("#searchSort").val(query["q[sort]"]);
+      }else {
+        $("#searchSort").val(1);
+      }
+
     }
     function getQueryParams(qs) {
         qs = qs.split('+').join(' ');

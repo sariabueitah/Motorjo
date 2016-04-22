@@ -1,7 +1,7 @@
 var ready = function() {
     $('.heroFlex').flexslider({
         animation: "slide",
-        slideshow: false,
+        slideshow: true,
         customDirectionNav: $(".custom-navigation a"),
         start: function(slider){
           $(".heroFlexTextContainer").attr("style","").children().attr("style","");

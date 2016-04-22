@@ -8,7 +8,7 @@
                   type:     'website',
                   url:      request.original_url,
                   image:    [{
-                    _: "http://"+request.domain+@car.car_images[0].image.url(:car_main),
+                    _: "http://"+request.domain+@car.car_images[0].image.url(:large),
                     width: 470,
                     height: 338,
                   }]
@@ -16,7 +16,7 @@
                 twitter: {
                   card:  "photo",
                   image:    {
-                    _: "http://"+request.domain+@car.car_images[0].image.url(:car_main),
+                    _: "http://"+request.domain+@car.car_images[0].image.url(:large),
                     width: 470,
                     height: 338,
                   }
@@ -55,7 +55,7 @@
         <ul class="slides ulStyle">
           <% @car.car_images.each do |d| %>
             <li>
-              <%= image_tag d.image.url(:car_main) %>
+              <%= image_tag d.image.url(:large) %>
             </li>
           <% end %>
         </ul>
@@ -64,7 +64,7 @@
         <ul class="slides ulStyle">
           <% @car.car_images.each do |d| %>
             <li>
-              <%= image_tag d.image.url(:thumb) %>
+              <%= image_tag d.image.url(:large) %>
             </li>
           <% end %>
         </ul>
@@ -211,7 +211,7 @@
     <div id="latest_offers">
       <% @latest_cars.each do |c| %>
             <div class="latest_item">
-              <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
+              <%= link_to (image_tag c.car_images[0].image.url(:medium)), c %>
               <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
             </div>
         <% end %>

@@ -1,4 +1,4 @@
-<% 
+<%
   set_meta_tags title: t('editing_car'),
                 keywords: @customKeywords
 %>
@@ -36,7 +36,7 @@
   </div>
 </section>
 <section class="latest_offers">
-  <div class="row clearfix">              
+  <div class="row clearfix">
       <h2><%= t("Latest_Cars") %></h2>
         <%= link_to t("View_All_Latest_Added"), cars_path, class: "link_more" %>
   </div>
@@ -44,12 +44,12 @@
       <% @latest_cars.each do |c| %>
             <div class="latest_item">
               <% unless c.car_images[0].blank? %>
-              <%= link_to (image_tag c.car_images[0].image.url(:homepage_carousel)), c %>
+              <%= link_to (image_tag c.car_images[0].image.url(:medium)), c %>
               <% end %>
               <%= link_to ("#{get_make(c.car_make)} #{get_model(c.car_model)}"), c %>
             </div>
         <% end %>
     </div>
     <a class="prev" id="latest_offers_prev" href="#"><i class="fa fa-chevron-left fa-lg"></i></a>
-    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>    
+    <a class="next" id="latest_offers_next" href="#"><i class="fa fa-chevron-right fa-lg"></i></a>
 </section>
