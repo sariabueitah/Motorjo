@@ -974,15 +974,26 @@ input.myfile {
 
 }
 @media #{$small-only} {
+  .heroFlexTextContainer {
+    display: none;
+  }
 	.searchResults .car-search .carsItem {
 		.carimage {
 			width: 100%;
+      width:100%;
+
+      border-left: 0;
+      float: none;
+      margin: 0;
+      border-radius: 3px 0 0 0;
+      -webkit-border-radius: 3px 0 0 0;
 			img {
-				width:100%
+				width:100%;
+        border-bottom: 3px solid #f25c24;
 			}
 		}
 		.infolist {
-			width:100%;
+
 			.info {
 				.price {
 					clear:both;
@@ -1028,18 +1039,16 @@ input.myfile {
 	    	width: 33.3333%;
 		}
 	}
-  .heroFlexTextContainer {
-    display: none;
-  }
+
 }
 	.logoSection.tab-bar-section {
 		margin-top:10px;
     right:0;
 	}
 	.special_Deal {
-		height:660px;
+		height:auto;
 		.special_Deal_item {
-			height:319px;
+			height:auto;
 			.special_text {
 				width: 100%;
 			}

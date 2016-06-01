@@ -107,16 +107,16 @@
 <section class="searchResults">
   <div class="row">
     <div class="large-10 columns car-search small-8">
-      <ul class="ulStyle">
       <% if(@cars) %>
-        <select id="searchSort">
-          <option value="1">Date new to old</option>
-          <option value="2">Date old to new</option>
-          <option value="3">Price highest to lowest</option>
-          <option value="4">Price lowest to highest</option>
-          <option value="5">Year new to old</option>
-          <option value="6">Year old to new</option>
-        </select>
+      <select id="searchSort">
+        <option value="1">Date new to old</option>
+        <option value="2">Date old to new</option>
+        <option value="3">Price highest to lowest</option>
+        <option value="4">Price lowest to highest</option>
+        <option value="5">Year new to old</option>
+        <option value="6">Year old to new</option>
+      </select>
+      <ul class="ulStyle">
         <% @cars.each do |s| %>
           <li class="carsItem clearfix">
             <%= link_to (image_tag s.car_images[0].image.url(:medium)), s ,:class => "carimage" %>
@@ -136,10 +136,11 @@
             </ul>
           </li>
         <% end %>
+        </ul>
       <% else %>
         <li class="noResults"><%= t('no_results') %></li>
       <% end %>
-      </ul>
+
       <% if !(@cars.total_pages == 1) %>
         <div class="pagerArea pagination-centered">
           <%= will_paginate @cars %>
