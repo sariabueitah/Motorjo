@@ -2,7 +2,7 @@ class DealersController < ApplicationController
   before_action :set_dealer, only: [:show, :edit, :update, :destroy]
   before_action :set_user , only: [:edit , :update_password]
   before_action :authenticate_access!, :only => [:index ,:edit, :update]
-  before_action :authenticate_admin!,:only =>[:admin_member ,:index ,:destroy]
+  before_action :authenticate_admin!,:only =>[:admin_member ,:index ,:destroy,:new,:create]
   # GET /dealers
   # GET /dealers.json
   def index
@@ -41,7 +41,7 @@ class DealersController < ApplicationController
   end
 
   # PATCH/PUT /user/edit/password
-  # PATCH/PUT 
+  # PATCH/PUT
   def update_password
     respond_to do |format|
       if @user.update(dealer_params)
@@ -78,7 +78,7 @@ class DealersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def admin_dealer
     @dealers = Dealer.includes(:user).all.page(params[:page]).per_page(50)
   end

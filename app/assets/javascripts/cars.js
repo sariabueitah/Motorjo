@@ -1,4 +1,9 @@
+
 var ready = function() {
+  lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    })
     if($("#advancedSearch").length > 0){
       $("#advancedSearchToggleOff").hide();
       $("#advancedSearchToggleOn").click(function(event) {

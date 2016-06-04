@@ -52,10 +52,10 @@
   <div class="row">
     <div class="large-6 medium-6 columns ">
       <div id="slider" class="flexslider">
-        <ul class="slides ulStyle">
+        <ul class="slides ulStyle clearing-thumbs" data-clearing>
           <% @car.car_images.each do |d| %>
             <li>
-              <%= image_tag d.image.url(:large) %>
+              <a href="<%= d.image.url %>"><%= image_tag d.image.url(:large) %></a>
             </li>
           <% end %>
         </ul>
