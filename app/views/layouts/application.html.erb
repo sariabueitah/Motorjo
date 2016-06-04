@@ -14,7 +14,7 @@
     <% else %>
       <%= stylesheet_link_tag    "application-rtl" %>
     <% end %>
-    
+
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -50,8 +50,8 @@
             <li><%= link_to t('Log_out'), destroy_user_session_path, :method => :delete%></li>
             <% else %>
               <li><%= link_to t('Login'), new_user_session_path %></li>
-              <li><%= link_to t('Sign_Up_Seller'), new_member_path %></li>
-              <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li>
+              <li><%= link_to t('Sign_Up'), new_member_path %></li>
+              <!-- <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li> -->
             <% end %>
           </ul>
         </aside>
@@ -97,16 +97,11 @@
                       <li><%= link_to t('Log_out'), destroy_user_session_path, :method => :delete%></li>
                     </ul>
                   </li>
-                  
+
                 <% else %>
                   <li><%= link_to t('Login'), new_user_session_path %></li>
-                  <li class="has-dropdown">
-                    <a href="javascript:void(0);"><%= t("Sign_Up") %></a>
-                    <ul class="dropdown">
-                      <li><%= link_to t('Sign_Up_Seller'), new_member_path %></li>
-                      <li><%= link_to t('Sign_Up_Dealer'), new_dealer_path %></li>
-                    </ul>
-                  </li>
+                  <li><%= link_to t('Sign_Up'), new_member_path %></li>
+
                 <% end %>
               </ul>
             </section>
@@ -115,35 +110,35 @@
             </section>
           </nav>
         </div>
-        
+
         <%= yield %>
         <div class="footer">
           <div class="row clearfix">
                 <div class="footer-link">
                     <ul class="ulStyle">
-                        <li><a href="/cars"><span><%= t("Buy_a_car") %></span></a></li> 
+                        <li><a href="/cars"><span><%= t("Buy_a_car") %></span></a></li>
                         <li><a href="/cars/new"><span><%= t("Sell_your_Car") %></span></a></li>
-                        <li><a href="#"><span><%= t("Terms_&_Conditions") %></span></a></li> 
+                        <li><a href="#"><span><%= t("Terms_&_Conditions") %></span></a></li>
                     </ul>
-                </div>       
+                </div>
                 <div class="footer_social">
-                  <div class="social_inner"> 
+                  <div class="social_inner">
                     <a href="https://www.facebook.com/Motorsjordan-1031824210175355/?ref=bookmarks" class="social-fb"><i class="fa fa-facebook-official"></i></a>
                     <a href="https://twitter.com/motorsjordan" class="social-twitter"><i class="fa fa-twitter"></i></a>
                   <a href="https://instagram.com/motorsjordan/" class="social-instagram"><i class="fa fa-instagram"></i></a>
                     </div>
             </div>
-                
+
                 <div class="footer_contacts">
                   <span class="phone"><i class="fa fa-phone"></i> 0788833382 - 0799833328</span>
                     <span class="email">info@motorsjo.com</span>
                 </div>
-                
+
                 <div class="copyright">
                 MotorsJo.com by <a href="javascript:void(0)">DotsWorld</a>
                 </div>
-                          
-            </div> 
+
+            </div>
         </div>
       </div>
     </div>
